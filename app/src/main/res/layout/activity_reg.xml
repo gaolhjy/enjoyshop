@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg_color"
+              android:orientation="vertical"
+              android:fitsSystemWindows="true"
+              android:clipToPadding="true"
+    >
+
+    <com.cniao.widget.CNiaoToolBar
+        android:id="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:navigationIcon="@drawable/icon_back_32px"
+        app:rightButtonText="下一步"
+        app:title="用户注册(1/2)"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/selector_view_block"
+        android:orientation="vertical"
+        android:padding="@dimen/largePadding"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/largePadding"
+            android:paddingTop="@dimen/largePadding"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="国家或者地区"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                />
+
+            <TextView
+                android:id="@+id/txtCountry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="中国"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+
+        </RelativeLayout>
+
+        <View
+            style="@style/line_vertical"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/largePadding"
+            android:paddingTop="@dimen/largePadding"
+            >
+
+            <TextView
+                android:id="@+id/txtCountryCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="+86"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+
+            <View
+                style="@style/line_horizontal"/>
+
+            <com.cniao.widget.ClearEditText
+                android:id="@+id/edittxt_phone"
+                style="@style/editText_base"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:hint="请输入常用手机号码"
+                android:inputType="phone"
+                />
+        </LinearLayout>
+
+        <View
+            style="@style/line_vertical"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/largePadding"
+            android:paddingTop="@dimen/largePadding"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="密码"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+
+            <View
+                style="@style/line_horizontal"/>
+
+            <com.cniao.widget.ClearEditText
+                android:id="@+id/edittxt_pwd"
+                style="@style/editText_base"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:hint="请输入密码"
+                android:inputType="textPassword"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="@dimen/largePadding"
+        android:text="点击‘下一步’ 按钮，表示你同意《轻松购用户协议》"
+        android:textColor="@color/border_color"
+        android:textSize="12sp"
+        />
+</LinearLayout>

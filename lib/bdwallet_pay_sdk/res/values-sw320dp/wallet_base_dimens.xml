@@ -1,0 +1,5 @@
+<resources>
+
+    <dimen name="bd_wallet_contact_name_width">100dp</dimen>
+
+</resources>

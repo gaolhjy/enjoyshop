@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ebpay_translucence_color"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp" >
+
+    <LinearLayout
+        android:id="@+id/pwd_pay_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/wallet_base_pwdpay_activity_bg"
+        android:orientation="vertical"
+        android:paddingBottom="20dp" >
+
+        <RelativeLayout
+            android:id="@+id/amount_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/bd_wallet_pwdpay_select_payment_title_height"
+            android:layout_marginTop="8dp"
+            android:paddingRight="@dimen/ebpay_line_margin_10" >
+
+            <ImageButton
+                android:id="@+id/btn_close"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:background="@null"
+                android:paddingLeft="@dimen/ebpay_line_margin_10"
+                android:paddingRight="@dimen/ebpay_line_margin_20"
+                android:scaleType="center"
+                android:src="@drawable/wallet_base_pwdpay_close_selector" />
+
+            <TextView
+                android:id="@+id/pay_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="@color/bd_wallet_dialog_contenttext"
+                android:textSize="@dimen/ebpay_text_size_25" />
+
+            <TextView
+                android:id="@+id/pay_amount_before_channel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/ebpay_line_margin_10"
+                android:layout_toRightOf="@id/pay_amount"
+                android:textColor="@color/bd_wallet_pwdpay_text_before_channel"
+                android:textSize="@dimen/ebpay_text_size_15"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/payment_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bd_wallet_pwdpay_select_payment_title_height" >
+
+            <LinearLayout
+                android:id="@+id/payment_area"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="1dp"
+                android:gravity="center" >
+
+                <TextView
+                    android:id="@+id/payment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/bd_wallet_pwdpay_text_blue"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/payment_discount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/wallet_base_pwdpay_channel_activity_bg"
+                    android:gravity="center"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:textColor="@color/ebpay_white"
+                    android:textSize="12dp"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/ebpay_pwdpay_next" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/score_tip_first_launch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/payment_area"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="3dp"
+                android:gravity="center"
+                android:text="@string/ebpay_pwdpay_first_launch_tip"
+                android:textColor="@color/ebpay_red"
+                android:textSize="12dp"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/bd_wallet_pwdpay_light_gray" />
+
+        <com.baidu.wallet.base.widget.SixNumberPwdView
+            android:id="@+id/pwd_input_box"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="12dip" >
+        </com.baidu.wallet.base.widget.SixNumberPwdView>
+
+        <RelativeLayout
+            android:id="@+id/error_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/forget_pwd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="@string/ebpay_pwd_forget"
+                android:textColor="@color/wallet_base_click_text_color" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/error_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toLeftOf="@id/forget_pwd"
+                android:textColor="@color/ebpay_red"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/pay_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/ebpay_bt_height"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dip"
+            android:background="@drawable/wallet_base_pwdpay_submit_selector"
+            android:clickable="true"
+            android:gravity="center" >
+
+            <Button
+                android:id="@+id/pay_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:background="@color/ebpay_transparent"
+                android:clickable="false"
+                android:drawablePadding="5dp"
+                android:text="@string/ebpay_submit_pay"
+                android:textColor="@color/ebpay_white"
+                android:textSize="@dimen/ebpay_text_size_18" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

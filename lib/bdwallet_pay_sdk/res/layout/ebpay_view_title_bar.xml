@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" -->
+<!-- android:layout_width="fill_parent" -->
+<!-- android:layout_height="wrap_content" -->
+<!-- android:orientation="vertical" > -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/ebpay_title_heigth"
+    android:background="@color/ebpay_title_bg" >
+
+    <ImageView
+        android:id="@+id/title_bar_logo"
+        android:layout_width="@dimen/ebpay_logo_width"
+        android:layout_height="@dimen/ebpay_logo_height"
+        android:layout_centerInParent="true"
+        android:contentDescription="@string/ebpay_img"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/ebpay_title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/ebpay_bd_wallet"
+        android:textColor="@color/ebpay_white"
+        android:textSize="@dimen/ebpay_text_size_20" />
+
+    <ImageView
+        android:id="@+id/title_bar_right_img"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dip"
+        android:scaleType="fitXY"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btn_Login_or_reg"
+        android:layout_width="58dp"
+        android:layout_height="fill_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/ebpay_title_btn_selector"
+        android:gravity="center"
+        android:textColor="@color/ebpay_white"
+        android:text="@string/ebpay_to_logout"
+        android:textSize="15sp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/title_back"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:src="@drawable/wallet_base_title_back_selector"
+            android:contentDescription="@string/ebpay_img" />
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="fill_parent"
+            android:background="@drawable/ebpay_title_v_line"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</RelativeLayout><!-- </LinearLayout> -->

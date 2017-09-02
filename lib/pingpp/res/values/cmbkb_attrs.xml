@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CmbEditText">
+        
+        <!-- 键盘输入类型 -->
+        <attr name="KeyBoardType">
+            <enum name="Normal" value="0"></enum>
+            <enum name="Number" value="1"></enum>
+        </attr>
+		<attr name="Length" format="integer"/> 
+ 		<attr name="isPassword" format="boolean" />
+		
+    </declare-styleable>
+    
+</resources>

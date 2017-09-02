@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="bd_wallet_title_bar_title">
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">#333333</item>
+    </style>
+
+    <style name="bd_wallet_custom_dialog_theme" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="EbpayPromptDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:textColor">@color/ebpay_black</item>
+        <item name="android:windowBackground">@color/ebpay_transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:background">@color/ebpay_transparent</item>
+    </style>
+
+    <style name="EditCommonStyle">
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/ebpay_text_size_15</item>
+        <item name="android:background">@null</item>
+        <item name="android:textColorHint">@color/wallet_base_6c</item>
+    </style>
+    
+    <style name="EbpayThemeActivit" parent="@android:style/Theme.NoTitleBar">
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:textColor">#ff000000</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:screenOrientation">portrait</item>
+    </style>
+    
+    <style name="bd_wallet_plugin_update_progressbar" parent="@android:style/Widget.ProgressBar.Horizontal">
+        <item name="android:maxHeight">50dip</item>
+        <item name="android:minHeight">8dip</item>
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:indeterminateDrawable">@android:drawable/progress_indeterminate_horizontal</item>
+        <item name="android:progressDrawable">@drawable/wallet_base_progressbar</item>
+    </style>
+    
+</resources>

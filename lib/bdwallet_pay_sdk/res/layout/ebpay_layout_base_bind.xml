@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_view"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/wallet_base_window_bg" >
+
+    <com.baidu.wallet.base.widget.BdActionBar
+        android:id="@+id/bdactionbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/wrap"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/bdactionbar"
+        android:orientation="vertical" >
+
+        <ScrollView
+            android:id="@+id/content_with_scroll"
+            android:layout_width="fill_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1"
+            android:scrollbarSize="5dp"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbarThumbVertical="@drawable/wallet_base_shape_scrollbar"
+            android:scrollbars="vertical" >
+
+            <LinearLayout
+                android:id="@+id/content_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical" >
+            </LinearLayout>
+        </ScrollView>
+
+        <android.inputmethodservice.KeyboardView
+            android:id="@+id/keyboardview"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:visibility="invisible" />
+    </LinearLayout>
+</RelativeLayout>

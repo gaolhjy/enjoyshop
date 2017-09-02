@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/ebpay_dialog_width"
+    android:layout_height="wrap_content"
+    android:background="@drawable/wallet_base_dialog_bg"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bd_wallet_dialog_title_height" >
+
+        <TextView
+            android:id="@+id/dialog_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bd_wallet_dialog_title_height"
+            android:gravity="center_vertical|left"
+            android:paddingLeft="@dimen/ebpay_line_margin_10"
+            android:text="@string/ebpay_tip"
+            android:textColor="@color/bd_wallet_dialog_titletext"
+            android:textSize="@dimen/ebpay_text_size_18" />
+
+        <ImageButton
+            android:id="@+id/dialog_title_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/wallet_base_bg_clear_selector"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <!-- <View -->
+    <!-- android:id="@+id/dialog_title_line" -->
+    <!-- android:layout_width="match_parent" -->
+    <!-- android:layout_height="2dp" -->
+    <!-- android:background="@color/ebpay_blue" /> -->
+
+
+    <!-- <TextView -->
+    <!-- android:id="@+id/dialog_msg" -->
+    <!-- android:layout_width="match_parent" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:paddingBottom="20dp" -->
+    <!-- android:paddingLeft="30dp" -->
+    <!-- android:paddingRight="30dp" -->
+    <!-- android:paddingTop="20dp" -->
+    <!-- android:text="@string/confirm_exit" -->
+    <!-- android:textSize="15sp" /> -->
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1.8dp"
+        android:background="@color/bd_wallet_dialog_lineblue" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/dialog_content_layout"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/bd_wallet_dialog_linegray" />
+
+        <LinearLayout
+            android:id="@+id/dialog_btns"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/negative_btn"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/bd_wallet_dialog_bottombutton_height"
+                android:layout_weight="1"
+                android:background="@drawable/wallet_base_dialog_leftbtn_selector"
+                android:text="@string/ebpay_not_exit"
+                android:textColor="@color/bd_wallet_dialog_titletext"
+                android:textSize="18sp" />
+
+            <View
+                android:id="@+id/btn_line"
+                android:layout_width="0.8dp"
+                android:layout_height="fill_parent"
+                android:background="@color/bd_wallet_dialog_linegray" />
+
+            <Button
+                android:id="@+id/positive_btn"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/bd_wallet_dialog_bottombutton_height"
+                android:layout_weight="1"
+                android:background="@drawable/wallet_base_dialog_rightbtn_selector"
+                android:text="@string/ebpay_exit"
+                android:textColor="@color/bd_wallet_dialog_lineblue"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

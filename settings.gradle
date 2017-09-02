@@ -1,0 +1,1 @@
+include ':app', ':okhttputils', ':baseadapter-recyclerview', ':lib:bdwallet_pay_sdk', ':lib:pingpp'

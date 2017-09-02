@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> 
+    
+    <color name="bd_wallet_white">#fff</color>
+    <color name="bd_wallet_text_gray">#aaa</color>
+    <color name="bd_wallet_blue_sectips">#3da1fb</color>
+    <color name="bd_wallet_text_gray2">#aaaaaa</color>
+    <color name="bd_wallet_black">#000</color>
+    <color name="bd_wallet_black3">#222222</color>
+    <color name="bd_wallet_blue">#5baef5</color>
+    <color name="bd_wallet_gray">#ddd</color>
+    <color name="bd_wallet_listitem_bg_grey2">#f6f6f6</color>
+    <color name="bd_wallet_fp_text_white">#FFFFFF</color>
+    <color name="bd_wallet_item_bg_blue">#37A6FB</color>
+    <color name="bd_wallet_item_bg_blue_hover">#5fb2f9</color>
+    <color name="bd_wallet_text_e4e4e4">#e4e4e4</color>
+    <color name="ebpay_login_btn_pressed">#CCCCCC</color>
+    <color name="ebpay_black_transparent">#80000000</color>
+    <color name="ebpay_white">#ffffff</color>
+    <color name="ebpay_black">#ff000000</color>
+    <color name="ebpay_toast_bg">#cc000000</color>
+    <color name="ebpay_gray">#f2f2f2</color>
+    <color name="ebpay_gray2">#e9e9e9</color>
+    <color name="ebpay_gray3">#757575</color>
+    <color name="ebpay_gray4">#f1f1f1</color>
+    <color name="ebpay_gray_pressed">#e3e3e3</color>
+    <color name="ebpay_gray_disable">#e4effc</color>
+    <color name="ebpay_title_bg">#383838</color>
+    <color name="ebpay_red">#ff5652</color>
+    <color name="ebpay_transparent">#00000000</color>
+    <color name="ebpay_list_ffe09f">#ffffe09f</color>
+    <color name="ebpay_translucence_color">#77000000</color>
+    <color name="ebpay_text_orange">#ff7800</color>
+
+    <!-- 蓝色色 -->
+    <color name="ebpay_blue">#20a3ff</color>
+    <color name="ebpay_scroll_bar">#bbbbbb</color>
+
+    <!-- 字体颜色 -->
+    <color name="ebpay_text_normal">#555</color>
+    <color name="ebpay_text_red">#d60000</color>
+    <color name="ebpay_text_blue">#3593dc</color>
+    <color name="ebpay_text_blue2">#37a6fb</color>
+    <color name="ebpay_text_hint">#ccc</color>
+    <color name="ebpay_text_gray">#999</color>
+    <color name="ebpay_text_333">#333</color>
+    <color name="ebpay_text_link_nomal">#3da1f6</color>
+    <color name="ebpay_text_link_hover">#73bff9</color>
+    <color name="ebpay_text_blue3">#5f9be6</color>
+    <color name="ebpay_text_orange1">#ff5a00</color>
+
+    <!-- For Charge -->
+    <color name="bd_wallet_discount_selected">#de4635</color>
+    <color name="bd_wallet_discount_normal">#dcdcdcdc</color>
+    <color name="bd_wallet_fp_text_error">#eb3c3c</color>
+
+    <!-- For Personal -->
+    <color name="bd_wallet_circle_gray">#d7d7d7</color>
+    <color name="bd_wallet_circle_blue">#3da1f6</color>
+    <color name="wallet_base_window_bg">#ededed</color>
+    <color name="wallet_base_blue">#3DA1F6</color>
+    <color name="wallet_base_6c">#ccc</color>
+    <color name="wallet_base_text_blue">#3593dc</color>
+    
+    <!-- For Dialog -->
+    <color name="bd_wallet_dialog_bg">#ffffff</color>
+    <color name="bd_wallet_dialog_titletext">#2c2c2c</color>
+    <color name="bd_wallet_dialog_lineblue">#37a6fb</color>
+    <color name="bd_wallet_dialog_linegray">#dddddd</color>
+    <color name="bd_wallet_dialog_btnpress_bg">#f2f2f2</color>
+    <color name="bd_wallet_dialog_contenttext">#555555</color>
+    <color name="bd_wallet_dialog_btndisable">#dcdcdc</color>
+    
+    <!-- For PwdPayDialog -->
+    <color name="bd_wallet_pwdpay_light_gray">#cccccc</color>
+    <color name="bd_wallet_login_light_gray">#666666</color>
+    <color name="bd_wallet_pwdpay_title_bg">#fafafa</color>
+    <color name="bd_wallet_pwdpay_text_blue">#37a6fb</color>
+    <color name="bd_wallet_pwdpay_text_before_channel">#999999</color>
+    <color name="bd_wallet_text_press_bg_color">#f1f1f1</color>
+    
+
+</resources>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/ebpay_dialog_width"
+    android:layout_height="wrap_content"
+    android:background="@drawable/wallet_base_dialog_bg"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bd_wallet_dialog_title_height" >
+
+        <TextView
+            android:id="@+id/dialog_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bd_wallet_dialog_title_height"
+            android:gravity="center"
+            android:text="百度钱包抵扣"
+            android:textColor="@color/bd_wallet_dialog_titletext"
+            android:textSize="@dimen/ebpay_text_size_18" />
+
+        <ImageButton
+                android:id="@+id/dialog_title_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/wallet_base_pwdpay_close_selector" />
+        
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1.8dp"
+        android:background="@color/bd_wallet_dialog_lineblue" />
+    
+    <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="vertical"
+         >
+         <TextView
+             android:id="@+id/score_tv"
+             android:layout_width="match_parent"
+             android:layout_height="@dimen/bd_wallet_pwdpay_item_height"
+             android:gravity="center_vertical"
+             android:paddingLeft="@dimen/ebpay_line_margin_10"
+             android:paddingRight="@dimen/ebpay_line_margin_10"
+             android:singleLine="true"
+             android:clickable="true"
+             android:text="@string/ebpay_pwdpay_score_pre"
+             android:textColor="@color/bd_wallet_dialog_contenttext"
+             android:background="@drawable/ebpay_textview_bg_selector"
+             android:textSize="@dimen/ebpay_text_size_15" />
+         <View
+             android:layout_width="match_parent"
+             android:layout_height="1dp"
+             android:background="@color/bd_wallet_pwdpay_light_gray" />
+         <TextView
+             android:id="@+id/balance_tv"
+             android:layout_width="match_parent"
+             android:layout_height="@dimen/bd_wallet_pwdpay_item_height"
+             android:gravity="center_vertical"
+             android:clickable="true"
+             android:paddingLeft="@dimen/ebpay_line_margin_10"
+             android:paddingRight="@dimen/ebpay_line_margin_10"
+             android:singleLine="true"
+             android:textColor="@color/bd_wallet_dialog_contenttext"
+             android:background="@drawable/ebpay_textview_bg_selector"
+             android:text="@string/ebpay_pwdpay_balance_pre"
+             android:textSize="@dimen/ebpay_text_size_15" />
+    </LinearLayout>
+
+
+      <Button
+          android:id="@+id/btn_next"
+          android:layout_width="fill_parent"
+          android:layout_height="@dimen/ebpay_bt_height"
+      	  android:layout_marginLeft="10dp"
+      	  android:layout_marginRight="10dp"
+      	  android:layout_marginBottom="15dip"
+          android:background="@drawable/wallet_base_pwdpay_submit_selector"
+          android:clickable="false"
+          android:drawablePadding="5dp"
+          android:text="@string/ebpay_choose_score_balnace_dialog_btn"
+          android:textColor="@color/ebpay_white"
+          android:textSize="@dimen/ebpay_text_size_18" />
+
+</LinearLayout>

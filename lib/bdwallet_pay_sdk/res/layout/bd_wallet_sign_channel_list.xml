@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bd_wallet_white"
+    android:orientation="vertical" >
+
+    <com.baidu.wallet.base.widget.BdActionBar
+        android:id="@+id/bdactionbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bd_wallet_white"
+        android:stretchColumns="*" >
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <!-- First Tab -->
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/bd_wallet_credit"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="@string/bd_wallet_credit"
+                    android:textColor="@color/bd_wallet_black" />
+            </LinearLayout>
+
+            <!-- Second Tab -->
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/bd_wallet_debit"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="@string/bd_wallet_debit"
+                    android:textColor="@color/bd_wallet_black" />
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <!-- First Tab indicator -->
+
+            <LinearLayout
+                android:id="@+id/bd_wallet_first_tab"
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="@color/bd_wallet_blue"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+            <!-- Second Tab indicator -->
+
+            <LinearLayout
+                android:id="@+id/bd_wallet_second_tab"
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="@color/bd_wallet_blue"
+                android:orientation="vertical"
+                android:visibility="invisible" >
+            </LinearLayout>
+        </TableRow>
+    </TableLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/bd_wallet_viewPager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/wallet_base_window_bg"
+        android:paddingTop="10dp" />
+
+</LinearLayout>

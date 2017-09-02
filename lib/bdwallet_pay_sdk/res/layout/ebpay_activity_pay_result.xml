@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/ebpay_gray"
+    android:orientation="vertical" >
+
+    <com.baidu.wallet.base.widget.BdActionBar
+        android:id="@+id/bdactionbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/ebpay_gray"
+            android:paddingBottom="20dp"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bd_wallet_white"
+                android:orientation="vertical"
+                android:paddingBottom="10dp" >
+
+                <ImageView
+                    android:id="@+id/ebpay_result_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="25dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/wallet_base_result_success" />
+
+                <TextView
+                    android:id="@+id/ebpay_result_tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/ebpay_pay_success"
+                    android:textColor="@color/ebpay_text_normal"
+                    android:textSize="@dimen/ebpay_text_size_25"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/ebpay_other_tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:paddingTop="20dp"
+                    android:text="@string/ebpay_payresult_huifei"
+                    android:textColor="@color/ebpay_text_normal"
+                    android:textSize="@dimen/ebpay_text_size_15" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/ebpay_baizhuanfen_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:paddingTop="20dp"
+                android:textColor="@color/ebpay_text_normal"
+                android:textSize="@dimen/ebpay_text_size_15"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/pay_success_bt"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/ebpay_bt_height"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/wallet_base_btn"
+                android:text="@string/ebpay_confirm"
+                android:textColor="@color/ebpay_white"
+                android:textSize="@dimen/ebpay_text_size_15" />
+
+            <include
+                android:id="@+id/hongbao_layout"
+                layout="@layout/ebpay_layout_pay_result_benefit"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/select_paytype_bt"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/ebpay_bt_height"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/wallet_base_btn"
+                android:text="@string/ebpay_select_other"
+                android:textColor="@color/ebpay_white"
+                android:textSize="@dimen/ebpay_text_size_15"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/pay_cancel"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/ebpay_bt_height"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="@dimen/ebpay_line_margin_10"
+                android:background="@drawable/wallet_base_neg_btn_bg"
+                android:text="@string/ebpay_cancel"
+                android:textColor="@color/ebpay_white"
+                android:textSize="@dimen/ebpay_text_size_15"
+                android:visibility="visible" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
