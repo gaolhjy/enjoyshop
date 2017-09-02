@@ -61,4 +61,15 @@
 
 10.日志、sp、屏幕、toast工具类封装
 
+主要界面截图:
+====
 
+![image](https://github.com/gaolh89/cniao5/tree/master/app/src/main/res/screenshots/pic1.jpg)
+![image](https://github.com/gaolh89/cniao5/tree/master/app/src/main/res/screenshots/pic2.jpg)
+![image](https://github.com/gaolh89/cniao5/tree/master/app/src/main/res/screenshots/pic3.jpg)
+![image](https://github.com/gaolh89/cniao5/tree/master/app/src/main/res/screenshots/pic4.jpg)
+![image](https://github.com/gaolh89/cniao5/tree/master/app/src/main/res/screenshots/pic5.jpg)
+![image](https://github.com/gaolh89/cniao5/tree/master/app/src/main/res/screenshots/pic6.jpg)
+![image](https://github.com/gaolh89/cniao5/tree/master/app/src/main/res/screenshots/pic7.jpg)
+![image](https://github.com/gaolh89/cniao5/tree/master/app/src/main/res/screenshots/pic8.jpg)
+![image](https://github.com/gaolh89/cniao5/tree/master/app/src/main/res/screenshots/pic9.jpg)
