@@ -63,16 +63,6 @@
 
 主要界面截图:
 ====
-
 ![Image text](https://github.com/gaolh89/cniao5/blob/master/screenshots/pic11.png)
-
-![Image text](https://github.com/gaolh89/cniao5/blob/master/screenshots/pic10.png)
-![Image text](https://github.com/gaolh89/cniao5/blob/master/screenshots/pic1.jpg)
-![Image text](https://github.com/gaolh89/cniao5/blob/master/screenshots/pic2.jpg)
-![Image text](https://github.com/gaolh89/cniao5/blob/master/screenshots/pic3.jpg)
-![Image text](https://github.com/gaolh89/cniao5/blob/master/screenshots/pic4.jpg)
-![Image text](https://github.com/gaolh89/cniao5/blob/master/screenshots/pic5.jpg)
-![Image text](https://github.com/gaolh89/cniao5/blob/master/screenshots/pic6.jpg)
-![Image text](https://github.com/gaolh89/cniao5/blob/master/screenshots/pic7.jpg)
-![Image text](https://github.com/gaolh89/cniao5/blob/master/screenshots/pic8.jpg)
-![Image text](https://github.com/gaolh89/cniao5/blob/master/screenshots/pic9.jpg)
+![Image text](https://github.com/gaolh89/cniao5/blob/master/screenshots/pic12.png)
+![Image text](https://github.com/gaolh89/cniao5/blob/master/screenshots/pic13.png)
