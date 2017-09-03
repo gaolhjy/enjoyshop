@@ -63,6 +63,6 @@
 
 主要界面截图:
 ====
-![Image text](https://github.com/gaolh89/cniao5/blob/master/screenshots/pic11.png)
+  ![Image text](https://github.com/gaolh89/cniao5/blob/master/screenshots/pic11.png)
 ![Image text](https://github.com/gaolh89/cniao5/blob/master/screenshots/pic12.png)
 ![Image text](https://github.com/gaolh89/cniao5/blob/master/screenshots/pic13.png)
