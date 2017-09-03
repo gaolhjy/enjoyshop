@@ -63,7 +63,9 @@
 
 主要界面截图:
 ====
+
 ![Image text](https://github.com/gaolh89/cniao5/blob/master/screenshots/pic10.jpg)
+
 ![Image text](https://github.com/gaolh89/cniao5/blob/master/screenshots/pic1.jpg)
 ![Image text](https://github.com/gaolh89/cniao5/blob/master/screenshots/pic2.jpg)
 ![Image text](https://github.com/gaolh89/cniao5/blob/master/screenshots/pic3.jpg)
