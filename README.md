@@ -7,6 +7,7 @@
 注意:需要自己生成签名.并修改您app build.gradle配置.您也可以直接在百度云盘下载我配置的签名文件,下载后文件存放位置请注意与app中build.gradle文件路径对应.
 
 - [作者签名文件下载](http://pan.baidu.com/s/1dEX5yTj)
+
 云盘密码:nlv8
 
 
