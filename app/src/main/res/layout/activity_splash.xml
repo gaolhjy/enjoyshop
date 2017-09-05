@@ -15,7 +15,8 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
         android:padding="5dp"
-        android:textSize="15sp"
+        android:textSize="13sp"
         android:text="3秒跳转"
+        android:textColor="@color/white"
         />
 </FrameLayout>

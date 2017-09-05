@@ -76,3 +76,8 @@
 ![Image text](https://github.com/gaolh89/cniao5/blob/master/screenshots/pic11.png)
 ![Image text](https://github.com/gaolh89/cniao5/blob/master/screenshots/pic12.png)
 ![Image text](https://github.com/gaolh89/cniao5/blob/master/screenshots/pic13.png)
+
+修改完善记录:
+====
+版本:1.0.0  基本功能完成
+版本:1.0.1  splash基本低版本沉浸式状态栏bug修复
