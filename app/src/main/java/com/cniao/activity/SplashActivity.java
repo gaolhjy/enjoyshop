@@ -1,8 +1,6 @@
 package com.cniao.activity;
 
 import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -10,6 +8,9 @@ import android.widget.TextView;
 
 import com.cniao.R;
 import com.cniao.utils.PreferencesUtils;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -26,10 +27,8 @@ public class SplashActivity extends BaseActivity implements View.OnClickListener
 
     @BindView(R.id.tv_time)
     TextView mTvTime;
-    private              int duration = 3;      //倒计时3秒
-    private static final int STEP     = 1000;
-    private static final int ISTIME   = 0;
-
+    private int duration = 3;      //倒计时3秒
+    Timer timer = new Timer();
 
     @Override
     protected int getContentResourseId() {
@@ -44,7 +43,15 @@ public class SplashActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     protected void init() {
-        mHandler.sendEmptyMessageDelayed(0, STEP);
+
+        /**
+         * 第二个参数的意思是，当你调用该方法后，该方法必然会调用 TimerTask 类 TimerTask 类 中的 run()
+         * 方法，这个参数就是这两者之间的差值，转换成汉语的意思就是说，用户调用 schedule() 方法后，
+         * 要等待这么长的时间才可以第一次执行 run() 方法。即推迟多久执行
+         *
+           第三个参数的意思就是，第一次调用之后，从第二次开始每隔多长的时间调用一次 run() 方法。即执行多久多长时间
+         */
+        timer.schedule(task, 1000, 1000);
     }
 
     /**
@@ -76,25 +83,29 @@ public class SplashActivity extends BaseActivity implements View.OnClickListener
     /**
      * 如果点击了,停止倒计时,直接跳转
      */
-    @OnClick(R.id.tv_time)
+    @OnClick(R.id.ll_time)
     public void onClick(View v) {
-        mHandler.removeMessages(0);
+        timer.cancel();
         jumpActivity();
     }
 
 
-    private Handler mHandler = new Handler() {
+    private TimerTask task = new TimerTask() {
         @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            duration--;
-            if (duration > ISTIME) {
-                mTvTime.setText(duration + "秒跳过");
-                mHandler.sendEmptyMessageDelayed(0, STEP);
-            } else {
-                mHandler.removeMessages(0);
-                jumpActivity();
-            }
+        public void run() {
+
+            runOnUiThread(new Runnable() {      // UI thread
+                @Override
+                public void run() {
+                    duration--;
+                    mTvTime.setText(duration + "");
+                    if (duration < 2) {
+                        timer.cancel();
+                        jumpActivity();
+                    }
+                }
+            });
+
         }
     };
 

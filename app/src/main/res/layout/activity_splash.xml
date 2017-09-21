@@ -6,17 +6,35 @@
              android:orientation="vertical"
     >
 
-    <TextView
-        android:id="@+id/tv_time"
-        android:clickable="true"
+    <LinearLayout
+        android:id="@+id/ll_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
+        android:orientation="horizontal"
+        android:layout_gravity="end"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:padding="5dp"
-        android:textSize="13sp"
-        android:text="3秒跳转"
-        android:textColor="@color/white"
-        />
+        android:background="@drawable/time_bg"
+        android:clickable="true"
+        >
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="3"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="跳转"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            />
+    </LinearLayout>
 </FrameLayout>
