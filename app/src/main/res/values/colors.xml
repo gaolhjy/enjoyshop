@@ -372,4 +372,7 @@
     <!--app主体的红色-->
     <color name="base_red_color">#ff0000</color>
 
+    <!--userInfo font  主字体 颜色 -->
+    <color name="userInfo_font">#505050</color>
+
 </resources>

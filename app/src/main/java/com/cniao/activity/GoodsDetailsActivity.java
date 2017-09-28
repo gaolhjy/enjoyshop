@@ -12,6 +12,7 @@ import com.cniao.R;
 import com.cniao.bean.HotGoods;
 import com.cniao.bean.User;
 import com.cniao.contants.UrlContants;
+import com.cniao.helper.UIHelper;
 import com.cniao.utils.CartShopProvider;
 import com.cniao.utils.LogUtil;
 import com.cniao.utils.ToastUtils;
@@ -108,7 +109,7 @@ public class GoodsDetailsActivity extends BaseActivity implements View.OnClickLi
         mToolBar.setRightButtonOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showShare();
+                UIHelper.showShareDialogOnBottom(GoodsDetailsActivity.this);
             }
         });
     }
@@ -212,7 +213,7 @@ public class GoodsDetailsActivity extends BaseActivity implements View.OnClickLi
 
             @Override
             public void onError(Call call, Exception e, int id) {
-                LogUtil.e("收藏", "收藏失败"+e, true);
+                LogUtil.e("收藏", "收藏失败" + e, true);
             }
 
             @Override
