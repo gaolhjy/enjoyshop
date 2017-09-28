@@ -25,7 +25,11 @@ import com.zhy.http.okhttp.callback.StringCallback;
 
 import butterknife.BindView;
 import cn.sharesdk.onekeyshare.OnekeyShare;
+import cn.sharesdk.sina.weibo.SinaWeibo;
 import cn.sharesdk.tencent.qq.QQ;
+import cn.sharesdk.tencent.qzone.QZone;
+import cn.sharesdk.wechat.friends.Wechat;
+import cn.sharesdk.wechat.moments.WechatMoments;
 import okhttp3.Call;
 
 /**
@@ -111,17 +115,44 @@ public class GoodsDetailsActivity extends BaseActivity implements View.OnClickLi
             @Override
             public void onClick(View v) {
 
-                View inflate = UIHelper.showShareDialogOnBottom(GoodsDetailsActivity.this);
-//                inflate.findViewById(R.id.weixin).setOnClickListener(this);
-//                inflate.findViewById(R.id.wxcircle).setOnClickListener(this);
-//                inflate.findViewById(R.id.sina).setOnClickListener(this);
+                final View inflate = UIHelper.showShareDialogOnBottom(GoodsDetailsActivity.this);
+
+                //必须写成匿名内部类的方式
+
+                inflate.findViewById(R.id.weixin).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showShare(Wechat.NAME);
+                    }
+                });
+
+                inflate.findViewById(R.id.wxcircle).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showShare(WechatMoments.NAME);
+                    }
+                });
+
+                inflate.findViewById(R.id.sina).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showShare(SinaWeibo.NAME);
+                    }
+                });
+
                 inflate.findViewById(R.id.qq).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         showShare(QQ.NAME);
                     }
                 });
-//                inflate.findViewById(R.id.qzone).setOnClickListener(this);
+
+                inflate.findViewById(R.id.qzone).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        showShare(QZone.NAME);
+                    }
+                });
 
 
 //                UIHelper.showShareDialogOnBottom(GoodsDetailsActivity.this);
