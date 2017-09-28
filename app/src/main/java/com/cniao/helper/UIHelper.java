@@ -180,7 +180,7 @@ public class UIHelper {
      *
      * @param c
      */
-    public static void showShareDialogOnBottom(Context c) {
+    public static View showShareDialogOnBottom(Context c) {
         dialog = new Dialog(c, R.style.ActionSheetDialogStyle);
         View inflate = LayoutInflater.from(c).inflate(R.layout.dialog_main_share_bottom, null);
         ImageView close = (ImageView) inflate.findViewById(R.id.iv_dismiss);
@@ -203,5 +203,7 @@ public class UIHelper {
         //将属性设置给窗体
         dialogWindow.setAttributes(lp);
         dialog.show();
+
+        return inflate;
     }
 }

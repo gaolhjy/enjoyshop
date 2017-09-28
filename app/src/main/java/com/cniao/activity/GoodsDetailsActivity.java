@@ -25,6 +25,7 @@ import com.zhy.http.okhttp.callback.StringCallback;
 
 import butterknife.BindView;
 import cn.sharesdk.onekeyshare.OnekeyShare;
+import cn.sharesdk.tencent.qq.QQ;
 import okhttp3.Call;
 
 /**
@@ -109,7 +110,27 @@ public class GoodsDetailsActivity extends BaseActivity implements View.OnClickLi
         mToolBar.setRightButtonOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UIHelper.showShareDialogOnBottom(GoodsDetailsActivity.this);
+
+                View inflate = UIHelper.showShareDialogOnBottom(GoodsDetailsActivity.this);
+//                inflate.findViewById(R.id.weixin).setOnClickListener(this);
+//                inflate.findViewById(R.id.wxcircle).setOnClickListener(this);
+//                inflate.findViewById(R.id.sina).setOnClickListener(this);
+                inflate.findViewById(R.id.qq).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        showShare(QQ.NAME);
+                    }
+                });
+//                inflate.findViewById(R.id.qzone).setOnClickListener(this);
+
+
+//                UIHelper.showShareDialogOnBottom(GoodsDetailsActivity.this);
+//                inflate.findViewById(R.id.weixin).setOnClickListener(this);
+//                inflate.findViewById(R.id.wxcircle).setOnClickListener(this);
+//                inflate.findViewById(R.id.sina).setOnClickListener(this);
+//                inflate.findViewById(R.id.qq).setOnClickListener(this);
+//                inflate.findViewById(R.id.qzone).setOnClickListener(this);
+
             }
         });
     }
@@ -118,9 +139,14 @@ public class GoodsDetailsActivity extends BaseActivity implements View.OnClickLi
     /**
      * 分享
      */
-    private void showShare() {
+    private void showShare(String platform) {
 
         OnekeyShare oks = new OnekeyShare();
+        //指定分享的平台，如果为空，还是会调用九宫格的平台列表界面
+        if (platform != null) {
+            oks.setPlatform(platform);
+        }
+
         //关闭sso授权
         oks.disableSSOWhenAuthorize();
 
@@ -150,11 +176,30 @@ public class GoodsDetailsActivity extends BaseActivity implements View.OnClickLi
 
     }
 
-
     @Override
-    public void onClick(View v) {
-        this.finish();
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.toolbar:
+                this.finish();
+                break;
+//            case R.id.weixin:
+//                showShare(Wechat.NAME);
+//                break;
+//            case R.id.wxcircle:
+//                showShare(WechatMoments.NAME);
+//                break;
+//            case R.id.sina:
+//                showShare(SinaWeibo.NAME);
+//                break;
+//            case R.id.qq:
+//                showShare(QQ.NAME);
+//                break;
+//            case R.id.qzone:
+//                showShare(QZone.NAME);
+//                break;
+        }
     }
+
 
     class WebAppInterface {
 
