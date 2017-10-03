@@ -7,7 +7,6 @@
       <module fileurl="file://$PROJECT_DIR$/lib/bdwallet_pay_sdk/bdwallet_pay_sdk.iml" filepath="$PROJECT_DIR$/lib/bdwallet_pay_sdk/bdwallet_pay_sdk.iml" />
       <module fileurl="file://$PROJECT_DIR$/cniao5.iml" filepath="$PROJECT_DIR$/cniao5.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib/lib.iml" filepath="$PROJECT_DIR$/lib/lib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/lib/lib.iml" filepath="$PROJECT_DIR$/lib/lib.iml" />
       <module fileurl="file://$PROJECT_DIR$/okhttputils/okhttputils.iml" filepath="$PROJECT_DIR$/okhttputils/okhttputils.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib/pingpp/pingpp.iml" filepath="$PROJECT_DIR$/lib/pingpp/pingpp.iml" />
     </modules>

@@ -7,7 +7,7 @@ android {
         release {
             keyAlias 'cniaoshop'
             keyPassword '123456'
-            storeFile file('C:/appconfig/cniaoshop.jks')
+            storeFile file("../cniaoshop.jks")
             storePassword '123456'
         }
     }
