@@ -155,12 +155,12 @@ public class GoodsDetailsActivity extends BaseActivity implements View.OnClickLi
                 });
 
 
-//                UIHelper.showShareDialogOnBottom(GoodsDetailsActivity.this);
-//                inflate.findViewById(R.id.weixin).setOnClickListener(this);
-//                inflate.findViewById(R.id.wxcircle).setOnClickListener(this);
-//                inflate.findViewById(R.id.sina).setOnClickListener(this);
-//                inflate.findViewById(R.id.qq).setOnClickListener(this);
-//                inflate.findViewById(R.id.qzone).setOnClickListener(this);
+                //                UIHelper.showShareDialogOnBottom(GoodsDetailsActivity.this);
+                //                inflate.findViewById(R.id.weixin).setOnClickListener(this);
+                //                inflate.findViewById(R.id.wxcircle).setOnClickListener(this);
+                //                inflate.findViewById(R.id.sina).setOnClickListener(this);
+                //                inflate.findViewById(R.id.qq).setOnClickListener(this);
+                //                inflate.findViewById(R.id.qzone).setOnClickListener(this);
 
             }
         });
@@ -171,6 +171,10 @@ public class GoodsDetailsActivity extends BaseActivity implements View.OnClickLi
      * 分享
      */
     private void showShare(String platform) {
+
+        //关闭分享界面
+        UIHelper uh = new UIHelper();
+        uh.closeShareUI();
 
         OnekeyShare oks = new OnekeyShare();
         //指定分享的平台，如果为空，还是会调用九宫格的平台列表界面
@@ -209,25 +213,25 @@ public class GoodsDetailsActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.toolbar:
                 this.finish();
                 break;
-//            case R.id.weixin:
-//                showShare(Wechat.NAME);
-//                break;
-//            case R.id.wxcircle:
-//                showShare(WechatMoments.NAME);
-//                break;
-//            case R.id.sina:
-//                showShare(SinaWeibo.NAME);
-//                break;
-//            case R.id.qq:
-//                showShare(QQ.NAME);
-//                break;
-//            case R.id.qzone:
-//                showShare(QZone.NAME);
-//                break;
+            //            case R.id.weixin:
+            //                showShare(Wechat.NAME);
+            //                break;
+            //            case R.id.wxcircle:
+            //                showShare(WechatMoments.NAME);
+            //                break;
+            //            case R.id.sina:
+            //                showShare(SinaWeibo.NAME);
+            //                break;
+            //            case R.id.qq:
+            //                showShare(QQ.NAME);
+            //                break;
+            //            case R.id.qzone:
+            //                showShare(QZone.NAME);
+            //                break;
         }
     }
 

@@ -15,7 +15,6 @@ import android.widget.Toast;
 import com.cniao.R;
 
 
-
 /**
  * 应用程序Activity帮助类
  *
@@ -39,50 +38,51 @@ public class UIHelper {
      * @param mView    显示在这个控件底部
      * @param textView 选中之后，改变显示文字的Textview
      */
-//    public static void showPopupwindow(Context c, final List<String> data, View mView, final
-//    TextView textView) {
-//        final PopupWindow window = new PopupWindow(c);
-//        View view = LayoutInflater.from(c).inflate(R.layout.item_popupwindow, null);
-//        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.list);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(c));
-//        recyclerView.addItemDecoration(new DividerItemDecoration(c, DividerItemDecoration
-//                .VERTICAL));
-//        CommonAdapter<String> adapter = new CommonAdapter<String>(c, R.layout.simple_list, data) {
-//            @Override
-//            protected void convert(ViewHolder holder, String s, int position) {
-//                holder.setText(R.id.tv_Province, s);
-//            }
-//        };
-//        adapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-//                textView.setText(data.get(position));
-//                window.dismiss();
-//            }
-//
-//            @Override
-//            public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int
-//                    position) {
-//                return false;
-//            }
-//        });
-//        recyclerView.setAdapter(adapter);
-//        //设置SelectPicPopupWindow的View
-//        window.setContentView(view);
-//        //设置SelectPicPopupWindow弹出窗体的宽
-//        window.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
-//        //设置SelectPicPopupWindow弹出窗体的高
-//        window.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
-//        //设置SelectPicPopupWindow弹出窗体可点击
-//        window.setFocusable(true);
-//        //设置SelectPicPopupWindow弹出窗体动画效果
-////        popupWindow.setAnimationStyle(R.style.AnimBottom);
-//        //实例化一个ColorDrawable颜色为半透明
-//        ColorDrawable dw = new ColorDrawable(Color.parseColor("#FFFFFF"));
-//        //设置SelectPicPopupWindow弹出窗体的背景
-//        window.setBackgroundDrawable(dw);
-//        window.showAsDropDown(mView, 0, 0);
-//    }
+    //    public static void showPopupwindow(Context c, final List<String> data, View mView, final
+    //    TextView textView) {
+    //        final PopupWindow window = new PopupWindow(c);
+    //        View view = LayoutInflater.from(c).inflate(R.layout.item_popupwindow, null);
+    //        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.list);
+    //        recyclerView.setLayoutManager(new LinearLayoutManager(c));
+    //        recyclerView.addItemDecoration(new DividerItemDecoration(c, DividerItemDecoration
+    //                .VERTICAL));
+    //        CommonAdapter<String> adapter = new CommonAdapter<String>(c, R.layout.simple_list,
+    // data) {
+    //            @Override
+    //            protected void convert(ViewHolder holder, String s, int position) {
+    //                holder.setText(R.id.tv_Province, s);
+    //            }
+    //        };
+    //        adapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
+    //            @Override
+    //            public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+    //                textView.setText(data.get(position));
+    //                window.dismiss();
+    //            }
+    //
+    //            @Override
+    //            public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int
+    //                    position) {
+    //                return false;
+    //            }
+    //        });
+    //        recyclerView.setAdapter(adapter);
+    //        //设置SelectPicPopupWindow的View
+    //        window.setContentView(view);
+    //        //设置SelectPicPopupWindow弹出窗体的宽
+    //        window.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
+    //        //设置SelectPicPopupWindow弹出窗体的高
+    //        window.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+    //        //设置SelectPicPopupWindow弹出窗体可点击
+    //        window.setFocusable(true);
+    //        //设置SelectPicPopupWindow弹出窗体动画效果
+    ////        popupWindow.setAnimationStyle(R.style.AnimBottom);
+    //        //实例化一个ColorDrawable颜色为半透明
+    //        ColorDrawable dw = new ColorDrawable(Color.parseColor("#FFFFFF"));
+    //        //设置SelectPicPopupWindow弹出窗体的背景
+    //        window.setBackgroundDrawable(dw);
+    //        window.showAsDropDown(mView, 0, 0);
+    //    }
 
     /**
      * @Name: ShowMessage
@@ -145,35 +145,35 @@ public class UIHelper {
      * @param submitValus 按钮文字
      * @param okListener  点击事件
      */
-//    public static void showMyCustomDialog(final Context context, String titleValus, String
-//            submitValus, final View.OnClickListener okListener) {
-//
-//        dialog = new Dialog(context, R.style.dialogActivity);
-//        View view = LayoutInflater.from(context).inflate(R.layout.my_custom_dialog_layout,
-//                null);
-//        TextView title = (TextView) view.findViewById(R.id.tv_custom_title);
-//        TextView submit = (TextView) view.findViewById(R.id.tv_custom_ok);
-//        ImageView delete = (ImageView) view.findViewById(R.id.iv_delete);
-//        title.setText(titleValus);
-//        submit.setText(submitValus);
-//        dialog.setContentView(view);
-//        delete.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                dialog.dismiss();
-//            }
-//        });
-//        submit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                okListener.onClick(v);
-//                dialog.dismiss();
-//            }
-//        });
-//        Window dialogWindow = dialog.getWindow();
-//        dialogWindow.setGravity(Gravity.CENTER);
-//        dialog.show();
-//    }
+    //    public static void showMyCustomDialog(final Context context, String titleValus, String
+    //            submitValus, final View.OnClickListener okListener) {
+    //
+    //        dialog = new Dialog(context, R.style.dialogActivity);
+    //        View view = LayoutInflater.from(context).inflate(R.layout.my_custom_dialog_layout,
+    //                null);
+    //        TextView title = (TextView) view.findViewById(R.id.tv_custom_title);
+    //        TextView submit = (TextView) view.findViewById(R.id.tv_custom_ok);
+    //        ImageView delete = (ImageView) view.findViewById(R.id.iv_delete);
+    //        title.setText(titleValus);
+    //        submit.setText(submitValus);
+    //        dialog.setContentView(view);
+    //        delete.setOnClickListener(new View.OnClickListener() {
+    //            @Override
+    //            public void onClick(View v) {
+    //                dialog.dismiss();
+    //            }
+    //        });
+    //        submit.setOnClickListener(new View.OnClickListener() {
+    //            @Override
+    //            public void onClick(View v) {
+    //                okListener.onClick(v);
+    //                dialog.dismiss();
+    //            }
+    //        });
+    //        Window dialogWindow = dialog.getWindow();
+    //        dialogWindow.setGravity(Gravity.CENTER);
+    //        dialog.show();
+    //    }
 
     /**
      * 分享对话框，默认底部弹出
@@ -198,12 +198,18 @@ public class UIHelper {
         dialogWindow.setGravity(Gravity.BOTTOM);
         //获得窗体的属性
         WindowManager.LayoutParams lp = dialogWindow.getAttributes();
-//            lp.y = 20;//设置Dialog距离底部的距离
+        //            lp.y = 20;//设置Dialog距离底部的距离
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         //将属性设置给窗体
         dialogWindow.setAttributes(lp);
         dialog.show();
 
         return inflate;
+    }
+
+
+
+    public void closeShareUI() {
+        dialog.dismiss();
     }
 }
