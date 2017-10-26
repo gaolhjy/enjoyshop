@@ -28,6 +28,12 @@ import butterknife.OnClick;
  * Created by 高磊华
  * Time  2017/8/22
  * Describe: 搜索界面
+ *
+ * 一开始使用的是greendao数据库.对于之前没有没有搜索的数据,添加是没有问题的
+ * 对于之前存在的数据,不会出现重复添加,重复的数据点击后可以放在最前面,但后面的顺序有些错乱
+ * 所以想到使用集合.集合和字符串之间的相互转化,然后用sp存起来.方法是有效的
+ * 设计这个界面的目的是为了练习数据库.但还是有问题.
+ * 这段时间太忙了,等抽空再次使用greendao尝试一些
  */
 
 public class SearchActivity extends BaseActivity {
