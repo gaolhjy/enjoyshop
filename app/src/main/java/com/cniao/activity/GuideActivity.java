@@ -121,17 +121,16 @@ public class GuideActivity extends BaseActivity {
     private class PagePositionLister implements ViewPager.OnPageChangeListener {
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-        }
-
-        @Override
-        public void onPageSelected(int position) {
             //如果滑动到最后一张,显示按钮
             if (position == mViewList.size() - 1) {
                 mBtnStart.setVisibility(View.VISIBLE);
             } else {
                 mBtnStart.setVisibility(View.GONE);
             }
+        }
+
+        @Override
+        public void onPageSelected(int position) {
         }
 
         @Override
