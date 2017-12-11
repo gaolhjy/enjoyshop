@@ -13,12 +13,11 @@
 使用的开源技术:
 ====
 
-
 1.[轮播图](https://github.com/youth5201314/banner)
 
 2.[下拉刷新、加载更多](https://github.com/android-cjj/Android-MaterialRefreshLayout)
 
-3.[Gson解析]
+3.Gson解析
 
 4.[butterknife](https://github.com/JakeWharton/butterknife)
 
@@ -28,13 +27,13 @@
 
 7.[三级联动](https://github.com/Bigkoo/Android-PickerView)
 
-8.[eventBus}(https://github.com/greenrobot/EventBus)
+8.[eventBus](https://github.com/greenrobot/EventBus)
 
 9.[沉浸式状态栏](https://github.com/jgilfelt/SystemBarTint)
 
 10.[greendao](https://github.com/greenrobot/greenDAO)
 
-11.[ShareSDK]
+11.ShareSDK
 
 12.[okhttpUtils](https://github.com/hongyangAndroid/okhttputils)
 
@@ -44,7 +43,7 @@
 
 15.[pingpp](https://github.com/PingPlusPlus/pingpp-android)
 
-16.[百度地图定位及Mob天气查询]
+16.百度地图定位及Mob天气查询
 
 
 基本封装与自定义:
