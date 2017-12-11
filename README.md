@@ -13,40 +13,38 @@
 使用的开源技术:
 ====
 
-[链接文字](链接地址)
-    例子： [Markdown](http://blog.csdn.net/zhaokaiqiang1992)
 
 1.[轮播图](https://github.com/youth5201314/banner)
 
-2.[下拉刷新、加载更多]
+2.[下拉刷新、加载更多](https://github.com/android-cjj/Android-MaterialRefreshLayout)
 
-3.Gson解析:
+3.[Gson解析]
 
-4.butterknife
+4.[butterknife](https://github.com/JakeWharton/butterknife)
 
-5.批量处理权限:
+5.[批量处理权限](https://github.com/mylhyl/AndroidAcp)
 
-6.自定义样式的dialog
+6.[自定义样式的dialog](https://github.com/d-max/spots-dialog)
 
-7.三级联动
+7.[三级联动](https://github.com/Bigkoo/Android-PickerView)
 
-8.eventBus
+8.[eventBus}(https://github.com/greenrobot/EventBus)
 
-9.沉浸式状态栏
+9.[沉浸式状态栏](https://github.com/jgilfelt/SystemBarTint)
 
-10.greendao
+10.[greendao](https://github.com/greenrobot/greenDAO)
 
-11.ShareSDK
+11.[ShareSDK]
 
-12.okhttpUtils
+12.[okhttpUtils](https://github.com/hongyangAndroid/okhttputils)
 
-13.commonAdapter
+13.[baseAdapter](https://github.com/hongyangAndroid/baseAdapter)
 
-14.Glide
+14.[Glide](https://github.com/bumptech/glide)
 
-15.pingpp
+15.[pingpp](https://github.com/PingPlusPlus/pingpp-android)
 
-16.百度地图定位及Mob天气查询
+16.[百度地图定位及Mob天气查询]
 
 
 基本封装与自定义:
@@ -88,7 +86,7 @@
 
 版本:1.0.3  修复搜索/历史搜索中当搜索或点击已经存在的条目时,数据顺序错乱的bug.将greendao数据库换成集合进行操作
 
-版本:1.0.4  (1)引导页bug修复(2)网络请求成功后不需要使用handle进行发送消息的bug修复(3)将依赖库中最低版本、目标版本与主项目保持一致,减少项目的体积.
+版本:1.0.4  (1)引导页bug修复(2)网络请求成功后不需要使用handle进行发送消息的bug修复(3)将依赖库中最低版本、目标版本与主项目保持一致,减少项目的体积(4)将项目中使用的第三方库添加链接,方便读者查阅
 
 
 
