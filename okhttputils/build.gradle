@@ -3,12 +3,12 @@ apply plugin: 'com.novoda.bintray-release'//添加
 
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 26
     buildToolsVersion '26.0.2'
 
     defaultConfig {
-        minSdkVersion 9
-        targetSdkVersion 23
+        minSdkVersion 16
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
     }

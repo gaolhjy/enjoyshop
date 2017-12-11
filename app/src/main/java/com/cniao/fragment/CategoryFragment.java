@@ -2,8 +2,6 @@ package com.cniao.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
@@ -67,10 +65,6 @@ public class CategoryFragment extends BaseFragment {
     private static final int STATE_MORE   = 2;
     private              int state        = STATE_NORMAL;       //正常情况
 
-    private static final int CATEGORY_FIRST_DATA_SUCESS = 0;         //商品数据获取到
-    private static final int WEATHER_DATA_SUCESS        = 1;          //天气数据获取到
-    private static final int HAS_CLICKED                = 3;          //一级菜单已经被点击了
-
     @BindView(R.id.recyclerview_category)
     RecyclerView          mRecyclerView;
     @BindView(R.id.recyclerview_wares)
@@ -105,27 +99,6 @@ public class CategoryFragment extends BaseFragment {
     private int pageSize  = 10;     //每页数目
 
 
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            switch (msg.what) {
-                case CATEGORY_FIRST_DATA_SUCESS:
-                    showCategoryData();
-                    defaultClick();
-                    break;
-                case WEATHER_DATA_SUCESS:
-                    showWeather();
-                    break;
-                case HAS_CLICKED:
-                    isclick = true;
-                    defaultClick();
-                    break;
-            }
-        }
-    };
-
-
     @Override
     protected int getContentResourseId() {
         return R.layout.fragment_category;
@@ -156,10 +129,7 @@ public class CategoryFragment extends BaseFragment {
 
     private void requestCategoryData() {
 
-        OkHttpUtils
-                .get()
-                .url(UrlContants.CATEGORY_LIST)
-                .build()
+        OkHttpUtils.get().url(UrlContants.CATEGORY_LIST).build()
                 .execute(new StringCallback() {
 
                     @Override
@@ -180,7 +150,8 @@ public class CategoryFragment extends BaseFragment {
                             categoryFirst.add(bean);
                         }
 
-                        mHandler.sendEmptyMessage(CATEGORY_FIRST_DATA_SUCESS);
+                        showCategoryData();
+                        defaultClick();
 
                     }
                 });
@@ -242,7 +213,8 @@ public class CategoryFragment extends BaseFragment {
                 Category category = categoryFirst.get(position);
                 int id = category.getId();
                 String name = category.getName();
-                mHandler.sendEmptyMessage(HAS_CLICKED);
+                isclick = true;
+                defaultClick();
                 requestWares(id);
 
             }
@@ -286,30 +258,26 @@ public class CategoryFragment extends BaseFragment {
         String url = UrlContants.WARES_LIST + "?categoryId=" + firstCategorId + "&curPage=" +
                 currPage + "&pageSize=" + pageSize;
 
-        OkHttpUtils
-                .get()
-                .url(url)
-                .build()
-                .execute(new StringCallback() {
+        OkHttpUtils.get().url(url).build().execute(new StringCallback() {
 
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
-                        LogUtil.e("二级菜单", e + "", true);
-                    }
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                LogUtil.e("二级菜单", e + "", true);
+            }
 
-                    @Override
-                    public void onResponse(String response, int id) {
-                        LogUtil.e("二级菜单", response + "", true);
+            @Override
+            public void onResponse(String response, int id) {
+                LogUtil.e("二级菜单", response + "", true);
 
-                        HotGoods hotGoods = mGson.fromJson(response, HotGoods.class);
-                        totalPage = hotGoods.getTotalPage();
-                        currPage = hotGoods.getCurrentPage();
-                        datas = hotGoods.getList();
+                HotGoods hotGoods = mGson.fromJson(response, HotGoods.class);
+                totalPage = hotGoods.getTotalPage();
+                currPage = hotGoods.getCurrentPage();
+                datas = hotGoods.getList();
 
-                        showData();
+                showData();
 
-                    }
-                });
+            }
+        });
     }
 
     /**
@@ -434,7 +402,7 @@ public class CategoryFragment extends BaseFragment {
                 List<Weather.ResultBean.FutureBean> future = result.get(0).getFuture();
                 dayWeather = future.get(0).getDayTime();
                 nightWeather = future.get(0).getNight();
-                mHandler.sendEmptyMessage(WEATHER_DATA_SUCESS);
+                showWeather();
             }
         });
     }

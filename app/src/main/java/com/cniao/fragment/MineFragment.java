@@ -32,10 +32,8 @@ public class MineFragment extends BaseFragment {
 
     @BindView(R.id.img_head)
     CircleImageView mImageHead;
-
     @BindView(R.id.txt_username)
     TextView mTxtUserName;
-
     @BindView(R.id.btn_logout)
     Button mbtnLogout;
 

@@ -70,7 +70,6 @@ public class HotFragment extends BaseFragment {
 
     @Override
     protected void init() {
-
         initRefreshLayout();     //控件初始化
         getData();              //获取后台数据
     }
@@ -129,25 +128,24 @@ public class HotFragment extends BaseFragment {
         String url = UrlContants.HOT_WARES + "?curPage=" + currPage + "&pageSize=" + pageSize;
 
         OkHttpUtils.get().url(url).addParams("type", "1")
-                .build()
-                .execute(new StringCallback() {
+                .build().execute(new StringCallback() {
 
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
-                        LogUtil.e(TAG, "response....." + e, false);
-                    }
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                LogUtil.e(TAG, "response....." + e, false);
+            }
 
-                    @Override
-                    public void onResponse(String response, int id) {
-                        LogUtil.e(TAG, "response....." + response, false);
-                        HotGoods hotGoods = mGson.fromJson(response, HotGoods.class);
-                        totalPage = hotGoods.getTotalPage();
-                        currPage = hotGoods.getCurrentPage();
-                        datas = hotGoods.getList();
+            @Override
+            public void onResponse(String response, int id) {
+                LogUtil.e(TAG, "response....." + response, false);
+                HotGoods hotGoods = mGson.fromJson(response, HotGoods.class);
+                totalPage = hotGoods.getTotalPage();
+                currPage = hotGoods.getCurrentPage();
+                datas = hotGoods.getList();
 
-                        showData();
-                    }
-                });
+                showData();
+            }
+        });
     }
 
     /**

@@ -92,7 +92,6 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
     @Override
     protected void init() {
         showData();
-
         initView();
     }
 

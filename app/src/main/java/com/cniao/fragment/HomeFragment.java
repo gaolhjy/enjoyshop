@@ -2,8 +2,6 @@ package com.cniao.fragment;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -50,9 +48,6 @@ import okhttp3.Call;
  */
 public class HomeFragment extends BaseFragment2 implements View.OnClickListener {
 
-    private static final int BANNER_DATA_SUCESS    = 0;     //首页轮播图数据请求成功
-    private static final int CAMPAINGN_DATA_SUCESS = 1;     //首页商品数据请求成功
-
     private Banner       mBanner;
     private RecyclerView mRecyclerView;
     private CNiaoToolBar mToolBar;
@@ -63,29 +58,12 @@ public class HomeFragment extends BaseFragment2 implements View.OnClickListener 
     private List<HomeCampaignBean> datas  = new ArrayList<>();
     private Gson                   gson   = new Gson();
 
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            switch (msg.what) {
-                case BANNER_DATA_SUCESS:
-                    setBannerData();
-                    break;
-                case CAMPAINGN_DATA_SUCESS:
-                    setRecyclerViewData();
-                    break;
-            }
-        }
-    };
-
 
     @Override
     protected void init(View view) {
-
         initView(view);
         requestBannerData();     //请求轮播图数据
         requestCampaignData();     //请求商品详情数据
-
     }
 
     @Override
@@ -161,12 +139,9 @@ public class HomeFragment extends BaseFragment2 implements View.OnClickListener 
      */
     private void requestBannerData() {
 
-        OkHttpUtils
-                .get()
-                .url(UrlContants.HOME_BANNER_URL)
+        OkHttpUtils.get().url(UrlContants.HOME_BANNER_URL)
                 .addParams("type", "1")
-                .build()
-                .execute(new StringCallback() {
+                .build().execute(new StringCallback() {
 
                     @Override
                     public void onError(Call call, Exception e, int id) {
@@ -186,8 +161,7 @@ public class HomeFragment extends BaseFragment2 implements View.OnClickListener 
                             images.add(bean.getImgUrl());
                         }
 
-                        mHandler.sendEmptyMessage(BANNER_DATA_SUCESS);
-
+                        setBannerData();
                     }
                 });
     }
@@ -198,12 +172,9 @@ public class HomeFragment extends BaseFragment2 implements View.OnClickListener 
      */
     private void requestCampaignData() {
 
-        OkHttpUtils
-                .get()
-                .url(UrlContants.HOME_CAMPAIGN_URL)
+        OkHttpUtils.get().url(UrlContants.HOME_CAMPAIGN_URL)
                 .addParams("type", "1")
-                .build()
-                .execute(new StringCallback() {
+                .build().execute(new StringCallback() {
 
                     @Override
                     public void onError(Call call, Exception e, int id) {
@@ -223,7 +194,7 @@ public class HomeFragment extends BaseFragment2 implements View.OnClickListener 
                             datas.add(bean);
                         }
 
-                        mHandler.sendEmptyMessage(CAMPAINGN_DATA_SUCESS);
+                        setRecyclerViewData();
                     }
                 });
     }

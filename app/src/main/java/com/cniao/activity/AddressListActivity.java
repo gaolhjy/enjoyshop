@@ -40,11 +40,8 @@ public class AddressListActivity extends BaseActivity {
 
     @Override
     protected void init() {
-
         initToolbar();
-
         initAddress();
-
     }
 
     /**
