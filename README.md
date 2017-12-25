@@ -93,7 +93,8 @@
 关于我:
 ====
 
-1.一个热爱Android,也喜欢交友的菜鸟.     QQ:984992087    微信:gaolhjy
+1.一个热爱Android,也喜欢交友的菜鸟.     QQ:984992087    微信:gaolhjy (添加请注明GitHub)
+
 2.我的博客:[点击跳转](http://blog.csdn.net/gaolh89?viewmode=contents)
 
 
