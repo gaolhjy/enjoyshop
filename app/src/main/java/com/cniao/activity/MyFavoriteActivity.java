@@ -27,6 +27,7 @@ public class MyFavoriteActivity extends BaseActivity {
     @Override
     protected void init() {
         initToolBar();
+        //TODO 获取后台的数据
     }
 
     /**
@@ -40,8 +41,6 @@ public class MyFavoriteActivity extends BaseActivity {
                 MyFavoriteActivity.this.finish();
             }
         });
-
     }
-
 
 }
