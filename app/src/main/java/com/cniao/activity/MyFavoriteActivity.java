@@ -28,6 +28,7 @@ public class MyFavoriteActivity extends BaseActivity {
     protected void init() {
         initToolBar();
         //TODO 获取后台的数据
+        //getDataFromNet();
     }
 
     /**
