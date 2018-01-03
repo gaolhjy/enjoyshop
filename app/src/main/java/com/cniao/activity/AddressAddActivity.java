@@ -163,7 +163,6 @@ public class AddressAddActivity extends BaseActivity {
                 "&phone=" + phone +
                 "&addr=" + address + "&zip_code=" + "000000";
 
-
         OkHttpUtils.post().url(url).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
