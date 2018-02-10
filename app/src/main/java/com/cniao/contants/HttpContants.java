@@ -11,7 +11,7 @@ package com.cniao.contants;
  */
 
 
-public class UrlContants {
+public interface HttpContants {
 
     public static final String BASE_URL = "http://112.124.22.238:8081/course_api/";       //url的基类
 

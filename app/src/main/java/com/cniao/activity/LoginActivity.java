@@ -2,15 +2,14 @@ package com.cniao.activity;
 
 import android.content.Intent;
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 
 import com.cniao.CNiaoApplication;
 import com.cniao.R;
 import com.cniao.bean.User;
-import com.cniao.contants.CommonContants;
-import com.cniao.contants.UrlContants;
+import com.cniao.contants.Contants;
+import com.cniao.contants.HttpContants;
 import com.cniao.msg.LoginRespMsg;
 import com.cniao.utils.DESUtil;
 import com.cniao.utils.ToastUtils;
@@ -86,23 +85,21 @@ public class LoginActivity extends BaseActivity {
 
         String phone = mEtxtPhone.getText().toString().trim();
         if (TextUtils.isEmpty(phone)) {
-            ToastUtils.setGravity(Gravity.CENTER, 0, 0);
-            ToastUtils.showShortSafe("请输入手机号码");
+            ToastUtils.showSafeToast(LoginActivity.this,"请输入手机号码");
             return;
         }
 
         String pwd = mEtxtPwd.getText().toString().trim();
         if (TextUtils.isEmpty(pwd)) {
-            ToastUtils.setGravity(Gravity.CENTER, 0, 0);
-            ToastUtils.showShortSafe("请输入密码");
+            ToastUtils.showSafeToast(LoginActivity.this,"请输入密码");
             return;
         }
 
         Map<String, String> params = new HashMap<>();
         params.put("phone", phone);
-        params.put("password", DESUtil.encode(CommonContants.DES_KEY, pwd));
+        params.put("password", DESUtil.encode(Contants.DES_KEY, pwd));
 
-        OkHttpUtils.post().url(UrlContants.LOGIN).params(params).build().execute(new Callback<LoginRespMsg<User>>() {
+        OkHttpUtils.post().url(HttpContants.LOGIN).params(params).build().execute(new Callback<LoginRespMsg<User>>() {
             @Override
             public LoginRespMsg<User> parseNetworkResponse(Response response, int id) throws
                     Exception {

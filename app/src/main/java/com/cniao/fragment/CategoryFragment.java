@@ -27,7 +27,7 @@ import com.cniao.bean.Category;
 import com.cniao.bean.HotGoods;
 import com.cniao.bean.VFMessage;
 import com.cniao.bean.Weather;
-import com.cniao.contants.UrlContants;
+import com.cniao.contants.HttpContants;
 import com.cniao.service.LocationService;
 import com.cniao.utils.LogUtil;
 import com.cniao.utils.ScreenUtils;
@@ -129,7 +129,7 @@ public class CategoryFragment extends BaseFragment {
 
     private void requestCategoryData() {
 
-        OkHttpUtils.get().url(UrlContants.CATEGORY_LIST).build()
+        OkHttpUtils.get().url(HttpContants.CATEGORY_LIST).build()
                 .execute(new StringCallback() {
 
                     @Override
@@ -255,7 +255,7 @@ public class CategoryFragment extends BaseFragment {
      */
     private void requestWares(int firstCategorId) {
 
-        String url = UrlContants.WARES_LIST + "?categoryId=" + firstCategorId + "&curPage=" +
+        String url = HttpContants.WARES_LIST + "?categoryId=" + firstCategorId + "&curPage=" +
                 currPage + "&pageSize=" + pageSize;
 
         OkHttpUtils.get().url(url).build().execute(new StringCallback() {
@@ -383,7 +383,7 @@ public class CategoryFragment extends BaseFragment {
             province = "湖北";
         }
 
-        String url = UrlContants.requestWeather + "?key=201f8a7a91c30&city=" + city +
+        String url = HttpContants.requestWeather + "?key=201f8a7a91c30&city=" + city +
                 "&province=" + province;
 
         OkHttpUtils.get().url(url).build().execute(new StringCallback() {

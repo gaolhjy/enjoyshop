@@ -17,8 +17,8 @@ import com.cniao.adapter.HomeCatgoryAdapter;
 import com.cniao.bean.BannerBean;
 import com.cniao.bean.Campaign;
 import com.cniao.bean.HomeCampaignBean;
-import com.cniao.contants.CommonContants;
-import com.cniao.contants.UrlContants;
+import com.cniao.contants.Contants;
+import com.cniao.contants.HttpContants;
 import com.cniao.widget.CNiaoToolBar;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -121,7 +121,7 @@ public class HomeFragment extends BaseFragment2 implements View.OnClickListener 
             public void onClick(View view, Campaign campaign) {
 
                 Intent intent = new Intent(getContext(), GoodsListActivity.class);
-                intent.putExtra(CommonContants.COMPAINGAIN_ID, campaign.getId());
+                intent.putExtra(Contants.COMPAINGAIN_ID, campaign.getId());
                 startActivity(intent);
             }
         });
@@ -139,7 +139,7 @@ public class HomeFragment extends BaseFragment2 implements View.OnClickListener 
      */
     private void requestBannerData() {
 
-        OkHttpUtils.get().url(UrlContants.HOME_BANNER_URL)
+        OkHttpUtils.get().url(HttpContants.HOME_BANNER_URL)
                 .addParams("type", "1")
                 .build().execute(new StringCallback() {
 
@@ -172,7 +172,7 @@ public class HomeFragment extends BaseFragment2 implements View.OnClickListener 
      */
     private void requestCampaignData() {
 
-        OkHttpUtils.get().url(UrlContants.HOME_CAMPAIGN_URL)
+        OkHttpUtils.get().url(HttpContants.HOME_CAMPAIGN_URL)
                 .addParams("type", "1")
                 .build().execute(new StringCallback() {
 

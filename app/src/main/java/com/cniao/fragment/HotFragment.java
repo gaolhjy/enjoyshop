@@ -6,7 +6,6 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
 import android.view.View;
 
 import com.cjj.MaterialRefreshLayout;
@@ -16,7 +15,7 @@ import com.cniao.activity.GoodsDetailsActivity;
 import com.cniao.activity.SearchActivity;
 import com.cniao.adapter.HotGoodsAdapter;
 import com.cniao.bean.HotGoods;
-import com.cniao.contants.UrlContants;
+import com.cniao.contants.HttpContants;
 import com.cniao.utils.LogUtil;
 import com.cniao.utils.ToastUtils;
 import com.google.gson.Gson;
@@ -97,8 +96,7 @@ public class HotFragment extends BaseFragment {
                 if (currPage <= totalPage) {
                     loadMoreData();
                 } else {
-                    ToastUtils.setGravity(Gravity.CENTER, 0, 0);
-                    ToastUtils.showShortSafe("没有更多数据啦");
+                    ToastUtils.showSafeToast(getContext(),"没有更多数据啦");
                     mRefreshLaout.finishRefreshLoadMore();
                 }
             }
@@ -125,7 +123,7 @@ public class HotFragment extends BaseFragment {
 
     private void getData() {
 
-        String url = UrlContants.HOT_WARES + "?curPage=" + currPage + "&pageSize=" + pageSize;
+        String url = HttpContants.HOT_WARES + "?curPage=" + currPage + "&pageSize=" + pageSize;
 
         OkHttpUtils.get().url(url).addParams("type", "1")
                 .build().execute(new StringCallback() {

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.View;
 
 import com.cniao.R;
@@ -149,8 +148,7 @@ public class SearchActivity extends BaseActivity {
     public void onViewClicked() {
         String content = mEditText.getText().toString().trim();
         if (TextUtils.isEmpty(content)) {
-            ToastUtils.setGravity(Gravity.CENTER, 0, 0);
-            ToastUtils.showShortSafe("还没输入您想搜索的宝贝呢");
+            ToastUtils.showSafeToast(SearchActivity.this,"还没输入您想搜索的宝贝呢");
             return;
         }
         doData(content);

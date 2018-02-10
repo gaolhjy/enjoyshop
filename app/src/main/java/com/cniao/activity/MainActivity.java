@@ -1,7 +1,6 @@
 package com.cniao.activity;
 
 import android.support.v4.app.Fragment;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -91,7 +90,7 @@ public class MainActivity extends BaseActivity {
         mTabhost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
-                LogUtil.e("生命周期","1111111111",true);
+                LogUtil.e("生命周期", "1111111111", true);
                 if (getString(R.string.cart).equals(tabId)) {
                     refData();
                 }
@@ -106,17 +105,17 @@ public class MainActivity extends BaseActivity {
     private void refData() {
 
         if (shopCartFragment == null) {
-            LogUtil.e("生命周期","22222222",true);
+            LogUtil.e("生命周期", "22222222", true);
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(getString(R.string
                     .cart));
 
             if (fragment != null) {
-                LogUtil.e("生命周期","4444444444",true);
+                LogUtil.e("生命周期", "4444444444", true);
                 shopCartFragment = (ShopCartFragment) fragment;
                 shopCartFragment.refData();
             }
         } else {
-            LogUtil.e("生命周期","3333333333",true);
+            LogUtil.e("生命周期", "3333333333", true);
             shopCartFragment.refData();
         }
 
@@ -157,8 +156,7 @@ public class MainActivity extends BaseActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
             if (System.currentTimeMillis() - exitTime > 2000) {
-                ToastUtils.setGravity(Gravity.CENTER, 0, 0);
-                ToastUtils.showShortSafe("再点一次退出轻松购");
+                ToastUtils.showSafeToast(MainActivity.this, "再点一次退出轻松购");
                 exitTime = System.currentTimeMillis();
             } else {
                 finish();

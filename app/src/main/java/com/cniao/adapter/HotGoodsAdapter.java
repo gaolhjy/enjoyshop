@@ -2,7 +2,6 @@ package com.cniao.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,8 +61,7 @@ public class HotGoodsAdapter extends RecyclerView.Adapter<HotGoodsAdapter.ViewHo
                 public void onClick(View v) {
 //                    ShoppingCart cart = convertData(data);
                     provider.put(data);
-                    ToastUtils.setGravity(Gravity.CENTER, 0, 0);
-                    ToastUtils.showShortSafe("已添加到购物车");
+                    ToastUtils.showSafeToast(mContext,"已添加到购物车");
                 }
             });
         }

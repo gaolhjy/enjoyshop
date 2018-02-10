@@ -4,7 +4,6 @@ import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 
@@ -12,7 +11,7 @@ import com.bigkoo.pickerview.OptionsPickerView;
 import com.cniao.CNiaoApplication;
 import com.cniao.R;
 import com.cniao.bean.PickerCityAddressBean;
-import com.cniao.contants.UrlContants;
+import com.cniao.contants.HttpContants;
 import com.cniao.utils.GetJsonDataUtil;
 import com.cniao.utils.LogUtil;
 import com.cniao.utils.ToastUtils;
@@ -83,8 +82,7 @@ public class AddressAddActivity extends BaseActivity {
                     isLoaded = true;
                     break;
                 case MSG_LOAD_FAILED:
-                    ToastUtils.setGravity(Gravity.CENTER, 0, 0);
-                    ToastUtils.showShortSafe("数据获取失败,请重试");
+                    ToastUtils.showSafeToast(AddressAddActivity.this,"数据获取失败,请重试");
                     break;
 
             }
@@ -118,8 +116,7 @@ public class AddressAddActivity extends BaseActivity {
                 if (isLoaded) {
                     ShowPickerView();
                 } else {
-                    ToastUtils.setGravity(Gravity.CENTER, 0, 0);
-                    ToastUtils.showShortSafe("请稍等,数据获取中");
+                    ToastUtils.showSafeToast(AddressAddActivity.this,"请稍等,数据获取中");
                 }
                 break;
         }
@@ -139,27 +136,24 @@ public class AddressAddActivity extends BaseActivity {
 
         //进行非空判断
         if (TextUtils.isEmpty(consignee)) {
-            ToastUtils.setGravity(Gravity.CENTER, 0, 0);
-            ToastUtils.showShortSafe("收件人为空,请检查");
+            ToastUtils.showSafeToast(AddressAddActivity.this,"收件人为空,请检查");
             return;
         }
 
         if (TextUtils.isEmpty(phone)) {
-            ToastUtils.setGravity(Gravity.CENTER, 0, 0);
-            ToastUtils.showShortSafe("联系电话为空,请检查");
+            ToastUtils.showSafeToast(AddressAddActivity.this,"联系电话为空,请检查");
             return;
         }
 
         if (TextUtils.isEmpty(smallAddress) || TextUtils.isEmpty(bigAddress)) {
-            ToastUtils.setGravity(Gravity.CENTER, 0, 0);
-            ToastUtils.showShortSafe("地址不完整,请检查");
+            ToastUtils.showSafeToast(AddressAddActivity.this,"地址不完整,请检查");
             return;
         }
 
 
         Long id = CNiaoApplication.getApplication().getUser().getId();
 
-        String url = UrlContants.ADDRESS_CREATE + "?user_id=" + id + "&consignee=" + consignee +
+        String url = HttpContants.ADDRESS_CREATE + "?user_id=" + id + "&consignee=" + consignee +
                 "&phone=" + phone +
                 "&addr=" + address + "&zip_code=" + "000000";
 
@@ -167,18 +161,15 @@ public class AddressAddActivity extends BaseActivity {
             @Override
             public void onError(Call call, Exception e, int id) {
                 LogUtil.e("添加新地址", "失败" + e, true);             //   java.io.IOException: request
-                // failed , reponse's code is : 401
 
-                ToastUtils.setGravity(Gravity.CENTER, 0, 0);
-                ToastUtils.showShortSafe("地址添加失败,请重试");
+                ToastUtils.showSafeToast(AddressAddActivity.this,"地址添加失败,请重试");
             }
 
             @Override
             public void onResponse(String response, int id) {
                 LogUtil.e("添加新地址", "成功" + response, true);
 
-                ToastUtils.setGravity(Gravity.CENTER, 0, 0);
-                ToastUtils.showShortSafe("地址添加成功");
+                ToastUtils.showSafeToast(AddressAddActivity.this,"地址添加成功");
             }
         });
 

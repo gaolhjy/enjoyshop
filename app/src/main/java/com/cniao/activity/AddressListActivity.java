@@ -7,8 +7,8 @@ import android.view.View;
 import com.cniao.CNiaoApplication;
 import com.cniao.R;
 import com.cniao.adapter.AddressListAdapter;
-import com.cniao.contants.CommonContants;
-import com.cniao.contants.UrlContants;
+import com.cniao.contants.Contants;
+import com.cniao.contants.HttpContants;
 import com.cniao.utils.LogUtil;
 import com.cniao.widget.CNiaoToolBar;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -51,7 +51,7 @@ public class AddressListActivity extends BaseActivity {
 
         Long userId = CNiaoApplication.getInstance().getUser().getId();
         LogUtil.e("地址列表", "失败" + userId, true);                  //失败 -1
-        String url = UrlContants.ADDRESS_LIST + "?user_id=" + userId;
+        String url = HttpContants.ADDRESS_LIST + "?user_id=" + userId;
 
         OkHttpUtils.get().url(url).build().execute(new StringCallback() {
 
@@ -84,7 +84,7 @@ public class AddressListActivity extends BaseActivity {
             public void onClick(View view) {
                 //跳转到添加地址界面
                 Intent intent = new Intent(AddressListActivity.this, AddressAddActivity.class);
-                startActivityForResult(intent, CommonContants.Addresslist2Addressadd);
+                startActivityForResult(intent, Contants.Addresslist2Addressadd);
             }
         });
     }

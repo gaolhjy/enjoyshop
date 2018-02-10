@@ -12,7 +12,7 @@ import com.cniao.activity.LoginActivity;
 import com.cniao.activity.MyFavoriteActivity;
 import com.cniao.activity.MyOrdersActivity;
 import com.cniao.bean.User;
-import com.cniao.contants.CommonContants;
+import com.cniao.contants.Contants;
 import com.cniao.utils.GlideUtils;
 
 import butterknife.BindView;
@@ -66,7 +66,7 @@ public class MineFragment extends BaseFragment {
             case R.id.txt_username:
             case R.id.img_head:
                 Intent intent2 = new Intent(getActivity(), LoginActivity.class);
-                startActivityForResult(intent2, CommonContants.REQUEST_CODE);
+                startActivityForResult(intent2, Contants.REQUEST_CODE);
                 break;
             case R.id.btn_logout:
                 CNiaoApplication.getInstance().clearUser();

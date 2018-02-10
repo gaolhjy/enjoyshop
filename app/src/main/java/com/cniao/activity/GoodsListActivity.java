@@ -6,7 +6,6 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,8 +14,8 @@ import com.cjj.MaterialRefreshLayout;
 import com.cniao.R;
 import com.cniao.adapter.HotGoodsAdapter;
 import com.cniao.bean.HotGoods;
-import com.cniao.contants.CommonContants;
-import com.cniao.contants.UrlContants;
+import com.cniao.contants.Contants;
+import com.cniao.contants.HttpContants;
 import com.cniao.utils.LogUtil;
 import com.cniao.utils.ToastUtils;
 import com.cniao.widget.CNiaoToolBar;
@@ -76,7 +75,7 @@ public class GoodsListActivity extends BaseActivity implements View.OnClickListe
     protected void init() {
 
         initToolBar();
-        campaignId = getIntent().getLongExtra(CommonContants.COMPAINGAIN_ID, 0);
+        campaignId = getIntent().getLongExtra(Contants.COMPAINGAIN_ID, 0);
         initTab();
         getData();
     }
@@ -151,7 +150,7 @@ public class GoodsListActivity extends BaseActivity implements View.OnClickListe
 
         int orderBy = (int) tab.getTag();
 
-        String url = UrlContants.WARES_CAMPAIN_LIST
+        String url = HttpContants.WARES_CAMPAIN_LIST
                 + "?campaignId=" + campaignId
                 + "&orderBy=" + orderBy
                 + "&curPage=" + 1
@@ -195,8 +194,7 @@ public class GoodsListActivity extends BaseActivity implements View.OnClickListe
             mTxtSummary.setText("共有" + datas.size() + "件商品");
         } else {
             mLlSummary.setVisibility(View.GONE);
-            ToastUtils.setGravity(Gravity.CENTER, 0, 0);
-            ToastUtils.showShortSafe("暂无商品信息");
+            ToastUtils.showUiToast(GoodsListActivity.this,"暂无商品信息");
             return;
         }
 

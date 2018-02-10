@@ -2,7 +2,6 @@ package com.cniao.activity;
 
 import android.content.Intent;
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 
@@ -71,8 +70,7 @@ public class RegActivity extends BaseActivity {
                 } else if (data instanceof Throwable) {
                     Throwable throwable = (Throwable) data;
                     String msg = throwable.getMessage();
-                    ToastUtils.setGravity(Gravity.CENTER, 0, 0);
-                    ToastUtils.showShortSafe(msg);
+                    ToastUtils.showSafeToast(RegActivity.this,msg);
                 } else {
                     ((Throwable) data).printStackTrace();
                 }
@@ -145,15 +143,13 @@ public class RegActivity extends BaseActivity {
         }
 
         if (TextUtils.isEmpty(phone)) {
-            ToastUtils.setGravity(Gravity.CENTER, 0, 0);
-            ToastUtils.showShortSafe("请输入手机号码");
+            ToastUtils.showSafeToast(RegActivity.this,"请输入手机号码");
             return;
         }
 
         if (code == "86") {
             if (phone.length() != 11) {
-                ToastUtils.setGravity(Gravity.CENTER, 0, 0);
-                ToastUtils.showShortSafe("手机号码长度不对");
+                ToastUtils.showSafeToast(RegActivity.this,"手机号码长度不对");
                 return;
             }
         }
@@ -163,8 +159,7 @@ public class RegActivity extends BaseActivity {
         Matcher m = p.matcher(phone);
 
         if (!m.matches()) {
-            ToastUtils.setGravity(Gravity.CENTER, 0, 0);
-            ToastUtils.showShortSafe("您输入的手机号码格式不正确");
+            ToastUtils.showSafeToast(RegActivity.this,"您输入的手机号码格式不正确");
             return;
         }
     }

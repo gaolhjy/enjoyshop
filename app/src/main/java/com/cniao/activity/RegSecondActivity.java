@@ -3,7 +3,6 @@ package com.cniao.activity;
 import android.content.Intent;
 import android.text.Html;
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,8 +10,8 @@ import android.widget.TextView;
 import com.cniao.CNiaoApplication;
 import com.cniao.R;
 import com.cniao.bean.User;
-import com.cniao.contants.CommonContants;
-import com.cniao.contants.UrlContants;
+import com.cniao.contants.Contants;
+import com.cniao.contants.HttpContants;
 import com.cniao.msg.LoginRespMsg;
 import com.cniao.utils.CountTimerView;
 import com.cniao.utils.DESUtil;
@@ -38,9 +37,6 @@ import okhttp3.Call;
  */
 
 public class RegSecondActivity extends BaseActivity {
-
-
-    //  三姐手机号  155 4951 8788
 
     @BindView(R.id.toolbar)
     CNiaoToolBar mToolBar;
@@ -104,8 +100,7 @@ public class RegSecondActivity extends BaseActivity {
                 } else if (data instanceof Throwable) {
                     Throwable throwable = (Throwable) data;
                     String msg = throwable.getMessage();
-                    ToastUtils.setGravity(Gravity.CENTER, 0, 0);
-                    ToastUtils.showShortSafe(msg);
+                    ToastUtils.showSafeToast(RegSecondActivity.this, msg);
                 } else {
                     ((Throwable) data).printStackTrace();
                 }
@@ -136,8 +131,7 @@ public class RegSecondActivity extends BaseActivity {
         String vCode = mEtCode.getText().toString().trim();    //验证码
 
         if (TextUtils.isEmpty(vCode)) {
-            ToastUtils.setGravity(Gravity.CENTER, 0, 0);
-            ToastUtils.showShortSafe(R.string.smssdk_write_identify_code);
+            ToastUtils.showSafeToast(RegSecondActivity.this, "请填写验证码");
             return;
         }
 
@@ -150,8 +144,8 @@ public class RegSecondActivity extends BaseActivity {
      */
     private void doReg() {
 
-        String pwdEncode = DESUtil.encode(CommonContants.DES_KEY, pwd);
-        String url = UrlContants.REG + "?phone=" + phone + "&password=" + pwdEncode;
+        String pwdEncode = DESUtil.encode(Contants.DES_KEY, pwd);
+        String url = HttpContants.REG + "?phone=" + phone + "&password=" + pwdEncode;
         OkHttpUtils.post().url(url).build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {

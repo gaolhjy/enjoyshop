@@ -3,7 +3,6 @@ package com.cniao.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.webkit.JavascriptInterface;
 
@@ -11,8 +10,8 @@ import com.cniao.CNiaoApplication;
 import com.cniao.R;
 import com.cniao.bean.HotGoods;
 import com.cniao.bean.User;
-import com.cniao.contants.UrlContants;
-import com.cniao.helper.UIHelper;
+import com.cniao.contants.HttpContants;
+import com.cniao.helper.SharePresenter;
 import com.cniao.utils.CartShopProvider;
 import com.cniao.utils.LogUtil;
 import com.cniao.utils.ToastUtils;
@@ -24,12 +23,6 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import butterknife.BindView;
-import cn.sharesdk.onekeyshare.OnekeyShare;
-import cn.sharesdk.sina.weibo.SinaWeibo;
-import cn.sharesdk.tencent.qq.QQ;
-import cn.sharesdk.tencent.qzone.QZone;
-import cn.sharesdk.wechat.friends.Wechat;
-import cn.sharesdk.wechat.moments.WechatMoments;
 import okhttp3.Call;
 
 /**
@@ -81,7 +74,7 @@ public class GoodsDetailsActivity extends BaseActivity implements View.OnClickLi
         webSettings.setJavaScriptEnabled(true);
         webSettings.setBlockNetworkImage(false);
         webSettings.setAppCacheEnabled(true);
-        mWebView.loadUrl(UrlContants.WARES_DETAIL);
+        mWebView.loadUrl(HttpContants.WARES_DETAIL);
 
         mAppInterfce = new WebAppInterface(this);
         mWebView.addJavascriptInterface(mAppInterfce, "appInterface");
@@ -110,106 +103,16 @@ public class GoodsDetailsActivity extends BaseActivity implements View.OnClickLi
 
         mToolBar.setNavigationOnClickListener(this);
         mToolBar.setRightButtonText("分享");
-
         mToolBar.setRightButtonOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                final View inflate = UIHelper.showShareDialogOnBottom(GoodsDetailsActivity.this);
-
-                //必须写成匿名内部类的方式
-
-                inflate.findViewById(R.id.weixin).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        showShare(Wechat.NAME);
-                    }
-                });
-
-                inflate.findViewById(R.id.wxcircle).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        showShare(WechatMoments.NAME);
-                    }
-                });
-
-                inflate.findViewById(R.id.sina).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        showShare(SinaWeibo.NAME);
-                    }
-                });
-
-                inflate.findViewById(R.id.qq).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        showShare(QQ.NAME);
-                    }
-                });
-
-                inflate.findViewById(R.id.qzone).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        showShare(QZone.NAME);
-                    }
-                });
-
-
-                //                UIHelper.showShareDialogOnBottom(GoodsDetailsActivity.this);
-                //                inflate.findViewById(R.id.weixin).setOnClickListener(this);
-                //                inflate.findViewById(R.id.wxcircle).setOnClickListener(this);
-                //                inflate.findViewById(R.id.sina).setOnClickListener(this);
-                //                inflate.findViewById(R.id.qq).setOnClickListener(this);
-                //                inflate.findViewById(R.id.qzone).setOnClickListener(this);
-
+                SharePresenter.getInstance().showShareDialogOnBottom
+                        (0, GoodsDetailsActivity.this, "计算机书籍",
+                                "第二行代码", "0");
             }
         });
     }
 
-
-    /**
-     * 分享
-     */
-    private void showShare(String platform) {
-
-        //关闭分享界面
-        UIHelper uh = new UIHelper();
-        uh.closeShareUI();
-
-        OnekeyShare oks = new OnekeyShare();
-        //指定分享的平台，如果为空，还是会调用九宫格的平台列表界面
-        if (platform != null) {
-            oks.setPlatform(platform);
-        }
-
-        //关闭sso授权
-        oks.disableSSOWhenAuthorize();
-
-        // 分享时Notification的图标和文字  2.5.9以后的版本不     调用此方法
-        //oks.setNotification(R.drawable.ic_launcher, getString(R.string.app_name));
-        // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
-        oks.setTitle("来自轻松购的分享");
-        // titleUrl是标题的网络链接，仅在人人网和QQ空间使用
-        oks.setTitleUrl("http://www.cniao5.com");
-        // text是分享文本，所有平台都需要这个字段
-        oks.setText(goodsBean.getName());
-        // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
-        //        oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片       //很少有本地图片的
-        oks.setImageUrl(goodsBean.getImgUrl());
-
-        // url仅在微信（包括好友和朋友圈）中使用
-        oks.setUrl("http://sharesdk.cn");
-        // comment是我对这条分享的评论，仅在人人网和QQ空间使用
-        oks.setComment(goodsBean.getName());
-        // site是分享此内容的网站名称，仅在QQ空间使用
-        oks.setSite("来自轻松购的分享");
-        // siteUrl是分享此内容的网站地址，仅在QQ空间使用
-        oks.setSiteUrl("http://www.cniao5.com");
-
-        // 启动分享GUI
-        oks.show(this);
-
-    }
 
     @Override
     public void onClick(View view) {
@@ -217,21 +120,6 @@ public class GoodsDetailsActivity extends BaseActivity implements View.OnClickLi
             case R.id.toolbar:
                 this.finish();
                 break;
-            //            case R.id.weixin:
-            //                showShare(Wechat.NAME);
-            //                break;
-            //            case R.id.wxcircle:
-            //                showShare(WechatMoments.NAME);
-            //                break;
-            //            case R.id.sina:
-            //                showShare(SinaWeibo.NAME);
-            //                break;
-            //            case R.id.qq:
-            //                showShare(QQ.NAME);
-            //                break;
-            //            case R.id.qzone:
-            //                showShare(QZone.NAME);
-            //                break;
         }
     }
 
@@ -258,8 +146,7 @@ public class GoodsDetailsActivity extends BaseActivity implements View.OnClickLi
         @JavascriptInterface
         public void buy(long id) {
             cartProvider.put(goodsBean);
-            ToastUtils.setGravity(Gravity.CENTER, 0, 0);
-            ToastUtils.showShortSafe("已添加到购物车");
+            ToastUtils.showSafeToast(GoodsDetailsActivity.this, "已添加到购物车");
         }
 
 
@@ -285,11 +172,11 @@ public class GoodsDetailsActivity extends BaseActivity implements View.OnClickLi
 
         Long userId = CNiaoApplication.getInstance().getUser().getId();
 
-        String url = UrlContants.FAVORITE_CREATE + "?user_id=" + userId + "&ware_id=" + goodsBean
+        String url = HttpContants.FAVORITE_CREATE + "?user_id=" + userId + "&ware_id=" + goodsBean
                 .getId();
 
 
-        OkHttpUtils.post().url(UrlContants.FAVORITE_CREATE).build().execute(new StringCallback() {
+        OkHttpUtils.post().url(HttpContants.FAVORITE_CREATE).build().execute(new StringCallback() {
 
             @Override
             public void onError(Call call, Exception e, int id) {
@@ -298,8 +185,7 @@ public class GoodsDetailsActivity extends BaseActivity implements View.OnClickLi
 
             @Override
             public void onResponse(String response, int id) {
-                ToastUtils.setGravity(Gravity.CENTER, 0, 0);
-                ToastUtils.showShortSafe("已添加到收藏夹");
+                ToastUtils.showSafeToast(GoodsDetailsActivity.this,"已添加到收藏夹");
             }
         });
 

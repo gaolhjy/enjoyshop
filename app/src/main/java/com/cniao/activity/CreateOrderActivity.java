@@ -13,8 +13,8 @@ import com.cniao.R;
 import com.cniao.adapter.GoodsOrderAdapter;
 import com.cniao.bean.Charge;
 import com.cniao.bean.ShoppingCart;
-import com.cniao.contants.CommonContants;
-import com.cniao.contants.UrlContants;
+import com.cniao.contants.Contants;
+import com.cniao.contants.HttpContants;
 import com.cniao.msg.CreateOrderRespMsg;
 import com.cniao.msg.LoginRespMsg;
 import com.cniao.utils.CartShopProvider;
@@ -134,7 +134,7 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
     @OnClick(R.id.rl_addr)
     public void chooseAddress(View view) {
         Intent intent = new Intent(CreateOrderActivity.this, AddressListActivity.class);
-        startActivityForResult(intent, CommonContants.REQUEST_CHOOSE_ADDRESS);
+        startActivityForResult(intent, Contants.REQUEST_CHOOSE_ADDRESS);
     }
 
 
@@ -191,7 +191,7 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
 
         mBtnCreateOrder.setEnabled(false);
 
-        OkHttpUtils.post().url(UrlContants.ORDER_CREATE)
+        OkHttpUtils.post().url(HttpContants.ORDER_CREATE)
                 .params(params).build()
                 .execute(new Callback<CreateOrderRespMsg>() {
                     @Override

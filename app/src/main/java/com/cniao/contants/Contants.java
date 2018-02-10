@@ -3,10 +3,10 @@ package com.cniao.contants;
 /**
  * Created by 高磊华
  * Time  2017/8/11
- * Describe: activity 直接跳转的常量
+ * Describe:一般的常量
  */
 
-public class CommonContants {
+public class Contants {
 
     public static final int Addresslist2Addressadd = 1;       //从地址列表到添加地址的常量
 
