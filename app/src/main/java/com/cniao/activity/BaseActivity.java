@@ -43,8 +43,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);//设置透明状态栏
-            //                getWindow().addFlags(WindowManager.LayoutParams
-            // .FLAG_TRANSLUCENT_NAVIGATION);//设置透明导航栏
         }
 
         initSystemBar(this);

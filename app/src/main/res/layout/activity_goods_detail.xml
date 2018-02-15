@@ -1,11 +1,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-              android:fitsSystemWindows="true"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
               android:clipToPadding="true"
+              android:fitsSystemWindows="true"
+              android:orientation="vertical"
     >
 
     <com.cniao.widget.CNiaoToolBar
@@ -14,14 +13,16 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-        app:isShowSearchView="false"
-        app:navigationIcon="@drawable/icon_back_32px"
         app:contentInsetEnd="56dp"
-        app:title="商品详情"/>
+        app:isShowLeftIcon="true"
+        app:isShowSearchView="false"
+        app:title="商品详情"
+        />
 
     <com.tencent.smtt.sdk.WebView
         android:id="@id/webView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        />
 
 </LinearLayout>

@@ -53,6 +53,17 @@
         <item name="android:minHeight">@dimen/smallButtonHeight</item>
     </style>
 
+    <style name="bigconfrimButton">
+        <item name="android:textSize">@dimen/bigButtonTextSize</item>
+        <item name="android:textColor">@color/white_color_selector</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">@dimen/largePadding</item>
+        <item name="android:paddingRight">@dimen/largePadding</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/normalButtonHeight</item>
+    </style>
+
 
     <style name="smallButton">
         <item name="android:textSize">@dimen/smallButtonTextSize</item>
@@ -93,6 +104,10 @@
     <style name="bigGreyButton" parent="@style/bigButton">
         <item name="android:textColor">@color/grey_btn_text_color</item>
         <item name="android:background">@drawable/bg_btn_style_grey</item>
+    </style>
+
+    <style name="bigConfirmButton" parent="@style/bigconfrimButton">
+        <item name="android:background">@drawable/bg_btn_style_red</item>
     </style>
 
     <style name="customCheckbox" parent="@android:style/Widget.CompoundButton.CheckBox">

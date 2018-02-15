@@ -4,6 +4,7 @@
     <declare-styleable name="CNiaoToolBar">
         <attr name="rightButtonIcon" format="reference"/>
         <attr name="isShowSearchView" format="boolean"/>
+        <attr name="isShowLeftIcon" format="boolean"/>
         <attr name="rightButtonText" format="string"/>
     </declare-styleable>
 </resources>

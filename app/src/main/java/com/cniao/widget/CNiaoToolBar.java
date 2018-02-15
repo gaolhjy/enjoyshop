@@ -1,6 +1,8 @@
 package com.cniao.widget;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -12,23 +14,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.cniao.R;
 
 
+@SuppressLint("RestrictedApi")
 public class CNiaoToolBar extends Toolbar {
 
     private LayoutInflater mInflater;
+    private Context context;
 
-    private View mView;
-    private TextView mTextTitle;
-    private TextView mSearchView;
-    private Button mRightButton;
-
+    private View        mView;
+    private TextView    mTextTitle;
+    private TextView    mSearchView;
+    private Button      mRightButton;
+    private ImageButton mLeftButton;
 
     public CNiaoToolBar(Context context) {
-       this(context,null);
+        this(context, null);
     }
 
     public CNiaoToolBar(Context context, AttributeSet attrs) {
@@ -38,10 +43,12 @@ public class CNiaoToolBar extends Toolbar {
     public CNiaoToolBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        initView();
-        setContentInsetsRelative(10,10);
+        this.context=context;
 
-        if(attrs !=null) {
+        initView();
+        setContentInsetsRelative(10, 10);
+
+        if (attrs != null) {
             final TintTypedArray a = TintTypedArray.obtainStyledAttributes(getContext(), attrs,
                     R.styleable.CNiaoToolBar, defStyleAttr, 0);
 
@@ -50,17 +57,24 @@ public class CNiaoToolBar extends Toolbar {
                 setRightButtonIcon(rightIcon);
             }
 
+            boolean isShowSearchView = a.getBoolean(R.styleable.CNiaoToolBar_isShowSearchView,
+                    false);
 
-            boolean isShowSearchView = a.getBoolean(R.styleable.CNiaoToolBar_isShowSearchView,false);
-
-            if(isShowSearchView){
+            if (isShowSearchView) {
                 showSearchView();
                 hideTitleView();
             }
 
             CharSequence rightButtonText = a.getText(R.styleable.CNiaoToolBar_rightButtonText);
-            if(rightButtonText !=null){
+            if (rightButtonText != null) {
                 setRightButtonText(rightButtonText);
+            }
+
+            boolean isShowLeft = a.getBoolean(R.styleable.CNiaoToolBar_isShowLeftIcon, false);
+            if (isShowLeft) {
+                setLeftIcon();
+            }else{
+                mLeftButton.setVisibility(GONE);
             }
 
             a.recycle();
@@ -68,54 +82,55 @@ public class CNiaoToolBar extends Toolbar {
 
     }
 
+
     private void initView() {
 
-        if(mView == null) {
+        if (mView == null) {
             mInflater = LayoutInflater.from(getContext());
             mView = mInflater.inflate(R.layout.toolbar, null);
 
             mTextTitle = (TextView) mView.findViewById(R.id.toolbar_title);
             mSearchView = (TextView) mView.findViewById(R.id.toolbar_searchview);
             mRightButton = (Button) mView.findViewById(R.id.toolbar_rightButton);
+            mLeftButton = (ImageButton) mView.findViewById(R.id.toolbar_leftButton);
 
-            LayoutParams lp = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL);
+            LayoutParams lp = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup
+                    .LayoutParams.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL);
 
             addView(mView, lp);
         }
-
     }
 
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    public void  setRightButtonIcon(Drawable icon){
+    public void setRightButtonIcon(Drawable icon) {
 
-        if(mRightButton !=null){
+        if (mRightButton != null) {
             mRightButton.setBackground(icon);
             mRightButton.setVisibility(VISIBLE);
         }
 
     }
 
-    public void  setRightButtonIcon(int icon){
+    public void setRightButtonIcon(int icon) {
         setRightButtonIcon(getResources().getDrawable(icon));
     }
 
 
-    public  void setRightButtonOnClickListener(OnClickListener li){
+    public void setRightButtonOnClickListener(OnClickListener li) {
         mRightButton.setOnClickListener(li);
     }
 
-    public void setRightButtonText(CharSequence text){
+    public void setRightButtonText(CharSequence text) {
         mRightButton.setText(text);
         mRightButton.setVisibility(VISIBLE);
     }
 
-    public void setRightButtonText(int id){
+    public void setRightButtonText(int id) {
         setRightButtonText(getResources().getString(id));
     }
 
-
-    public Button getRightButton(){
+    public Button getRightButton() {
         return this.mRightButton;
     }
 
@@ -128,27 +143,39 @@ public class CNiaoToolBar extends Toolbar {
     @Override
     public void setTitle(CharSequence title) {
         initView();
-        if(mTextTitle !=null) {
+        if (mTextTitle != null) {
             mTextTitle.setText(title);
             showTitleView();
         }
     }
 
+    private void setLeftIcon() {
+
+        mLeftButton.setVisibility(View.VISIBLE);
+
+        mLeftButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((Activity) context).finish();
+                ((Activity) context).overridePendingTransition(0, 0);
+            }
+        });
+    }
 
 
-    public  void showSearchView(){
-        if(mSearchView !=null)
+    public void showSearchView() {
+        if (mSearchView != null)
             mSearchView.setVisibility(VISIBLE);
     }
 
 
-    public void hideSearchView(){
-        if(mSearchView !=null)
+    public void hideSearchView() {
+        if (mSearchView != null)
             mSearchView.setVisibility(GONE);
     }
 
-    public void showTitleView(){
-        if(mTextTitle !=null)
+    public void showTitleView() {
+        if (mTextTitle != null)
             mTextTitle.setVisibility(VISIBLE);
     }
 

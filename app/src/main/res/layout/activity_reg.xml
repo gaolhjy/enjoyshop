@@ -4,9 +4,9 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="@color/bg_color"
-              android:orientation="vertical"
-              android:fitsSystemWindows="true"
               android:clipToPadding="true"
+              android:fitsSystemWindows="true"
+              android:orientation="vertical"
     >
 
     <com.cniao.widget.CNiaoToolBar
@@ -15,8 +15,8 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-        app:navigationIcon="@drawable/icon_back_32px"
-        app:rightButtonText="下一步"
+        app:isShowLeftIcon="true"
+        app:rightButtonText="继续"
         app:title="用户注册(1/2)"
         />
 

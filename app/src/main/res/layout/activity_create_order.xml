@@ -14,7 +14,7 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         app:contentInsetEnd="56dp"
-        app:navigationIcon="@drawable/icon_back_32px"
+        app:isShowLeftIcon="true"
         app:title="@string/create_order"
         >
     </com.cniao.widget.CNiaoToolBar>

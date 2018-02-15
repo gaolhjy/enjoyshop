@@ -12,6 +12,8 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
+        app:isShowLeftIcon="false"
+        app:isShowSearchView="false"
         app:rightButtonText="编辑"
         app:title="购物车"
         />

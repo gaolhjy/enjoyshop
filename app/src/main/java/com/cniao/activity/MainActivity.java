@@ -105,17 +105,14 @@ public class MainActivity extends BaseActivity {
     private void refData() {
 
         if (shopCartFragment == null) {
-            LogUtil.e("生命周期", "22222222", true);
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(getString(R.string
                     .cart));
 
             if (fragment != null) {
-                LogUtil.e("生命周期", "4444444444", true);
                 shopCartFragment = (ShopCartFragment) fragment;
                 shopCartFragment.refData();
             }
         } else {
-            LogUtil.e("生命周期", "3333333333", true);
             shopCartFragment.refData();
         }
 

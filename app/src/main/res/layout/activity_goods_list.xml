@@ -17,7 +17,7 @@
         android:minHeight="?attr/actionBarSize"
         app:contentInsetEnd="56dp"
         app:isShowSearchView="false"
-        app:navigationIcon="@drawable/icon_back_32px"
+        app:isShowLeftIcon="true"
         app:title="商品列表"
         >
     </com.cniao.widget.CNiaoToolBar>
