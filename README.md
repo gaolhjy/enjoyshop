@@ -93,7 +93,9 @@
 项目谈论群:
 ====
 
-QQ群号:156250233 (添加请注明 轻松购 商城均可)
+QQ群号:156250233 (添加请注明 轻松购 )
+
+![Image text](https://github.com/gaolh89/cniao5/blob/master/screenshots/QQ群二维码.png)
 
 关于我:
 ====
