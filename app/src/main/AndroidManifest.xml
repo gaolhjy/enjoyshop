@@ -41,9 +41,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.cniao.activity.MainActivity"/>
-
-
+        <activity android:name=".activity.MainActivity"/>
         <activity android:name=".activity.GoodsDetailsActivity"/>
         <activity android:name=".activity.LoginActivity"/>
         <activity android:name=".activity.AddressListActivity"/>
@@ -166,8 +164,6 @@
             android:name=".activity.SearchResultActivity"
             android:launchMode="singleTask"
             />
-
-
     </application>
 
 </manifest>

@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<resources>
-    <dimen name="cmbkb_key_height">50.0dip</dimen>
-    <dimen name="cmbkb_key_height_qwerty">40dip</dimen>
-</resources>

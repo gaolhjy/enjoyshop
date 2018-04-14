@@ -17,7 +17,7 @@
         android:minHeight="?attr/actionBarSize"
         app:isShowLeftIcon="true"
         app:rightButtonText="继续"
-        app:title="用户注册(1/2)"
+        app:title="注册(1/2)"
         />
 
     <LinearLayout
@@ -26,7 +26,8 @@
         android:layout_marginTop="40dp"
         android:background="@drawable/selector_view_block"
         android:orientation="vertical"
-        android:padding="@dimen/largePadding"
+        android:paddingLeft="@dimen/screenPadding"
+        android:paddingRight="@dimen/screenPadding"
         >
 
         <RelativeLayout
@@ -42,7 +43,7 @@
                 android:layout_alignParentLeft="true"
                 android:text="国家或者地区"
                 android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textSize="@dimen/big_text_size"
                 />
 
             <TextView
@@ -52,21 +53,19 @@
                 android:layout_alignParentRight="true"
                 android:text="中国"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="@dimen/big_text_size"
                 />
 
         </RelativeLayout>
 
-        <View
-            style="@style/line_vertical"
-            />
+        <include layout="@layout/include_line_horizontal"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingBottom="@dimen/largePadding"
-            android:paddingTop="@dimen/largePadding"
+            android:paddingBottom="@dimen/middlePadding"
+            android:paddingTop="@dimen/middlePadding"
             >
 
             <TextView
@@ -94,15 +93,13 @@
                 />
         </LinearLayout>
 
-        <View
-            style="@style/line_vertical"
-            />
+        <include layout="@layout/include_line_horizontal"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingBottom="@dimen/largePadding"
+            android:paddingBottom="@dimen/middlePadding"
             android:paddingTop="@dimen/largePadding"
             >
 
@@ -135,8 +132,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:gravity="center"
         android:paddingLeft="@dimen/largePadding"
-        android:text="点击‘下一步’ 按钮，表示你同意《轻松购用户协议》"
+        android:text="点击‘继续’ 按钮，表示你同意《轻松购用户协议》"
         android:textColor="@color/border_color"
         android:textSize="12sp"
         />

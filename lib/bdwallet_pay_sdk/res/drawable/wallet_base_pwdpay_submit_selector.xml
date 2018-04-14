@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item android:drawable="@drawable/wallet_base_pwdpay_submit_bg_pressed" android:state_enabled="true" android:state_pressed="true"/>
-    <item android:drawable="@drawable/wallet_base_pwdpay_submit_bg_normal" android:state_enabled="true" android:state_pressed="false"/>
-    <item android:drawable="@drawable/wallet_base_pwdpay_submit_bg_disable" android:state_enabled="false" android:state_pressed="true"/>
-    <item android:drawable="@drawable/wallet_base_pwdpay_submit_bg_disable" android:state_enabled="false" android:state_pressed="false"/>
-    <item android:drawable="@drawable/wallet_base_pwdpay_submit_bg_normal"/>
-</selector>

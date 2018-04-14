@@ -89,7 +89,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void startActivity(Intent intent, boolean isNeedLogin) {
 
         if (isNeedLogin) {
-
             User user = CNiaoApplication.getInstance().getUser();
             if (user != null) {
                 super.startActivity(intent);
@@ -102,8 +101,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         } else {
             super.startActivity(intent);
         }
-
     }
-
 
 }

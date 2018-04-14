@@ -44,14 +44,12 @@ import okhttp3.Response;
 
 public class CreateOrderActivity extends BaseActivity implements View.OnClickListener {
 
-
     //微信支付渠道
     private static final String CHANNEL_WECHAT = "wx";
     //支付支付渠道
     private static final String CHANNEL_ALIPAY = "alipay";
     //百度支付渠道
     private static final String CHANNEL_BFB    = "bfb";
-
 
     @BindView(R.id.txt_order)
     TextView       txtOrder;
@@ -211,122 +209,19 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
                     public void onError(Call call, Exception e, int id) {
                         mBtnCreateOrder.setEnabled(true);
                         LogUtil.e("支付", e.toString(), true);
-                        // request failed , reponse's code is : 402
-
                     }
 
                     @Override
                     public void onResponse(CreateOrderRespMsg response, int id) {
 
-                        LogUtil.e("支付", "CCCCCCCCCCCCCCC", true);
-
                         mBtnCreateOrder.setEnabled(true);
 
                         orderNum = response.getData().getOrderNum();
                         Charge charge = response.getData().getCharge();
-
                     }
-
-
                 });
-        //
-        //
-        //        mBtnCreateOrder.setEnabled(false);
-        //
-        //        okHttpHelper.post(Contants.API.ORDER_CREATE, params, new
-        //                SpotsCallBack<CreateOrderRespMsg>(this) {
-        //                    @Override
-        //                    public void onSuccess(Response response, CreateOrderRespMsg respMsg) {
-        //
-        //
-        //                        //                cartProvider.
-        //
-        //                        mBtnCreateOrder.setEnabled(true);
-        //                        orderNum = respMsg.getData().getOrderNum();
-        //                        Charge charge = respMsg.getData().getCharge();
-        //
-        //                        openPaymentActivity(JSONUtil.toJSON(charge));
-        //
-        //                    }
-        //
-        //                    @Override
-        //                    public void onError(Response response, int code, Exception e) {
-        //                        mBtnCreateOrder.setEnabled(true);
-        //                    }
-        //                });
-        //
-        //
+
     }
-    //
-    //
-    //    private void openPaymentActivity(String charge) {
-    //
-    //        Intent intent = new Intent();
-    //        String packageName = getPackageName();
-    //        ComponentName componentName = new ComponentName(packageName, packageName + ".wxapi" +
-    //                ".WXPayEntryActivity");
-    //        intent.setComponent(componentName);
-    //        intent.putExtra(PaymentActivity.EXTRA_CHARGE, charge);
-    //        startActivityForResult(intent, Contants.REQUEST_CODE_PAYMENT);
-    //    }
-    //
-    //
-    //    @Override
-    //    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    //        //支付页面返回处理
-    //        if (requestCode == Contants.REQUEST_CODE_PAYMENT) {
-    //            if (resultCode == Activity.RESULT_OK) {
-    //                String result = data.getExtras().getString("pay_result");
-    //
-    //                if (result.equals("success"))
-    //                    changeOrderStatus(1);
-    //                else if (result.equals("fail"))
-    //                    changeOrderStatus(-1);
-    //                else if (result.equals("cancel"))
-    //                    changeOrderStatus(-2);
-    //                else
-    //                    changeOrderStatus(0);
-    //
-    //            }
-    //        }
-    //    }
-    //
-    //
-    //    private void changeOrderStatus(final int status) {
-    //
-    //        Map<String, Object> params = new HashMap<>(5);
-    //        params.put("order_num", orderNum);
-    //        params.put("status", status + "");
-    //
-    //
-    //        okHttpHelper.post(Contants.API.ORDER_COMPLEPE, params, new SpotsCallBack<BaseRespMsg>
-    //                (this) {
-    //            @Override
-    //            public void onSuccess(Response response, BaseRespMsg o) {
-    //
-    //                toPayResultActivity(status);
-    //            }
-    //
-    //            @Override
-    //            public void onError(Response response, int code, Exception e) {
-    //                toPayResultActivity(-1);
-    //            }
-    //        });
-    //
-    //    }
-    //
-    //
-    //    private void toPayResultActivity(int status) {
-    //
-    //        Intent intent = new Intent(this, PayResultActivity.class);
-    //        intent.putExtra("status", status);
-    //
-    //        startActivity(intent);
-    //        this.finish();
-    //
-    //    }
-    //
-    //
 
     /**
      * 因为接口文档要求,商品列表为json格式,所以这里需要定义一个内部类

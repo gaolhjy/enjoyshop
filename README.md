@@ -41,9 +41,7 @@
 
 14.[Glide](https://github.com/bumptech/glide)
 
-15.[pingpp](https://github.com/PingPlusPlus/pingpp-android)
-
-16.百度地图定位及Mob天气查询
+15.百度地图定位及Mob天气查询
 
 
 基本封装与自定义:
@@ -100,7 +98,7 @@ QQ群号:156250233 (添加请注明 轻松购 )
 关于我:
 ====
 
-1.一个热爱Android,也喜欢交友的菜鸟.     QQ:984992087    微信:gaolhjy (添加请注明GitHub)
+1.一个热爱Android,也喜欢交友的菜鸟.     QQ:984992087(添加请注明GitHub)
 
 2.我的博客:[点击跳转](http://blog.csdn.net/gaolh89?viewmode=list)
 
