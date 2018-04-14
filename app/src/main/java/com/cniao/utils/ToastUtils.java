@@ -73,10 +73,9 @@ public class ToastUtils {
         tv.setTextSize(16);
         tv.setTextColor(Color.WHITE);
         mToast.setText(text);
-        mToast.setGravity(Gravity.CENTER, 0, 40);
+        mToast.setGravity(Gravity.CENTER, 0, 0);
         mToast.setView(view);
         mToast.show();
-
     }
 
 }
