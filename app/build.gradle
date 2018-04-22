@@ -25,7 +25,7 @@ android {
     //greendao配置
     greendao {
         //版本号，升级时可配置
-        schemaVersion 5
+        schemaVersion 6
         daoPackage 'com.cniao.greendao'
         targetGenDir 'src/main/java'
     }
