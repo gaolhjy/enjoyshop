@@ -64,7 +64,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="武汉市江夏区关山大道谷歌(中国)华中研究中心"
+                        android:text="武汉市高新技术开发区未来科技城华为研究院"
                         android:textColor="@color/gray"
                         />
                 </LinearLayout>

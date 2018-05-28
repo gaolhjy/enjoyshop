@@ -18,7 +18,7 @@ android {
         applicationId "com.cniao"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 13
+        versionCode 14
         versionName "1.1.0"
     }
 
