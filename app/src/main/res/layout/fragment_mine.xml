@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+    >
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:background="?attr/colorPrimary" >
+        android:background="?attr/colorPrimary"
+        >
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_head"
@@ -16,9 +18,10 @@
             android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="12dp"
-            app:civ_border_width="2dp"
+            android:src="@drawable/default_head"
             app:civ_border_color="#FFFFFF"
-            android:src="@drawable/default_head">
+            app:civ_border_width="2dp"
+            >
         </de.hdodenhof.circleimageview.CircleImageView>
 
         <TextView
@@ -26,35 +29,39 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
             android:layout_marginBottom="9dp"
+            android:layout_marginTop="60dp"
             android:gravity="center"
             android:text="@string/to_login"
             android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            />
     </FrameLayout>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
 
             <TextView
                 android:id="@+id/txt_my_orders"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/largePadding"
                 android:background="@drawable/selector_list_item"
                 android:drawableLeft="@drawable/icon_list_o"
-                android:gravity="center_vertical"
                 android:drawablePadding="20dp"
+                android:gravity="center_vertical"
+                android:padding="@dimen/largePadding"
                 android:text="@string/my_orders"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                />
 
             <View style="@style/line_vertical"/>
 
@@ -62,13 +69,14 @@
                 android:id="@+id/txt_my_favorite"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/largePadding"
                 android:background="@drawable/selector_list_item"
                 android:drawableLeft="@drawable/icon_favorite"
-                android:gravity="center_vertical"
                 android:drawablePadding="20dp"
+                android:gravity="center_vertical"
+                android:padding="@dimen/largePadding"
                 android:text="@string/my_favorite"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                />
 
             <View style="@style/line_vertical"/>
 
@@ -76,22 +84,23 @@
                 android:id="@+id/txt_my_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/largePadding"
                 android:background="@drawable/selector_list_item"
                 android:drawableLeft="@drawable/icon_location"
-                android:gravity="center_vertical"
                 android:drawablePadding="20dp"
+                android:gravity="center_vertical"
+                android:padding="@dimen/largePadding"
                 android:text="@string/my_addresses"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                />
 
             <Button
                 android:id="@+id/btn_logout"
-                android:text="@string/logout"
                 style="@style/bigConfirmButton"
+                android:layout_marginBottom="20dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
+                android:text="@string/logout"
                 />
         </LinearLayout>
     </ScrollView>

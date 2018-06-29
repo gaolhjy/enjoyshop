@@ -12,28 +12,30 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-        app:isShowSearchView="true"
         app:isShowLeftIcon="false"
+        app:isShowSearchView="true"
         />
 
     <com.youth.banner.Banner
-        app:is_auto_play="true"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/banner"
         android:layout_width="match_parent"
         android:layout_height="150dp"
+        app:indicator_drawable_selected="@drawable/banner_indicator_selected"
+        app:indicator_drawable_unselected="@drawable/banner_indicator_unselected"
+        app:is_auto_play="true"
         app:title_height="25dp"
         app:title_textcolor="@color/white"
         app:title_textsize="13sp"
-        app:indicator_drawable_selected="@drawable/banner_indicator_selected"
-        app:indicator_drawable_unselected="@drawable/banner_indicator_unselected"
         />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:overScrollMode="never"
+        android:scrollbars="none"
         />
 </LinearLayout>

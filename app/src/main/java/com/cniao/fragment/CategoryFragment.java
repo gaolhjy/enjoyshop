@@ -7,16 +7,11 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.TextView;
-import android.widget.ViewFlipper;
 
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
-import com.baidu.location.LocationClient;
 import com.cjj.MaterialRefreshLayout;
 import com.cniao.CNiaoApplication;
 import com.cniao.R;
@@ -25,14 +20,14 @@ import com.cniao.adapter.CategoryAdapter;
 import com.cniao.adapter.SecondGoodsAdapter;
 import com.cniao.bean.Category;
 import com.cniao.bean.HotGoods;
-import com.cniao.bean.VFMessage;
 import com.cniao.bean.Weather;
 import com.cniao.contants.HttpContants;
 import com.cniao.service.LocationService;
 import com.cniao.utils.LogUtil;
-import com.cniao.utils.ScreenUtils;
+import com.cniao.utils.ToastUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.sunfusheng.marqueeview.MarqueeView;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -71,8 +66,8 @@ public class CategoryFragment extends BaseFragment {
     RecyclerView          mRecyclerviewWares;
     @BindView(R.id.refresh_layout)
     MaterialRefreshLayout mRefreshLaout;
-    @BindView(R.id.vf_message)
-    ViewFlipper           mVfMessage;
+    @BindView(R.id.vf_hotmessage)
+    MarqueeView           mVfHotMessage;
     @BindView(R.id.tv_city)
     TextView              mCityName;
     @BindView(R.id.tv_day_weather)
@@ -85,13 +80,12 @@ public class CategoryFragment extends BaseFragment {
     private CategoryAdapter         mCategoryAdapter;                      //一级菜单
     private SecondGoodsAdapter      mSecondGoodsAdapter;              //二级菜单
     private List<HotGoods.ListBean> datas;
-    private List<VFMessage>         mVFMessagesList;                 //上下轮播的信息
+    private List<String>            mVFMessagesList;                 //上下轮播的信息
 
     private String          provinceName;                                  //省份
     private String          cityName;                                      //城市名
     private String          dayWeather;
     private String          nightWeather;
-    public  LocationClient  mLocationClient;
     private LocationService locationService;
 
     private int currPage  = 1;     //当前是第几页
@@ -108,7 +102,6 @@ public class CategoryFragment extends BaseFragment {
     @Override
     protected void init() {
 
-        mVfMessage.startFlipping();
         mVFMessagesList = new ArrayList<>();
 
         requestCategoryData();      // 热门商品数据
@@ -117,6 +110,11 @@ public class CategoryFragment extends BaseFragment {
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        mVfHotMessage.startFlipping();
+    }
 
     private void getLocation() {
 
@@ -161,38 +159,17 @@ public class CategoryFragment extends BaseFragment {
 
     private void requestMessageData() {
 
-        mVFMessagesList.add(new VFMessage("1", "开学季,凭录取通知书购手机6折起"));
-        mVFMessagesList.add(new VFMessage("2", "都世丽人内衣今晚20点最低10元开抢"));
-        mVFMessagesList.add(new VFMessage("3", "购联想手机达3000元以上即送赠电脑包"));
-        mVFMessagesList.add(new VFMessage("4", "秋老虎到来,轻松购为您准备了这些必备生活用品"));
-        mVFMessagesList.add(new VFMessage("5", "穿了幸福时光男装,帅呆呆,妹子马上来"));
+        mVFMessagesList.add("开学季,凭录取通知书购手机6折起");
+        mVFMessagesList.add("都世丽人内衣今晚20点最低10元开抢");
+        mVFMessagesList.add("购联想手机达3000元以上即送赠电脑包");
+        mVFMessagesList.add("秋老虎到来,轻松购为您准备了这些必备生活用品");
+        mVFMessagesList.add("穿了幸福时光男装,帅呆呆,妹子马上来");
 
         if (!mVFMessagesList.isEmpty()) {
-            mVfMessage.setVisibility(View.VISIBLE);
-            FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(ViewGroup
-                    .LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT,
-                    Gravity.CENTER_VERTICAL);
-            int marginPx = ScreenUtils.dip2px(getContext(), 5);
-            lp.setMargins(marginPx, marginPx, marginPx, marginPx);
-            for (VFMessage msg : mVFMessagesList) {
-                TextView timeView = new TextView(getContext());
-                timeView.setText(msg.getTitle());
-                timeView.setTextSize(15);
-                timeView.setSingleLine(true);
-                timeView.setTextColor(getResources().getColor(R.color.base_text_color_gray));
-                timeView.setLayoutParams(lp);
-                timeView.setTag(msg);
-                timeView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        VFMessage message = (VFMessage) v.getTag();
-                    }
-                });
-
-                mVfMessage.addView(timeView);
-            }
+            mVfHotMessage.setVisibility(View.VISIBLE);
+            mVfHotMessage.startWithList(mVFMessagesList);
         } else {
-            mVfMessage.setVisibility(View.GONE);
+            mVfHotMessage.setVisibility(View.GONE);
         }
 
     }
@@ -316,8 +293,6 @@ public class CategoryFragment extends BaseFragment {
 
                 mRecyclerviewWares.setAdapter(mSecondGoodsAdapter);
                 mRecyclerviewWares.setLayoutManager(new GridLayoutManager(getContext(), 2));
-                //                mRecyclerviewWares.setLayoutManager(new LinearLayoutManager
-                // (getContext()));
                 mRecyclerviewWares.setItemAnimator(new DefaultItemAnimator());
                 mRecyclerviewWares.addItemDecoration(new DividerItemDecoration(getContext(),
                         DividerItemDecoration.HORIZONTAL));
@@ -394,15 +369,17 @@ public class CategoryFragment extends BaseFragment {
 
             @Override
             public void onResponse(String response, int id) {
-
-
-                Weather weather = mGson.fromJson(response, Weather.class);
-                List<Weather.ResultBean> result = weather.getResult();
-                //只有一个城市,所以只有一个数据
-                List<Weather.ResultBean.FutureBean> future = result.get(0).getFuture();
-                dayWeather = future.get(0).getDayTime();
-                nightWeather = future.get(0).getNight();
-                showWeather();
+                try {
+                    Weather weather = mGson.fromJson(response, Weather.class);
+                    List<Weather.ResultBean> result = weather.getResult();
+                    //只有一个城市,所以只有一个数据
+                    List<Weather.ResultBean.FutureBean> future = result.get(0).getFuture();
+                    dayWeather = future.get(0).getDayTime();
+                    nightWeather = future.get(0).getNight();
+                    showWeather();
+                } catch (Exception e) {
+                    ToastUtils.showSafeToast(getContext(), e.getMessage());
+                }
             }
         });
     }
@@ -419,9 +396,14 @@ public class CategoryFragment extends BaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mVfMessage.stopFlipping();
         locationService.unregisterListener(mListener); //注销掉监听
         locationService.stop(); //停止定位服务
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mVfHotMessage.stopFlipping();
     }
 }
 

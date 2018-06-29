@@ -29,6 +29,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/white"
+            android:overScrollMode="never"
+            android:scrollbars="none"
             />
 
         <LinearLayout
@@ -39,16 +41,21 @@
             android:orientation="vertical"
             >
 
-            <ViewFlipper
-                android:id="@+id/vf_message"
+            <com.sunfusheng.marqueeview.MarqueeView
+                android:id="@+id/vf_hotmessage"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_margin="5dp"
-                android:autoStart="false"
+                android:layout_height="30dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"
                 android:background="@drawable/shape_round_msgblue"
-                android:flipInterval="3500"
-                android:inAnimation="@anim/anim_marquee_in"
-                android:outAnimation="@anim/anim_marquee_out"
+                android:paddingBottom="4dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="25dp"
+                android:paddingTop="4dp"
+                app:mvAnimDuration="1000"
+                app:mvDirection="bottom_to_top"
+                app:mvInterval="3000"
+                app:mvSingleLine="false"
                 />
 
             <android.support.v7.widget.CardView
@@ -153,6 +160,8 @@
                     android:id="@+id/recyclerview_wares"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:overScrollMode="never"
+                    android:scrollbars="none"
                     />
 
             </com.cjj.MaterialRefreshLayout>

@@ -3,12 +3,9 @@ package com.cniao;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Vibrator;
 
 import com.cniao.bean.User;
-import com.cniao.greendao.DaoMaster;
-import com.cniao.greendao.DaoSession;
 import com.cniao.service.LocationService;
 import com.cniao.utils.UserLocalData;
 import com.cniao.utils.Utils;
@@ -39,7 +36,7 @@ public class CNiaoApplication extends MobApplication {
 
     public         LocationService locationService;
     public         Vibrator        mVibrator;
-    private static DaoSession      daoSession;
+
 
     //整个app的上下文
     public static Context sContext;
@@ -65,26 +62,9 @@ public class CNiaoApplication extends MobApplication {
         locationService = new LocationService(getApplicationContext());
         mVibrator =(Vibrator)getApplicationContext().getSystemService(Service.VIBRATOR_SERVICE);
 
-        //配置数据库
-        setupDatabase();
-
     }
 
-    private void setupDatabase() {
 
-        //创建数据库
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "search.db", null);
-        //获取可写数据库
-        SQLiteDatabase db = helper.getWritableDatabase();
-        //获取数据库对象
-        DaoMaster daoMaster = new DaoMaster(db);
-        //获取Dao对象管理者
-        daoSession = daoMaster.newSession();
-    }
-
-    public static DaoSession getDaoInstant() {
-        return daoSession;
-    }
 
     private void initUser() {
         this.user = UserLocalData.getUser(this);

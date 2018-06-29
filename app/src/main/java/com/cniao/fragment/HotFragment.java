@@ -177,7 +177,7 @@ public class HotFragment extends BaseFragment {
             @Override
             public void onItemClick(View view, int position) {
                 //借助currPage 和pageSize 可以实现默认情况和刷新时,都可以使用
-                HotGoods.ListBean listBean = datas.get(position - (currPage - 1) * pageSize);
+                HotGoods.ListBean listBean = mAdatper.getDatas().get(position);
                 Intent intent = new Intent(getContext(), GoodsDetailsActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

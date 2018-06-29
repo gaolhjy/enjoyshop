@@ -38,7 +38,6 @@ public class MineFragment extends BaseFragment {
     @BindView(R.id.btn_logout)
     Button          mbtnLogout;
 
-
     @Override
     protected void init() {
         User user = CNiaoApplication.getInstance().getUser();
