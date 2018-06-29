@@ -87,6 +87,7 @@
 
 版本:1.1.0  (1)对toast进行封装;(2)将社会化分享进行封装,可以直接在所有项目项目的所有涉及分享的界面直接调用;(3)对toolbar进行进一步封装,并修复toolbar的相关bug;(4)优化代码
 
+版本:1.1.1  (1)对购物车fragment加载更多下一个索引越界bug进行修复;(2)对分类Fragment获取天气数据异常时闪退的bug进行修复;(3)更换、替换部分资源文件
 
 项目谈论群:
 ====
@@ -98,7 +99,7 @@ QQ群号:156250233 (添加请注明 轻松购 )
 关于我:
 ====
 
-1.一个热爱Android,也喜欢交友的菜鸟.     QQ:984992087(添加请注明GitHub)
+1.一个热爱Android,也喜欢交友的菜鸟.
 
 2.我的博客:[点击跳转](http://blog.csdn.net/gaolh89?viewmode=list)
 
@@ -107,6 +108,24 @@ QQ群号:156250233 (添加请注明 轻松购 )
 ====
    
   如果您觉得我的此文对您有有些帮助,您的star就是对我最大的鼓励!
+
+
+LICENSE
+=======
+
+    Copyright 2017 gaoleihua.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
 
 
 
