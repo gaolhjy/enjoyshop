@@ -34,6 +34,7 @@
         android:theme="@style/AppTheme"
         >
 
+        <!--原生的配置   开始-->
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -46,6 +47,19 @@
         <activity android:name=".activity.LoginActivity"/>
         <activity android:name=".activity.AddressListActivity"/>
         <activity android:name=".activity.AddressAddActivity"/>
+        <activity android:name=".activity.CreateOrderActivity"/>
+        <activity android:name=".activity.GoodsListActivity"/>
+        <activity android:name=".activity.MyFavoriteActivity"/>
+        <activity android:name=".activity.MyOrdersActivity"/>
+        <activity android:name=".activity.SearchActivity"/>
+        <activity android:name=".activity.GuideActivity"/>
+        <activity
+            android:name=".activity.SearchResultActivity"
+            android:launchMode="singleTask"
+            />
+        <activity android:name=".activity.RegActivity"/>
+        <activity android:name=".activity.RegSecondActivity"/>
+        <!--原生的配置   结束-->
 
         <!--短信验证-->
         <activity
@@ -102,7 +116,8 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="zbqExff1uz8XyUVn5GbyylomCa0rOkmP"
             />
-        //key:开发者申请的Key
+
+       <!-- key:开发者申请的Key-->
 
         <service
             android:name="com.baidu.location.f"
@@ -114,56 +129,6 @@
                 </action>
             </intent-filter>
         </service>
-
-
-        <activity android:name=".activity.RegActivity"/>
-        <activity android:name=".activity.RegSecondActivity"/>
-
-
-        <!-- Ping++ SDK -->
-        <activity
-            android:name="com.pingplusplus.android.PaymentActivity"
-            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:launchMode="singleTop"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            >
-        </activity>
-
-        <!-- 微信支付 -->
-        <!-- 1.需要将以下"替换成自己 APK 的包名"换成在微信平台上注册填写的包名 -->
-        <!-- 2.WxPayEntryActivity 这个类在 SDK 内部实现，开发者不需要额外实现该类 -->
-        <activity-alias
-            android:name="com.cniao.wxapi.WXPayEntryActivity"
-            android:exported="true"
-            android:targetActivity="com.pingplusplus.android.PaymentActivity"
-            />
-
-        <!-- 支付宝 -->
-        <activity
-            android:name="com.alipay.sdk.app.H5PayActivity"
-            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:exported="false"
-            android:screenOrientation="behind"
-            >
-        </activity>
-        <activity
-            android:name="com.alipay.sdk.auth.AuthActivity"
-            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:exported="false"
-            android:screenOrientation="behind"
-            >
-        </activity>
-
-        <activity android:name=".activity.CreateOrderActivity"/>
-        <activity android:name=".activity.GoodsListActivity"/>
-        <activity android:name=".activity.MyFavoriteActivity"/>
-        <activity android:name=".activity.MyOrdersActivity"/>
-        <activity android:name=".activity.SearchActivity"/>
-        <activity android:name=".activity.GuideActivity"/>
-        <activity
-            android:name=".activity.SearchResultActivity"
-            android:launchMode="singleTask"
-            />
     </application>
 
 </manifest>
