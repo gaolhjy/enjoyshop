@@ -34,6 +34,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
+import butterknife.BindView;
 import okhttp3.Call;
 
 
@@ -46,11 +47,14 @@ import okhttp3.Call;
  *     version: 1.1
  * </pre>
  */
-public class HomeFragment extends BaseFragment2 implements View.OnClickListener {
+public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
-    private Banner       mBanner;
-    private RecyclerView mRecyclerView;
-    private CNiaoToolBar mToolBar;
+    @BindView(R.id.toolbar)
+    CNiaoToolBar mToolBar;
+    @BindView(R.id.recyclerview)
+    RecyclerView mRecyclerView;
+    @BindView(R.id.banner)
+    Banner       mBanner;
 
     private HomeCatgoryAdapter mAdatper;
     private List<String>           images = new ArrayList<>();
@@ -60,8 +64,8 @@ public class HomeFragment extends BaseFragment2 implements View.OnClickListener 
 
 
     @Override
-    protected void init(View view) {
-        initView(view);
+    protected void init() {
+        initView();
         requestBannerData();     //请求轮播图数据
         requestCampaignData();     //请求商品详情数据
     }
@@ -79,18 +83,12 @@ public class HomeFragment extends BaseFragment2 implements View.OnClickListener 
     }
 
 
-    private void initView(View view) {
-
-        mToolBar = (CNiaoToolBar) view.findViewById(R.id.toolbar);
+    private void initView() {
         mToolBar.setOnClickListener(this);
-        mBanner = (Banner) view.findViewById(R.id.banner);
-
         //设置banner样式
         mBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);
         //设置图片加载器
         mBanner.setImageLoader(new GlideImageLoader());
-
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
     }
 
 
@@ -143,27 +141,27 @@ public class HomeFragment extends BaseFragment2 implements View.OnClickListener 
                 .addParams("type", "1")
                 .build().execute(new StringCallback() {
 
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
+            @Override
+            public void onError(Call call, Exception e, int id) {
 
-                    }
+            }
 
-                    @Override
-                    public void onResponse(String response, int id) {
+            @Override
+            public void onResponse(String response, int id) {
 
-                        Type collectionType = new TypeToken<Collection<BannerBean>>() {
-                        }.getType();
-                        Collection<BannerBean> enums = gson.fromJson(response, collectionType);
-                        Iterator<BannerBean> iterator = enums.iterator();
-                        while (iterator.hasNext()) {
-                            BannerBean bean = iterator.next();
-                            titles.add(bean.getName());
-                            images.add(bean.getImgUrl());
-                        }
+                Type collectionType = new TypeToken<Collection<BannerBean>>() {
+                }.getType();
+                Collection<BannerBean> enums = gson.fromJson(response, collectionType);
+                Iterator<BannerBean> iterator = enums.iterator();
+                while (iterator.hasNext()) {
+                    BannerBean bean = iterator.next();
+                    titles.add(bean.getName());
+                    images.add(bean.getImgUrl());
+                }
 
-                        setBannerData();
-                    }
-                });
+                setBannerData();
+            }
+        });
     }
 
 
@@ -176,27 +174,27 @@ public class HomeFragment extends BaseFragment2 implements View.OnClickListener 
                 .addParams("type", "1")
                 .build().execute(new StringCallback() {
 
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
+            @Override
+            public void onError(Call call, Exception e, int id) {
 
-                    }
+            }
 
-                    @Override
-                    public void onResponse(String response, int id) {
+            @Override
+            public void onResponse(String response, int id) {
 
-                        Type collectionType = new TypeToken<Collection<HomeCampaignBean>>() {
-                        }.getType();
-                        Collection<HomeCampaignBean> enums = gson.fromJson(response,
-                                collectionType);
-                        Iterator<HomeCampaignBean> iterator = enums.iterator();
-                        while (iterator.hasNext()) {
-                            HomeCampaignBean bean = iterator.next();
-                            datas.add(bean);
-                        }
+                Type collectionType = new TypeToken<Collection<HomeCampaignBean>>() {
+                }.getType();
+                Collection<HomeCampaignBean> enums = gson.fromJson(response,
+                        collectionType);
+                Iterator<HomeCampaignBean> iterator = enums.iterator();
+                while (iterator.hasNext()) {
+                    HomeCampaignBean bean = iterator.next();
+                    datas.add(bean);
+                }
 
-                        setRecyclerViewData();
-                    }
-                });
+                setRecyclerViewData();
+            }
+        });
     }
 
 

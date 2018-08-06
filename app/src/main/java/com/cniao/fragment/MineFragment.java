@@ -15,10 +15,11 @@ import com.cniao.bean.User;
 import com.cniao.contants.Contants;
 import com.cniao.utils.GlideUtils;
 import com.cniao.utils.ToastUtils;
+import com.cniao.widget.CircleImageView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import de.hdodenhof.circleimageview.CircleImageView;
+
 
 /**
  * <pre>
@@ -54,13 +55,16 @@ public class MineFragment extends BaseFragment {
             .id.img_head, R.id.btn_logout})
     public void onclick(View view) {
         switch (view.getId()) {
-            case R.id.txt_my_address:      //收货地址
+            //收货地址
+            case R.id.txt_my_address:
                 startActivity(new Intent(getActivity(), AddressListActivity.class), true);
                 break;
-            case R.id.txt_my_favorite:    //我的收藏
+            //我的收藏
+            case R.id.txt_my_favorite:
                 startActivity(new Intent(getActivity(), MyFavoriteActivity.class), true);
                 break;
-            case R.id.txt_my_orders:     //我的点单
+            //我的点单
+            case R.id.txt_my_orders:
                 startActivity(new Intent(getActivity(), MyOrdersActivity.class), true);
                 break;
             case R.id.txt_username:
@@ -77,6 +81,8 @@ public class MineFragment extends BaseFragment {
                 CNiaoApplication.getInstance().clearUser();
                 showUser(null);
                 break;
+            default:
+                break;
         }
     }
 
@@ -91,7 +97,7 @@ public class MineFragment extends BaseFragment {
     private void showUser(User user) {
         if (user != null) {
             mTxtUserName.setText(user.getUsername());
-            GlideUtils.load(getContext(), user.getLogo_url(), mImageHead);
+            GlideUtils.portrait(getContext(), user.getLogo_url(), mImageHead);
         } else {
             mTxtUserName.setText("请登陆");
         }

@@ -12,7 +12,7 @@
         android:background="?attr/colorPrimary"
         >
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <com.cniao.widget.CircleImageView
             android:id="@+id/img_head"
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -22,7 +22,7 @@
             app:civ_border_color="#FFFFFF"
             app:civ_border_width="2dp"
             >
-        </de.hdodenhof.circleimageview.CircleImageView>
+        </com.cniao.widget.CircleImageView>
 
         <TextView
             android:id="@+id/txt_username"

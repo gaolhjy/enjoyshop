@@ -59,13 +59,15 @@
 
 6.Glide的封装
 
-7.购物车本地缓存
+7.自定义圆形头像(可自定义是否有边框、边框宽度及颜色)
 
-8.对称加密DESUtil
+8.购物车本地缓存
 
-9.读取Json文件的工具类GetJsonDataUtil
+9.对称加密DESUtil
 
-10.日志、sp、屏幕、toast工具类封装
+10.读取Json文件的工具类GetJsonDataUtil
+
+11.日志、sp、屏幕、toast工具类封装
 
 主要界面截图:
 ====
@@ -90,6 +92,8 @@
 版本:1.1.1  (1)对购物车fragment加载更多下一个索引越界bug进行修复;(2)对分类Fragment获取天气数据异常时闪退的bug进行修复;(3)更换、替换部分资源文件
 
 版本:1.1.2  (1)对购物车fragment跑马灯效果在息屏、开屏出现数据重叠的bug修复;(2)删除ping支付相关废弃代码
+
+版本:1.1.3  (1)自定义圆角头像控件;(2)重新翻转Fragment基类;(3)对Glide进行升级,并重新封装,并分离出是普通头像还是用户头像
 
 
 项目谈论群:
@@ -116,7 +120,7 @@ QQ群号:156250233 (添加请注明 轻松购 )
 LICENSE
 =======
 
-    Copyright 2017 gaoleihua.
+    Copyright 2017-2018 gaoleihua.
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
