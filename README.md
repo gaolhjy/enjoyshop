@@ -1,7 +1,7 @@
 项目简介:
 ====
 
-![Image text](https://img.shields.io/badge/%E7%8A%B6%E6%80%81-%E7%BB%B4%E6%8A%A4%E4%B8%AD-green.svg) ![Image text](https://img.shields.io/badge/%E7%89%88%E6%9C%AC-1.1.3-green.svg) ![Image text](https://img.shields.io/badge/%E6%9C%80%E8%BF%91%E6%8F%90%E4%BA%A4-2018%2F08%2F09-yellowgreen.svg) ![Image text](https://img.shields.io/badge/%E7%BC%96%E8%AF%91%E6%83%85%E5%86%B5-%E6%AD%A3%E5%B8%B8%E7%BC%96%E8%AF%91-green.svg)
+![Image text](https://img.shields.io/badge/%E7%8A%B6%E6%80%81-%E7%BB%B4%E6%8A%A4%E4%B8%AD-green.svg)   ![Image text](https://img.shields.io/badge/%E7%89%88%E6%9C%AC-1.1.3-green.svg)   ![Image text](https://img.shields.io/badge/%E6%9C%80%E8%BF%91%E6%8F%90%E4%BA%A4-2018%2F08%2F09-yellowgreen.svg)   ![Image text](https://img.shields.io/badge/%E7%BC%96%E8%AF%91%E6%83%85%E5%86%B5-%E6%AD%A3%E5%B8%B8%E7%BC%96%E8%AF%91-green.svg)
 
 
 轻松购.是一款购物型Android端app.项目主要分为主页、热卖、分类、购物车、我的五大板块.
@@ -108,14 +108,15 @@
 
 QQ群号:156250233 (添加请注明 轻松购 )
 
-![(https://img.shields.io/badge/QQ%E7%BE%A4-%E7%82%B9%E5%87%BB%E6%B7%BB%E5%8A%A0-orange.svg)](<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=142fcd233ceb676fa8d0b0c97f21f23473f9af60b75675cc54aa4d96967b9c40"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="轻松购商场学习群" title="轻松购商场学习群"></a>)
+[![Wercker](https://img.shields.io/badge/QQ%E7%BE%A4-%E7%82%B9%E5%87%BB%E6%B7%BB%E5%8A%A0-green.svg)](<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=142fcd233ceb676fa8d0b0c97f21f23473f9af60b75675cc54aa4d96967b9c40"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="轻松购商场学习群" title="轻松购商场学习群"></a>)
+
 
 ![Image text](https://github.com/gaolhjy/enjoyshop/blob/master/screenshots/QQ%E7%BE%A4%E4%BA%8C%E7%BB%B4%E7%A0%81.png)
 
 关于我:
 ====
 
-[![Wercker](https://img.shields.io/badge/csdn-%E7%82%B9%E5%87%BB%E8%B7%B3%E8%BD%AC-black.svg)](http://blog.csdn.net/gaolh89?viewmode=list)
+[![Wercker](https://img.shields.io/badge/%E5%85%B3%E4%BA%8E%E6%88%91-CSDN-brightgreen.svg)](http://blog.csdn.net/gaolh89?viewmode=list)
 
 
 致谢:
