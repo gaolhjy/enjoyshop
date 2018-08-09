@@ -16,7 +16,7 @@
         android:orientation="horizontal"
         >
 
-        <com.cniao.widget.ClearEditText
+        <com.enjoyshop.widget.ClearEditText
             android:id="@+id/edittxt_phone"
             style="@style/editText_base"
             android:layout_width="0dp"

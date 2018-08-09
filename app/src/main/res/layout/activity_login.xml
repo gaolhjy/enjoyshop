@@ -9,7 +9,7 @@
               android:clipToPadding="true"
     >
 
-    <com.cniao.widget.CNiaoToolBar
+    <com.enjoyshop.widget.EnjoyshopToolBar
         android:id="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
         android:padding="@dimen/largePadding"
         >
 
-        <com.cniao.widget.ClearEditText
+        <com.enjoyshop.widget.ClearEditText
             android:id="@+id/etxt_phone"
             style="@style/editText_base"
             android:layout_width="match_parent"
@@ -42,7 +42,7 @@
         <View
             style="@style/line_vertical"/>
 
-        <com.cniao.widget.ClearEditText
+        <com.enjoyshop.widget.ClearEditText
             android:id="@+id/etxt_pwd"
             style="@style/editText_base"
             android:layout_width="match_parent"

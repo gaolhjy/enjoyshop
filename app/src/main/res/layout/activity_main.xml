@@ -5,7 +5,7 @@
               android:clipToPadding="true"
               android:fitsSystemWindows="true"
               android:orientation="vertical"
-              tools:context="com.cniao.activity.MainActivity"
+              tools:context="com.enjoyshop.activity.MainActivity"
     >
 
     <FrameLayout
@@ -16,7 +16,7 @@
         android:background="@color/bg_color"
         />
 
-    <com.cniao.widget.FragmentTabHost
+    <com.enjoyshop.widget.FragmentTabHost
         android:id="@android:id/tabhost"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,5 +29,5 @@
             android:layout_height="0dp"
             android:layout_weight="0"
             />
-    </com.cniao.widget.FragmentTabHost>
+    </com.enjoyshop.widget.FragmentTabHost>
 </LinearLayout>

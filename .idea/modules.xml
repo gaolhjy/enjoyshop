@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/baseadapter-recyclerview/baseadapter-recyclerview.iml" filepath="$PROJECT_DIR$/baseadapter-recyclerview/baseadapter-recyclerview.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cniao5.iml" filepath="$PROJECT_DIR$/cniao5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/enjoyshop.iml" filepath="$PROJECT_DIR$/enjoyshop.iml" />
       <module fileurl="file://$PROJECT_DIR$/okhttputils/okhttputils.iml" filepath="$PROJECT_DIR$/okhttputils/okhttputils.iml" />
     </modules>
   </component>

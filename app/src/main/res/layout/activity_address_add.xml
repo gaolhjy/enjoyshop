@@ -10,7 +10,7 @@
               android:clipToPadding="true"
     >
 
-    <com.cniao.widget.CNiaoToolBar
+    <com.enjoyshop.widget.EnjoyshopToolBar
         android:id="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
             <View
                 style="@style/line_horizontal"/>
 
-            <com.cniao.widget.ClearEditText
+            <com.enjoyshop.widget.ClearEditText
                 android:id="@+id/edittxt_consignee"
                 style="@style/editText_base"
                 android:layout_width="0dp"
@@ -85,7 +85,7 @@
             <View
                 style="@style/line_horizontal"/>
 
-            <com.cniao.widget.ClearEditText
+            <com.enjoyshop.widget.ClearEditText
                 android:id="@+id/edittxt_phone"
                 style="@style/editText_base"
                 android:layout_width="0dp"
@@ -160,7 +160,7 @@
             <View
                 style="@style/line_horizontal"/>
 
-            <com.cniao.widget.ClearEditText
+            <com.enjoyshop.widget.ClearEditText
                 android:id="@+id/edittxt_add"
                 style="@style/editText_base"
                 android:layout_width="0dp"

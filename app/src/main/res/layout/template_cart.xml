@@ -59,7 +59,7 @@
                 android:textSize="18sp"
                 />
 
-            <com.cniao.widget.NumberAddSubView
+            <com.enjoyshop.widget.NumberAddSubView
                 android:id="@+id/num_control"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

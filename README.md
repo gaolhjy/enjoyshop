@@ -71,9 +71,9 @@
 
 主要界面截图:
 ====
-![Image text](https://github.com/gaolh89/cniao5/blob/master/screenshots/pic11.png)
-![Image text](https://github.com/gaolh89/cniao5/blob/master/screenshots/pic12.png)
-![Image text](https://github.com/gaolh89/cniao5/blob/master/screenshots/pic13.png)
+![Image text](https://github.com/gaolh89/enjoyshop5/blob/master/screenshots/pic11.png)
+![Image text](https://github.com/gaolh89/enjoyshop5/blob/master/screenshots/pic12.png)
+![Image text](https://github.com/gaolh89/enjoyshop5/blob/master/screenshots/pic13.png)
 
 修改完善记录:
 ====
@@ -93,7 +93,7 @@
 
 版本:1.1.2  (1)对购物车fragment跑马灯效果在息屏、开屏出现数据重叠的bug修复;(2)删除ping支付相关废弃代码
 
-版本:1.1.3  (1)自定义圆角头像控件;(2)重新封装Fragment基类;(3)对Glide进行升级,并重新封装,并分离出是普通头像还是用户头像
+版本:1.1.3  (1)自定义圆角头像控件;(2)重新封装Fragment基类;(3)对Glide进行升级,并重新封装,并分离出是普通头像还是用户头像;(4)修改工程名、部分文件名,便于阅读
 
 
 项目谈论群:
@@ -101,7 +101,7 @@
 
 QQ群号:156250233 (添加请注明 轻松购 )
 
-![Image text](https://github.com/gaolh89/cniao5/blob/master/screenshots/QQ群二维码.png)
+![Image text](https://github.com/gaolh89/enjoyshop5/blob/master/screenshots/QQ群二维码.png)
 
 关于我:
 ====

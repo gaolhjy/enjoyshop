@@ -19,7 +19,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.cniao.R;
+import com.enjoyshop.R;
 import com.mob.tools.gui.MobViewPager;
 import com.mob.tools.utils.ResHelper;
 
@@ -33,8 +33,6 @@ import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.onekeyshare.CustomerLogo;
 import cn.sharesdk.onekeyshare.OnekeySharePage;
 import cn.sharesdk.onekeyshare.OnekeyShareThemeImpl;
-
-import static android.R.id.button2;
 
 /**
  * 九宫格的抽象类

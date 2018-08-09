@@ -5,9 +5,9 @@ android {
 
     signingConfigs {
         release {
-            keyAlias 'cniaoshop'
+            keyAlias 'enjoyshop'
             keyPassword '123456'
-            storeFile file('../cniaoshop.jks')
+            storeFile file('../enjoyshop.jks')
             storePassword '123456'
         }
     }
@@ -15,10 +15,10 @@ android {
     compileSdkVersion 27
     buildToolsVersion '27.0.2'
     defaultConfig {
-        applicationId "com.cniao"
+        applicationId "com.enjoyshop"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 17
+        versionCode 18
         versionName "1.1.3"
     }
 

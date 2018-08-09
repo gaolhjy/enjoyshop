@@ -12,7 +12,7 @@
         android:background="?attr/colorPrimary"
         >
 
-        <com.cniao.widget.CircleImageView
+        <com.enjoyshop.widget.CircleImageView
             android:id="@+id/img_head"
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -22,7 +22,7 @@
             app:civ_border_color="#FFFFFF"
             app:civ_border_width="2dp"
             >
-        </com.cniao.widget.CircleImageView>
+        </com.enjoyshop.widget.CircleImageView>
 
         <TextView
             android:id="@+id/txt_username"
