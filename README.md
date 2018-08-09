@@ -71,9 +71,9 @@
 
 主要界面截图:
 ====
-![Image text](https://github.com/gaolh89/enjoyshop5/blob/master/screenshots/pic11.png)
-![Image text](https://github.com/gaolh89/enjoyshop5/blob/master/screenshots/pic12.png)
-![Image text](https://github.com/gaolh89/enjoyshop5/blob/master/screenshots/pic13.png)
+![Image text](https://github.com/gaolhjy/enjoyshop/blob/master/screenshots/pic11.png)
+![Image text](https://github.com/gaolhjy/enjoyshop/blob/master/screenshots/pic12.png)
+![Image text](https://github.com/gaolhjy/enjoyshop/blob/master/screenshots/pic13.png)
 
 修改完善记录:
 ====
@@ -101,7 +101,7 @@
 
 QQ群号:156250233 (添加请注明 轻松购 )
 
-![Image text](https://github.com/gaolh89/enjoyshop5/blob/master/screenshots/QQ群二维码.png)
+![Image text](https://github.com/gaolhjy/enjoyshop/blob/master/screenshots/QQ%E7%BE%A4%E4%BA%8C%E7%BB%B4%E7%A0%81.png)
 
 关于我:
 ====
