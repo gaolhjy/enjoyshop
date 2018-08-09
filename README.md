@@ -1,13 +1,7 @@
 项目简介:
 ====
 
-![Image text](https://img.shields.io/badge/%E7%8A%B6%E6%80%81-%E7%BB%B4%E6%8A%A4%E4%B8%AD-green.svg)
-
-![Image text](https://img.shields.io/badge/%E7%89%88%E6%9C%AC-1.1.3-green.svg)
-
-![Image text](https://img.shields.io/badge/%E6%9C%80%E8%BF%91%E6%8F%90%E4%BA%A4-2018%2F08%2F09-yellowgreen.svg)
-
-![Image text](https://img.shields.io/badge/%E7%BC%96%E8%AF%91%E6%83%85%E5%86%B5-%E6%AD%A3%E5%B8%B8%E7%BC%96%E8%AF%91-green.svg)
+![Image text](https://img.shields.io/badge/%E7%8A%B6%E6%80%81-%E7%BB%B4%E6%8A%A4%E4%B8%AD-green.svg) ![Image text](https://img.shields.io/badge/%E7%89%88%E6%9C%AC-1.1.3-green.svg) ![Image text](https://img.shields.io/badge/%E6%9C%80%E8%BF%91%E6%8F%90%E4%BA%A4-2018%2F08%2F09-yellowgreen.svg) ![Image text](https://img.shields.io/badge/%E7%BC%96%E8%AF%91%E6%83%85%E5%86%B5-%E6%AD%A3%E5%B8%B8%E7%BC%96%E8%AF%91-green.svg)
 
 
 轻松购.是一款购物型Android端app.项目主要分为主页、热卖、分类、购物车、我的五大板块.
@@ -108,24 +102,26 @@
 项目谈论群:
 ====
 
+说明:之所以没有使用微信群还是QQ群,主要基于两个原因:
+(1)QQ群可以屏蔽,这样大家根据情况进行选择,以便更高效率工作、学习.
+(2)QQ群上传资料后,便于保存与查找,也可以临时性和群里其他人私聊.
+
 QQ群号:156250233 (添加请注明 轻松购 )
 
-[![Wercker](https://img.shields.io/badge/csdn-%E7%82%B9%E5%87%BB%E8%B7%B3%E8%BD%AC-black.svg)](<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=142fcd233ceb676fa8d0b0c97f21f23473f9af60b75675cc54aa4d96967b9c40"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="轻松购商场学习群" title="轻松购商场学习群"></a>)
+![(https://img.shields.io/badge/QQ%E7%BE%A4-%E7%82%B9%E5%87%BB%E6%B7%BB%E5%8A%A0-orange.svg)](<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=142fcd233ceb676fa8d0b0c97f21f23473f9af60b75675cc54aa4d96967b9c40"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="轻松购商场学习群" title="轻松购商场学习群"></a>)
 
 ![Image text](https://github.com/gaolhjy/enjoyshop/blob/master/screenshots/QQ%E7%BE%A4%E4%BA%8C%E7%BB%B4%E7%A0%81.png)
 
 关于我:
 ====
 
-1.一个热爱Android,也喜欢交友的菜鸟.
-
-2.[![Wercker](https://img.shields.io/badge/csdn-%E7%82%B9%E5%87%BB%E8%B7%B3%E8%BD%AC-black.svg)](http://blog.csdn.net/gaolh89?viewmode=list)
+[![Wercker](https://img.shields.io/badge/csdn-%E7%82%B9%E5%87%BB%E8%B7%B3%E8%BD%AC-black.svg)](http://blog.csdn.net/gaolh89?viewmode=list)
 
 
 致谢:
 ====
    
-  如果您觉得我的此文对您有有些帮助,您的star就是对我最大的鼓励!
+  如果您觉得我的此项目对您有些帮助,您的star就是对我最大的鼓励!
 
 
 LICENSE
