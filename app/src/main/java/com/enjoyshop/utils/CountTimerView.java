@@ -44,14 +44,13 @@ public class CountTimerView extends CountDownTimer {
     public CountTimerView(TextView btn) {
         super(TIME_COUNT, 1000);
         this.btn = btn;
-        this.endStrRid = R.string.smssdk_resend_identify_code;
+        this.endStrRid = R.string.code_end;
     }
 
 
     // 计时完毕时触发
     @Override
     public void onFinish() {
-
         btn.setText(endStrRid);
         btn.setEnabled(true);
     }

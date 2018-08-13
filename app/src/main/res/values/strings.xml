@@ -25,4 +25,6 @@
     <string name="pay_result">支付结果</string>
     <string name="add_addresses">新建收件地址</string>
 
+    <string name="code_end">请重新发送验证码</string>
+
 </resources>

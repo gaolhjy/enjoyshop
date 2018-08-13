@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:enabled="false"
-                android:text="@string/smssdk_resend_identify_code"
+                android:text="点击发送验证码"
                 />
         </LinearLayout>
 

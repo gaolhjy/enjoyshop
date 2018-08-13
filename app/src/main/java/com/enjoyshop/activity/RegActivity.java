@@ -15,8 +15,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import butterknife.BindView;
-import cn.smssdk.EventHandler;
-import cn.smssdk.SMSSDK;
+
 
 /**
  * Created by 高磊华
@@ -26,7 +25,6 @@ import cn.smssdk.SMSSDK;
 
 public class RegActivity extends BaseActivity {
 
-    private EventHandler eventHandler;
     @BindView(R.id.toolbar)
     EnjoyshopToolBar  mToolBar;
     @BindView(R.id.txtCountry)
@@ -47,39 +45,9 @@ public class RegActivity extends BaseActivity {
     @Override
     protected void init() {
         initToolBar();
-        initSms();
     }
 
 
-    private void initSms() {
-
-        // 创建EventHandler对象
-        eventHandler = new EventHandler() {
-            public void afterEvent(int event, int result, Object data) {
-
-                if (result == SMSSDK.RESULT_COMPLETE) {
-                    //回调完成
-                    if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {
-                        //提交验证码成功
-                    } else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) {
-                        //获取验证码成功
-                        afterVerificationCodeRequested((Boolean) data);
-                    } else if (event == SMSSDK.EVENT_GET_SUPPORTED_COUNTRIES) {
-                        //返回支持发送验证码的国家列表
-                    }
-                } else if (data instanceof Throwable) {
-                    Throwable throwable = (Throwable) data;
-                    String msg = throwable.getMessage();
-                    ToastUtils.showSafeToast(RegActivity.this,msg);
-                } else {
-                    ((Throwable) data).printStackTrace();
-                }
-            }
-        };
-
-        // 注册监听器
-        SMSSDK.registerEventHandler(eventHandler);
-    }
 
 
     /**
@@ -130,7 +98,7 @@ public class RegActivity extends BaseActivity {
 
         checkPhoneNum(phone, code);
 
-        SMSSDK.getVerificationCode(code, phone);
+
 
     }
 
@@ -164,11 +132,5 @@ public class RegActivity extends BaseActivity {
         }
     }
 
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        SMSSDK.unregisterEventHandler(eventHandler);
-    }
 }
 
