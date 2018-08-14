@@ -1,7 +1,10 @@
 项目简介:
 ====
 
-![Image text](https://img.shields.io/badge/%E7%8A%B6%E6%80%81-%E7%BB%B4%E6%8A%A4%E4%B8%AD-green.svg)   ![Image text](https://img.shields.io/badge/%E7%89%88%E6%9C%AC-1.1.3-green.svg)   ![Image text](https://img.shields.io/badge/%E6%9C%80%E8%BF%91%E6%8F%90%E4%BA%A4-2018%2F08%2F09-yellowgreen.svg)   ![Image text](https://img.shields.io/badge/%E7%BC%96%E8%AF%91%E6%83%85%E5%86%B5-%E6%AD%A3%E5%B8%B8%E7%BC%96%E8%AF%91-green.svg)
+![Image text](https://img.shields.io/badge/%E7%8A%B6%E6%80%81-%E7%BB%B4%E6%8A%A4%E4%B8%AD-green.svg)   ![Image text](https://img.shields.io/badge/%E7%89%88%E6%9C%AC-1.2.0-brightgreen.svg)   ![Image text](https://img.shields.io/badge/%E6%9C%80%E8%BF%91%E6%8F%90%E4%BA%A4-2018%2F08%2F14-brightgreen.svg)
+![Image text](https://img.shields.io/badge/%E7%BC%96%E8%AF%91%E6%83%85%E5%86%B5-%E6%AD%A3%E5%B8%B8%E7%BC%96%E8%AF%91-green.svg)  ![Image text](https://img.shields.io/badge/as%E7%89%88%E6%9C%AC-3.1.4-brightgreen.svg)
+
+
 
 
 轻松购.是一款购物型Android端app.项目主要分为主页、热卖、分类、购物车、我的五大板块.
@@ -98,7 +101,7 @@
 
 版本:1.1.3  (1)自定义圆角头像控件;(2)重新封装Fragment基类;(3)对Glide进行升级,并重新封装,并分离出是普通头像还是用户头像;(4)修改工程名、部分文件名,便于阅读
 
-版本:1.2.0  (1)重新设计注册业务逻辑,使其更符合实际开发.
+版本:1.2.0  (1)重新设计注册业务逻辑,使其更符合实际开发. (2)修复项目在as 3.1.3及以上版本无法安装的bug
 
 
 项目谈论群:
