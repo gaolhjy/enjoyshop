@@ -1,7 +1,7 @@
 项目简介:
 ====
 
-![Image text](https://img.shields.io/badge/%E7%8A%B6%E6%80%81-%E7%BB%B4%E6%8A%A4%E4%B8%AD-green.svg)   ![Image text](https://img.shields.io/badge/%E7%89%88%E6%9C%AC-1.2.0-brightgreen.svg)   ![Image text](https://img.shields.io/badge/%E6%9C%80%E8%BF%91%E6%8F%90%E4%BA%A4-2018%2F08%2F14-brightgreen.svg)
+![Image text](https://img.shields.io/badge/%E7%8A%B6%E6%80%81-%E7%BB%B4%E6%8A%A4%E4%B8%AD-green.svg)   ![Image text](https://img.shields.io/badge/%E7%89%88%E6%9C%AC-2.0.0-green.svg)   ![Image text](https://img.shields.io/badge/%E6%9C%80%E8%BF%91%E6%8F%90%E4%BA%A4-2018%2F08%2F23-green.svg)
 ![Image text](https://img.shields.io/badge/%E7%BC%96%E8%AF%91%E6%83%85%E5%86%B5-%E6%AD%A3%E5%B8%B8%E7%BC%96%E8%AF%91-green.svg)  ![Image text](https://img.shields.io/badge/as%E7%89%88%E6%9C%AC-3.1.4-brightgreen.svg)
 
 
@@ -103,6 +103,8 @@
 
 版本:1.2.0  (1)重新设计注册业务逻辑,使其更符合实际开发. (2)修复项目在as 3.1.3及以上版本无法安装的bug
 
+版本:2.0.0  (1)静态逻辑编写注册、登录、收货地址、添加(修改、删除地址)等业务逻辑,使项目成为完整项目. (2)启动页、引导页主题修改. (3)修复 新建收货地址界面 键盘遮挡的bug.
+
 
 项目谈论群:
 ====
@@ -133,7 +135,7 @@ QQ群号:156250233 (添加请注明 轻松购 )
 LICENSE
 =======
 
-    Copyright 2017-2018 gaoleihua.
+    Copyright 2017 gaoleihua.
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

@@ -35,30 +35,80 @@
         >
 
         <!--原生的配置   开始-->
-        <activity android:name=".activity.SplashActivity">
+        <activity
+            android:name=".activity.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/fullscreen"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.MainActivity"/>
-        <activity android:name=".activity.GoodsDetailsActivity"/>
-        <activity android:name=".activity.LoginActivity"/>
-        <activity android:name=".activity.AddressListActivity"/>
-        <activity android:name=".activity.AddressAddActivity"/>
-        <activity android:name=".activity.CreateOrderActivity"/>
-        <activity android:name=".activity.GoodsListActivity"/>
-        <activity android:name=".activity.MyFavoriteActivity"/>
-        <activity android:name=".activity.MyOrdersActivity"/>
-        <activity android:name=".activity.SearchActivity"/>
-        <activity android:name=".activity.GuideActivity"/>
+        <activity
+            android:name=".activity.GuideActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/fullscreen"
+            />
+
+        <activity
+            android:name=".activity.MainActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".activity.GoodsDetailsActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".activity.AddressListActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".activity.AddressAddActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".activity.CreateOrderActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".activity.GoodsListActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".activity.MyFavoriteActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".activity.MyOrdersActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".activity.SearchActivity"
+            android:screenOrientation="portrait"
+            />
+
         <activity
             android:name=".activity.SearchResultActivity"
             android:launchMode="singleTask"
             />
-        <activity android:name=".activity.RegActivity"/>
-        <activity android:name=".activity.RegSecondActivity"/>
+        <activity
+            android:name=".activity.RegActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".activity.RegSecondActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            />
         <!--原生的配置   结束-->
 
         <!--短信验证-->
@@ -117,7 +167,7 @@
             android:value="zbqExff1uz8XyUVn5GbyylomCa0rOkmP"
             />
 
-       <!-- key:开发者申请的Key-->
+        <!-- key:开发者申请的Key-->
 
         <service
             android:name="com.baidu.location.f"

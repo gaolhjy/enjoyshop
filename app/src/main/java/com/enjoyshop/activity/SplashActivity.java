@@ -2,8 +2,6 @@ package com.enjoyshop.activity;
 
 import android.content.Intent;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.enjoyshop.R;
@@ -34,9 +32,9 @@ public class SplashActivity extends BaseActivity implements View.OnClickListener
     protected int getContentResourseId() {
 
         //必须写在这里,不能写在 init 中.先全屏,再加载试图
-        requestWindowFeature(Window.FEATURE_NO_TITLE);       // 无标题栏
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager
-                .LayoutParams.FLAG_FULLSCREEN);    //全屏
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);       // 无标题栏
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager
+//                .LayoutParams.FLAG_FULLSCREEN);    //全屏
 
         return R.layout.activity_splash;
     }

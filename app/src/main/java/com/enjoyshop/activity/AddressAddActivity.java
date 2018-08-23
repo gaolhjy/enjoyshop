@@ -14,6 +14,7 @@ import com.enjoyshop.bean.PickerCityAddressBean;
 import com.enjoyshop.data.dao.Address;
 import com.enjoyshop.data.daodo.AddressDo;
 import com.enjoyshop.utils.GetJsonDataUtil;
+import com.enjoyshop.utils.KeyBoardUtils;
 import com.enjoyshop.utils.ToastUtils;
 import com.enjoyshop.widget.ClearEditText;
 import com.enjoyshop.widget.EnjoyshopToolBar;
@@ -22,11 +23,10 @@ import com.google.gson.Gson;
 import org.json.JSONArray;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
-import static com.enjoyshop.R.id.txt_address;
 
 
 /**
@@ -59,6 +59,11 @@ public class AddressAddActivity extends BaseActivity {
     private static final int MSG_LOAD_DATA    = 0x0001;
     private static final int MSG_LOAD_SUCCESS = 0x0002;
     private static final int MSG_LOAD_FAILED  = 0x0003;
+
+    /**
+     * 默认只有1条数据
+     */
+    private boolean isOnlyAddress = true;
 
     /**
      * 数据库的操作类型.
@@ -127,8 +132,11 @@ public class AddressAddActivity extends BaseActivity {
     @OnClick({R.id.txt_address})
     public void viewClick(View view) {
         switch (view.getId()) {
-            case txt_address:
+            case R.id.txt_address:
                 if (isLoaded) {
+                    KeyBoardUtils.closeKeyboard(mEditConsignee,AddressAddActivity.this);
+                    KeyBoardUtils.closeKeyboard(mEditPhone,AddressAddActivity.this);
+                    KeyBoardUtils.closeKeyboard(mEditAddr,AddressAddActivity.this);
                     ShowPickerView();
                 } else {
                     ToastUtils.showSafeToast(AddressAddActivity.this, "请稍等,数据获取中");
@@ -184,11 +192,23 @@ public class AddressAddActivity extends BaseActivity {
 
         Long userId = EnjoyshopApplication.getApplication().getUser().getId();
 
+        List<Address> mAddressDataList = AddressDo.queryAddress(userId);
+        if (mAddressDataList != null && mAddressDataList.size() == 0) {
+            isOnlyAddress = true;
+        } else {
+            isOnlyAddress = false;
+        }
+
         Address addBean = new Address();
         addBean.setUserId(userId);
         addBean.setName(consignee);
         addBean.setPhone(phone);
-        addBean.setIsDefaultAddress(false);
+        if (isOnlyAddress){
+            addBean.setIsDefaultAddress(true);
+        }else {
+            addBean.setIsDefaultAddress(false);
+        }
+
         addBean.setBigAddress(bigAddress);
         addBean.setSmallAddress(smallAddress);
         addBean.setAddress(address);

@@ -125,6 +125,7 @@ public class RegActivity extends BaseActivity {
         intent.putExtra("phone", phone);
         intent.putExtra("pwd", pwd);
         startActivity(intent);
+        finish();
     }
 
 }

@@ -165,13 +165,15 @@ public class LoginActivity extends BaseActivity {
                 user.setLogo_url(imageUrl);
 
                 application.putUser(user, "12345678asfghdssa");
-                if (application.getIntent() == null) {
-                    setResult(RESULT_OK);
-                    finish();
-                } else {
-                    application.jumpToTargetActivity(LoginActivity.this);
-                    finish();
-                }
+                finish();
+
+//                if (application.getIntent() == null) {
+//                    setResult(RESULT_OK);
+//                    finish();
+//                } else {
+//                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+//                    finish();
+//                }
             } else {
                 ToastUtils.showSafeToast(LoginActivity.this, "密码不准确");
             }

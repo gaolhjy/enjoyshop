@@ -5,8 +5,6 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -43,9 +41,9 @@ public class GuideActivity extends BaseActivity {
     protected int getContentResourseId() {
 
         //必须写在这里,不能写在 init 中.先全屏,再加载试图
-        requestWindowFeature(Window.FEATURE_NO_TITLE);       // 无标题栏
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager
-                .LayoutParams.FLAG_FULLSCREEN);    //全屏
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);       // 无标题栏
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager
+//                .LayoutParams.FLAG_FULLSCREEN);    //全屏
 
         return R.layout.activity_guide;
     }

@@ -12,6 +12,7 @@ import com.enjoyshop.R;
 import com.enjoyshop.adapter.AddressListAdapter;
 import com.enjoyshop.data.dao.Address;
 import com.enjoyshop.data.daodo.AddressDo;
+import com.enjoyshop.utils.PreferencesUtils;
 import com.enjoyshop.widget.EnjoyshopToolBar;
 
 import java.util.List;
@@ -34,6 +35,10 @@ public class AddressListActivity extends BaseActivity {
 
     private AddressListAdapter mAdapter;
     private List<Address>      mAddressDataList;
+    /**
+     * 默认设置的地址
+     */
+    private int isDefaultPosition = 0;
 
     @Override
     protected int getContentResourseId() {
@@ -51,6 +56,7 @@ public class AddressListActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         initAddress();
+        isDefaultPosition = PreferencesUtils.getInt(this, "isDefaultPosition", 0);
     }
 
 
@@ -65,7 +71,7 @@ public class AddressListActivity extends BaseActivity {
             mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
                 @Override
                 public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                    Address address = mAddressDataList.get(position);
+                    Address address = (Address)adapter.getData().get(position);
                     switch (view.getId()) {
                         case R.id.txt_edit:
                             updateAddress(address);
@@ -74,7 +80,7 @@ public class AddressListActivity extends BaseActivity {
                             delAddress(address);
                             break;
                         case R.id.cb_is_defualt:
-                            chooseDefult(address);
+                            chooseDefult(mAddressDataList, position);
                             break;
                         default:
                             break;
@@ -94,9 +100,11 @@ public class AddressListActivity extends BaseActivity {
         mAddressDataList = AddressDo.queryAddress(userId);
         if (mAddressDataList != null && mAddressDataList.size() > 0) {
             for (int i = 0; i < mAddressDataList.size(); i++) {
-
                 mAdapter.setNewData(mAddressDataList);
             }
+        }else {
+            mAddressDataList.clear();
+            mAdapter.setNewData(mAddressDataList);
         }
     }
 
@@ -112,13 +120,34 @@ public class AddressListActivity extends BaseActivity {
         mAdapter.notifyDataSetChanged();
     }
 
-    private void chooseDefult(Address address) {
+    /**
+     * 需要改变2个对象的值.一个是 之前默认的.一个是当前设置默认的
+     * @param mAddressDataList
+     * @param position
+     */
+    private void chooseDefult(List<Address> mAddressDataList, int position) {
+
+        Address preAddress = mAddressDataList.get(isDefaultPosition);
+        Address nowAddress = mAddressDataList.get(position);
+
+        isDefaultPosition = position;
+        PreferencesUtils.putInt(this, "isDefaultPosition", isDefaultPosition);
+
+        changeBean(preAddress);
+        changeBean(nowAddress);
+
+        initAddress();
+        mAdapter.notifyDataSetChanged();
+
+    }
+
+    private void changeBean(Address address) {
+
         Long addressId = address.getAddressId();
         address.setAddressId(addressId);
         address.setIsDefaultAddress(!address.getIsDefaultAddress());
         AddressDo.updateAddress(address);
-        initAddress();
-        mAdapter.notifyDataSetChanged();
+
     }
 
     /**

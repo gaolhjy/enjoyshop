@@ -10,7 +10,6 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.enjoyshop.R;
 import com.enjoyshop.activity.CreateOrderActivity;
@@ -18,7 +17,6 @@ import com.enjoyshop.adapter.ShopCartAdapter;
 import com.enjoyshop.bean.MessageEvent;
 import com.enjoyshop.bean.ShoppingCart;
 import com.enjoyshop.utils.CartShopProvider;
-import com.enjoyshop.utils.LogUtil;
 import com.enjoyshop.widget.EnjoyshopToolBar;
 import com.enjoyshop.widget.WrapContentLinearLayoutManager;
 
@@ -39,7 +37,7 @@ import butterknife.OnClick;
  * </pre>
  */
 
-public class ShopCartFragment extends BaseFragment implements View.OnClickListener {
+public class ShopCartFragment extends BaseFragment  {
 
     public static final  int    ACTION_EDIT     = 1;
     public static final  int    ACTION_CAMPLATE = 2;
@@ -72,7 +70,6 @@ public class ShopCartFragment extends BaseFragment implements View.OnClickListen
 
     @Override
     protected void init() {
-        LogUtil.e("生命周期", "ShopCartFragment", true);
         mCartShopProvider = new CartShopProvider(getContext());
         changeToolbar();
         showData();
@@ -86,10 +83,6 @@ public class ShopCartFragment extends BaseFragment implements View.OnClickListen
         mToolbar.hideSearchView();
         mToolbar.showTitleView();
         mToolbar.setTitle(R.string.cart);
-        mToolbar.getRightButton().setVisibility(View.VISIBLE);
-        mToolbar.setRightButtonText("编辑");
-        mToolbar.getRightButton().setOnClickListener(this);
-        mToolbar.getRightButton().setTag(ACTION_EDIT);
     }
 
 
@@ -155,11 +148,6 @@ public class ShopCartFragment extends BaseFragment implements View.OnClickListen
         }
     }
 
-
-    @Override
-    public void onClick(View view) {
-        Toast.makeText(getContext(), "就要点你", Toast.LENGTH_SHORT).show();
-    }
 
 
     /**
