@@ -7,25 +7,17 @@ import android.widget.TextView;
 
 import com.enjoyshop.EnjoyshopApplication;
 import com.enjoyshop.R;
-import com.enjoyshop.bean.User;
-import com.enjoyshop.contants.Contants;
-import com.enjoyshop.contants.HttpContants;
-import com.enjoyshop.msg.LoginRespMsg;
-import com.enjoyshop.utils.DESUtil;
+import com.enjoyshop.data.dao.User;
+import com.enjoyshop.data.daodo.UserDo;
+import com.enjoyshop.utils.StringUtils;
 import com.enjoyshop.utils.ToastUtils;
-import com.enjoyshop.widget.EnjoyshopToolBar;
 import com.enjoyshop.widget.ClearEditText;
-import com.google.gson.Gson;
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.Callback;
+import com.enjoyshop.widget.EnjoyshopToolBar;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import okhttp3.Call;
-import okhttp3.Response;
 
 /**
  * Created by 高磊华
@@ -36,13 +28,18 @@ import okhttp3.Response;
 public class LoginActivity extends BaseActivity {
 
     @BindView(R.id.toolbar)
-    EnjoyshopToolBar  mToolBar;
+    EnjoyshopToolBar mToolBar;
     @BindView(R.id.etxt_phone)
-    ClearEditText mEtxtPhone;
+    ClearEditText    mEtxtPhone;
     @BindView(R.id.etxt_pwd)
-    ClearEditText mEtxtPwd;
+    ClearEditText    mEtxtPwd;
     @BindView(R.id.txt_toReg)
-    TextView      mTxtToReg;
+    TextView         mTxtToReg;
+
+    private String imageUrl = "https://timgsa.baidu" +
+            ".com/timg?image&quality=80&size=b9999_10000&sec=1535017475541&di" +
+            "=a5e08ea47bc24083efd75c547b8fc083&imgtype=0&src=http%3A%2F%2Fbos.pgzs" +
+            ".com%2Frbpiczy%2FWallpaper%2F2013%2F10%2F8%2F8ad17e66b69046af812665a0e24ce862.jpg";
 
     @Override
     protected void init() {
@@ -80,55 +77,108 @@ public class LoginActivity extends BaseActivity {
 
     /**
      * 登录
+     * 注意注意.商业项目是直接请求登录接口.这次是对数据库进行操作
      */
     private void login() {
 
         String phone = mEtxtPhone.getText().toString().trim();
         if (TextUtils.isEmpty(phone)) {
-            ToastUtils.showSafeToast(LoginActivity.this,"请输入手机号码");
+            ToastUtils.showSafeToast(LoginActivity.this, "请输入手机号码");
+            return;
+        }
+
+        if (!StringUtils.isMobileNum(phone)) {
+            ToastUtils.showSafeToast(LoginActivity.this, "请核对手机号码");
             return;
         }
 
         String pwd = mEtxtPwd.getText().toString().trim();
         if (TextUtils.isEmpty(pwd)) {
-            ToastUtils.showSafeToast(LoginActivity.this,"请输入密码");
+            ToastUtils.showSafeToast(LoginActivity.this, "请输入密码");
             return;
         }
 
-        Map<String, String> params = new HashMap<>();
-        params.put("phone", phone);
-        params.put("password", DESUtil.encode(Contants.DES_KEY, pwd));
+        loginlogic(phone, pwd);
 
-        OkHttpUtils.post().url(HttpContants.LOGIN).params(params).build().execute(new Callback<LoginRespMsg<User>>() {
-            @Override
-            public LoginRespMsg<User> parseNetworkResponse(Response response, int id) throws
-                    Exception {
 
-                String string = response.body().string();
-                LoginRespMsg loginRespMsg = new Gson().fromJson(string, LoginRespMsg.class);
-                return loginRespMsg;
+        /**
+         * 真实的项目这里很有可能需要对密码进行加密.基本完成代码如下
+         */
+        /********开始********************/
+        //        Map<String, String> params = new HashMap<>();
+        //        params.put("phone", phone);
+        //        params.put("password", pwd);
+        //
+        //        OkHttpUtils.post().url(HttpContants.LOGIN).params(params).build().execute(new
+        // Callback<LoginRespMsg<User>>() {
+        //            @Override
+        //            public LoginRespMsg<User> parseNetworkResponse(Response response, int id)
+        // throws
+        //                    Exception {
+        //
+        //                String string = response.body().string();
+        //                LoginRespMsg loginRespMsg = new Gson().fromJson(string, LoginRespMsg
+        // .class);
+        //                return loginRespMsg;
+        //
+        //            }
+        //
+        //            @Override
+        //            public void onError(Call call, Exception e, int id) {
+        //            }
+        //
+        //            @Override
+        //            public void onResponse(LoginRespMsg<User> response, int id) {
+        //
+        //                EnjoyshopApplication application = EnjoyshopApplication.getInstance();
+        //                application.putUser(response.getData(), response.getToken());
+        //                if (application.getIntent()==null) {
+        //                    setResult(RESULT_OK);
+        //                    finish();
+        //                }else {
+        //                    application.jumpToTargetActivity(LoginActivity.this);
+        //                    finish();
+        //                }
+        //
+        //            }
+        //        });
 
-            }
+        /********结束********************/
+    }
 
-            @Override
-            public void onError(Call call, Exception e, int id) {
-            }
+    private void loginlogic(String phone, String pwd) {
 
-            @Override
-            public void onResponse(LoginRespMsg<User> response, int id) {
+        List<User> mUserDataList = UserDo.queryUser(phone);
+        if (mUserDataList != null && mUserDataList.size() > 0) {
 
+            String netPwd = mUserDataList.get(0).getPwd();
+            Long netUserId = mUserDataList.get(0).getUserId();
+
+            if (pwd.equals(netPwd)) {
+                ToastUtils.showSafeToast(LoginActivity.this, "登录成功");
                 EnjoyshopApplication application = EnjoyshopApplication.getInstance();
-                application.putUser(response.getData(), response.getToken());
-                if (application.getIntent()==null) {
+
+                com.enjoyshop.bean.User user = new com.enjoyshop.bean.User();
+                user.setMobi(phone);
+                user.setUsername("非洲小白脸");
+                user.setId(netUserId);
+                user.setLogo_url(imageUrl);
+
+                application.putUser(user, "12345678asfghdssa");
+                if (application.getIntent() == null) {
                     setResult(RESULT_OK);
                     finish();
-                }else {
+                } else {
                     application.jumpToTargetActivity(LoginActivity.this);
                     finish();
                 }
-
+            } else {
+                ToastUtils.showSafeToast(LoginActivity.this, "密码不准确");
             }
-        });
+        } else {
+            ToastUtils.showSafeToast(LoginActivity.this, "用户不存在");
+        }
+
     }
 
     @Override

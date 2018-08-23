@@ -1,12 +1,14 @@
 package com.enjoyshop.activity;
 
-import android.text.Html;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.enjoyshop.R;
+import com.enjoyshop.data.dao.User;
+import com.enjoyshop.data.daodo.UserDo;
 import com.enjoyshop.utils.CountTimerView;
 import com.enjoyshop.utils.ToastUtils;
 import com.enjoyshop.widget.ClearEditText;
@@ -14,6 +16,7 @@ import com.enjoyshop.widget.EnjoyshopToolBar;
 import com.google.gson.Gson;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import dmax.dialog.SpotsDialog;
 
 /**
@@ -38,7 +41,6 @@ public class RegSecondActivity extends BaseActivity {
 
     private String phone;
     private String pwd;
-    private String countryCode;
 
     private SpotsDialog dialog;
     private Gson mGson = new Gson();
@@ -51,26 +53,11 @@ public class RegSecondActivity extends BaseActivity {
 
         phone = getIntent().getStringExtra("phone");
         pwd = getIntent().getStringExtra("pwd");
-        countryCode = getIntent().getStringExtra("countryCode");
-
-        String formatedPhone = "+" + countryCode + " " + splitPhoneNum(phone);
-        String text = "倒计时" + formatedPhone;
-        mTxtTip.setText(Html.fromHtml(text));
-
-        CountTimerView timerView = new CountTimerView(mBtnResend);    //倒计时
-        timerView.start();
-
-        initSms();
     }
 
     @Override
     protected int getContentResourseId() {
         return R.layout.activity_reg_second;
-    }
-
-    private void initSms() {
-
-
     }
 
     /**
@@ -90,27 +77,43 @@ public class RegSecondActivity extends BaseActivity {
      */
     private void submitCode() {
 
-        //验证码
         String vCode = mEtCode.getText().toString().trim();
 
         if (TextUtils.isEmpty(vCode)) {
             ToastUtils.showSafeToast(RegSecondActivity.this, "请填写验证码");
         }
 
+        if (!"1234".equals(vCode)) {
+            ToastUtils.showSafeToast(RegSecondActivity.this, "验证码不准确,请重新获取");
+        } else {
+            addUser();
+        }
+
     }
 
-    /**
-     * 分割电话号码
-     */
-    private String splitPhoneNum(String phone) {
-        StringBuilder builder = new StringBuilder(phone);
-        builder.reverse();
-        for (int i = 4, len = builder.length(); i < len; i += 5) {
-            builder.insert(i, ' ');
-        }
-        builder.reverse();
-        return builder.toString();
+    @OnClick(R.id.btn_reSend)
+    public void getVcode(View view) {
+
+        mTxtTip.setText("验证码为:  1234");
+
+        //倒计时
+        CountTimerView timerView = new CountTimerView(mBtnResend);
+        timerView.start();
+
+        ToastUtils.showSafeToast(RegSecondActivity.this, "验证码为: 1234");
     }
+
+    private void addUser() {
+        User user = new User();
+        user.setPhone(phone);
+        user.setPwd(pwd);
+        UserDo.insertUser(user);
+
+        ToastUtils.showSafeToast(RegSecondActivity.this, "注册成功");
+        startActivity(new Intent(RegSecondActivity.this, LoginActivity.class));
+        finish();
+    }
+
 
     @Override
     protected void onDestroy() {

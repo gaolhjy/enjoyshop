@@ -63,7 +63,7 @@ public class MineFragment extends BaseFragment {
             case R.id.txt_my_favorite:
                 startActivity(new Intent(getActivity(), MyFavoriteActivity.class), true);
                 break;
-            //我的点单
+            //我的订单
             case R.id.txt_my_orders:
                 startActivity(new Intent(getActivity(), MyOrdersActivity.class), true);
                 break;
@@ -100,6 +100,7 @@ public class MineFragment extends BaseFragment {
             GlideUtils.portrait(getContext(), user.getLogo_url(), mImageHead);
         } else {
             mTxtUserName.setText("请登陆");
+            GlideUtils.portrait(getContext(), null, mImageHead);
         }
     }
 }

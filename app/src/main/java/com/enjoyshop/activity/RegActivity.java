@@ -6,13 +6,14 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.enjoyshop.R;
-import com.enjoyshop.utils.LogUtil;
+import com.enjoyshop.data.dao.User;
+import com.enjoyshop.data.daodo.UserDo;
+import com.enjoyshop.utils.StringUtils;
 import com.enjoyshop.utils.ToastUtils;
-import com.enjoyshop.widget.EnjoyshopToolBar;
 import com.enjoyshop.widget.ClearEditText;
+import com.enjoyshop.widget.EnjoyshopToolBar;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -26,15 +27,16 @@ import butterknife.BindView;
 public class RegActivity extends BaseActivity {
 
     @BindView(R.id.toolbar)
-    EnjoyshopToolBar  mToolBar;
+    EnjoyshopToolBar mToolBar;
     @BindView(R.id.txtCountry)
-    TextView      mTxtCountry;
-    @BindView(R.id.txtCountryCode)
-    TextView      mTxtCountryCode;
+    TextView         mTxtCountry;
     @BindView(R.id.edittxt_phone)
-    ClearEditText mEtxtPhone;
+    ClearEditText    mEtxtPhone;
     @BindView(R.id.edittxt_pwd)
-    ClearEditText mEtxtPwd;
+    ClearEditText    mEtxtPwd;
+
+    private String phone;
+    private String pwd;
 
     @Override
     protected int getContentResourseId() {
@@ -45,35 +47,6 @@ public class RegActivity extends BaseActivity {
     @Override
     protected void init() {
         initToolBar();
-    }
-
-
-
-
-    /**
-     * 跳转到注册界面二
-     *
-     * @param data
-     */
-
-    private void afterVerificationCodeRequested(Boolean data) {
-
-        LogUtil.e("注册界面", "代码是否执行", true);
-
-        String phone = mEtxtPhone.getText().toString().trim().replaceAll("\\s*", "");
-        String code = mTxtCountryCode.getText().toString().trim();
-        String pwd = mEtxtPwd.getText().toString().trim();
-
-        if (code.startsWith("+")) {
-            code = code.substring(1);
-        }
-
-        Intent intent = new Intent(this, RegSecondActivity.class);
-        intent.putExtra("phone", phone);
-        intent.putExtra("pwd", pwd);
-        intent.putExtra("countryCode", code);
-
-        startActivity(intent);
     }
 
 
@@ -92,44 +65,66 @@ public class RegActivity extends BaseActivity {
      */
     private void getCode() {
 
-        String phone = mEtxtPhone.getText().toString().trim().replaceAll("\\s*", "");
-        String code = mTxtCountryCode.getText().toString().trim();
-        String pwd = mEtxtPwd.getText().toString().trim();
+        phone = mEtxtPhone.getText().toString().trim().replaceAll("\\s*", "");
+        pwd = mEtxtPwd.getText().toString().trim();
 
-        checkPhoneNum(phone, code);
-
-
-
+        checkPhoneNum();
     }
 
     /**
      * 对手机号进行验证
+     * 是否合法  是否已经注册
      */
-    private void checkPhoneNum(String phone, String code) {
-        if (code.startsWith("+")) {
-            code = code.substring(1);
-        }
+    private void checkPhoneNum() {
 
         if (TextUtils.isEmpty(phone)) {
-            ToastUtils.showSafeToast(RegActivity.this,"请输入手机号码");
+            ToastUtils.showSafeToast(RegActivity.this, "请输入手机号码");
             return;
         }
 
-        if (code == "86") {
-            if (phone.length() != 11) {
-                ToastUtils.showSafeToast(RegActivity.this,"手机号码长度不对");
-                return;
-            }
-        }
-
-        String rule = "^1(3|5|7|8|4)\\d{9}";
-        Pattern p = Pattern.compile(rule);
-        Matcher m = p.matcher(phone);
-
-        if (!m.matches()) {
-            ToastUtils.showSafeToast(RegActivity.this,"您输入的手机号码格式不正确");
+        if (TextUtils.isEmpty(pwd)) {
+            ToastUtils.showSafeToast(RegActivity.this, "请设置密码");
             return;
         }
+
+        if (!StringUtils.isMobileNum(phone)) {
+            ToastUtils.showSafeToast(RegActivity.this, "请核对手机号码");
+            return;
+        }
+
+        if (!StringUtils.isPwdStrong(pwd)) {
+            ToastUtils.showSafeToast(RegActivity.this, "密码太短,请重新设置");
+            return;
+        }
+
+        queryUserData();
+
+    }
+
+    /**
+     * 查询手机号是否已经注册了
+     * <p>
+     * 注意注意: 在商业项目中,这里只需要请求注册接口即可.手机号是否存在由后台岗位同事判断
+     */
+    private void queryUserData() {
+
+        List<User> mUserDataList = UserDo.queryUser(phone);
+        if (mUserDataList != null && mUserDataList.size() > 0) {
+            ToastUtils.showSafeToast(RegActivity.this, "手机号已被注册");
+        } else {
+            jumpRegSecondUi();
+        }
+    }
+
+    /**
+     * 跳转到注册界面二
+     */
+
+    private void jumpRegSecondUi() {
+        Intent intent = new Intent(this, RegSecondActivity.class);
+        intent.putExtra("phone", phone);
+        intent.putExtra("pwd", pwd);
+        startActivity(intent);
     }
 
 }

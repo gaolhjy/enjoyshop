@@ -8,18 +8,16 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.bigkoo.pickerview.OptionsPickerView;
+import com.enjoyshop.EnjoyshopApplication;
 import com.enjoyshop.R;
 import com.enjoyshop.bean.PickerCityAddressBean;
-import com.enjoyshop.contants.HttpContants;
-import com.enjoyshop.EnjoyshopApplication;
+import com.enjoyshop.data.dao.Address;
+import com.enjoyshop.data.daodo.AddressDo;
 import com.enjoyshop.utils.GetJsonDataUtil;
-import com.enjoyshop.utils.LogUtil;
 import com.enjoyshop.utils.ToastUtils;
 import com.enjoyshop.widget.ClearEditText;
 import com.enjoyshop.widget.EnjoyshopToolBar;
 import com.google.gson.Gson;
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.StringCallback;
 
 import org.json.JSONArray;
 
@@ -27,7 +25,6 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import okhttp3.Call;
 
 import static com.enjoyshop.R.id.txt_address;
 
@@ -40,8 +37,19 @@ import static com.enjoyshop.R.id.txt_address;
 
 public class AddressAddActivity extends BaseActivity {
 
-
     //三级联动 github地址   //https://github.com/saiwu-bigkoo/Android-PickerView    start:4953
+
+    @BindView(R.id.toolbar)
+    EnjoyshopToolBar mToolBar;
+    @BindView(R.id.edittxt_consignee)
+    ClearEditText    mEditConsignee;
+    @BindView(R.id.edittxt_phone)
+    ClearEditText    mEditPhone;
+    @BindView(R.id.txt_address)
+    TextView         mTxtAddress;
+    @BindView(R.id.edittxt_add)
+    ClearEditText    mEditAddr;
+
 
     private ArrayList<PickerCityAddressBean>        options1Items = new ArrayList<>();
     private ArrayList<ArrayList<String>>            options2Items = new ArrayList<>();
@@ -52,16 +60,13 @@ public class AddressAddActivity extends BaseActivity {
     private static final int MSG_LOAD_SUCCESS = 0x0002;
     private static final int MSG_LOAD_FAILED  = 0x0003;
 
-    @BindView(R.id.toolbar)
-    EnjoyshopToolBar  mToolBar;
-    @BindView(R.id.edittxt_consignee)
-    ClearEditText mEditConsignee;
-    @BindView(R.id.edittxt_phone)
-    ClearEditText mEditPhone;
-    @BindView(txt_address)
-    TextView      mTxtAddress;
-    @BindView(R.id.edittxt_add)
-    ClearEditText mEditAddr;
+    /**
+     * 数据库的操作类型.
+     * 如果是0 就是增加(默认)
+     * 1 就是修改
+     */
+    private int addressDoType = 0;
+
 
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
@@ -82,7 +87,7 @@ public class AddressAddActivity extends BaseActivity {
                     isLoaded = true;
                     break;
                 case MSG_LOAD_FAILED:
-                    ToastUtils.showSafeToast(AddressAddActivity.this,"数据获取失败,请重试");
+                    ToastUtils.showSafeToast(AddressAddActivity.this, "数据获取失败,请重试");
                     break;
 
             }
@@ -100,6 +105,16 @@ public class AddressAddActivity extends BaseActivity {
 
         mHandler.sendEmptyMessage(MSG_LOAD_DATA);
 
+        String name = (String) getIntent().getSerializableExtra("name");
+
+        if (name != null) {
+            addressDoType = 1;
+            editAddress();
+        } else {
+            addressDoType = 0;
+        }
+
+
         mToolBar.setRightButtonOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,17 +124,34 @@ public class AddressAddActivity extends BaseActivity {
     }
 
 
-    @OnClick({txt_address})
+    @OnClick({R.id.txt_address})
     public void viewClick(View view) {
         switch (view.getId()) {
             case txt_address:
                 if (isLoaded) {
                     ShowPickerView();
                 } else {
-                    ToastUtils.showSafeToast(AddressAddActivity.this,"请稍等,数据获取中");
+                    ToastUtils.showSafeToast(AddressAddActivity.this, "请稍等,数据获取中");
                 }
                 break;
         }
+    }
+
+    /**
+     * 修改新的地址
+     */
+    private void editAddress() {
+
+        String name = (String) getIntent().getSerializableExtra("name");
+        String phone = (String) getIntent().getSerializableExtra("phone");
+        String bigAddress = (String) getIntent().getSerializableExtra("BigAddress");
+        String smallAddress = (String) getIntent().getSerializableExtra("SmallAddress");
+
+        mEditConsignee.setText(name);
+        mEditConsignee.setSelection(name.length());
+        mEditPhone.setText(phone);
+        mTxtAddress.setText(bigAddress);
+        mEditAddr.setText(smallAddress);
     }
 
     /**
@@ -136,47 +168,77 @@ public class AddressAddActivity extends BaseActivity {
 
         //进行非空判断
         if (TextUtils.isEmpty(consignee)) {
-            ToastUtils.showSafeToast(AddressAddActivity.this,"收件人为空,请检查");
+            ToastUtils.showSafeToast(AddressAddActivity.this, "收件人为空,请检查");
             return;
         }
 
         if (TextUtils.isEmpty(phone)) {
-            ToastUtils.showSafeToast(AddressAddActivity.this,"联系电话为空,请检查");
+            ToastUtils.showSafeToast(AddressAddActivity.this, "联系电话为空,请检查");
             return;
         }
 
         if (TextUtils.isEmpty(smallAddress) || TextUtils.isEmpty(bigAddress)) {
-            ToastUtils.showSafeToast(AddressAddActivity.this,"地址不完整,请检查");
+            ToastUtils.showSafeToast(AddressAddActivity.this, "地址不完整,请检查");
             return;
         }
 
+        Long userId = EnjoyshopApplication.getApplication().getUser().getId();
 
-        Long id = EnjoyshopApplication.getApplication().getUser().getId();
+        Address addBean = new Address();
+        addBean.setUserId(userId);
+        addBean.setName(consignee);
+        addBean.setPhone(phone);
+        addBean.setIsDefaultAddress(false);
+        addBean.setBigAddress(bigAddress);
+        addBean.setSmallAddress(smallAddress);
+        addBean.setAddress(address);
+        if (addressDoType == 0) {
+            AddressDo.insertAddress(addBean);
+            ToastUtils.showSafeToast(AddressAddActivity.this, "地址添加成功");
+        } else if (addressDoType == 1) {
+            Long addressId = (Long) getIntent().getSerializableExtra("addressId");
+            addBean.setAddressId(addressId);
+            AddressDo.updateAddress(addBean);
+            ToastUtils.showSafeToast(AddressAddActivity.this, "地址修改成功");
+        }
 
-        String url = HttpContants.ADDRESS_CREATE + "?user_id=" + id + "&consignee=" + consignee +
-                "&phone=" + phone +
-                "&addr=" + address + "&zip_code=" + "000000";
+        finish();
 
-        OkHttpUtils.post().url(url).build().execute(new StringCallback() {
-            @Override
-            public void onError(Call call, Exception e, int id) {
-                LogUtil.e("添加新地址", "失败" + e, true);             //   java.io.IOException: request
+        //
+        //        ToastUtils.showSafeToast(RegSecondActivity.this, "注册成功");
+        //        startActivity(new Intent(RegSecondActivity.this, LoginActivity.class));
+        //        finish();
+        //
+        //
+        //
+        //
+        //
+        //
+        //        String url = HttpContants.ADDRESS_CREATE + "?user_id=" + id + "&consignee=" +
+        // consignee +
+        //                "&phone=" + phone +
+        //                "&addr=" + address + "&zip_code=" + "000000";
 
-                ToastUtils.showSafeToast(AddressAddActivity.this,"地址添加失败,请重试");
-            }
+        //        OkHttpUtils.post().url(url).build().execute(new StringCallback() {
+        //            @Override
+        //            public void onError(Call call, Exception e, int id) {
+        //                LogUtil.e("添加新地址", "失败" + e, true);             //   java.io
+        // .IOException: request
+        //
+        //                ToastUtils.showSafeToast(AddressAddActivity.this,"地址添加失败,请重试");
+        //            }
+        //
+        //            @Override
+        //            public void onResponse(String response, int id) {
+        //                LogUtil.e("添加新地址", "成功" + response, true);
+        //
+        //                ToastUtils.showSafeToast(AddressAddActivity.this,"地址添加成功");
+        //            }
+        //        });
 
-            @Override
-            public void onResponse(String response, int id) {
-                LogUtil.e("添加新地址", "成功" + response, true);
-
-                ToastUtils.showSafeToast(AddressAddActivity.this,"地址添加成功");
-            }
-        });
-
-        //跳转到地址列表界面
-        AddressAddActivity.this.finish();
 
     }
+
 
     private void ShowPickerView() {// 弹出选择器
 

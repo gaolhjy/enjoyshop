@@ -92,9 +92,7 @@ public class LocationService {
 	}
 	
 	public boolean requestHotSpotState(){
-		
 		return client.requestHotSpotState();
-		
 	}
 	
 }

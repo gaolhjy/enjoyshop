@@ -1,21 +1,22 @@
 package com.enjoyshop.activity;
 
 import android.content.Intent;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.enjoyshop.EnjoyshopApplication;
 import com.enjoyshop.R;
 import com.enjoyshop.adapter.AddressListAdapter;
-import com.enjoyshop.contants.Contants;
-import com.enjoyshop.contants.HttpContants;
-import com.enjoyshop.utils.LogUtil;
+import com.enjoyshop.data.dao.Address;
+import com.enjoyshop.data.daodo.AddressDo;
 import com.enjoyshop.widget.EnjoyshopToolBar;
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.StringCallback;
+
+import java.util.List;
 
 import butterknife.BindView;
-import okhttp3.Call;
 
 /**
  * Created by 高磊华
@@ -32,6 +33,7 @@ public class AddressListActivity extends BaseActivity {
     RecyclerView mRecyclerview;
 
     private AddressListAdapter mAdapter;
+    private List<Address>      mAddressDataList;
 
     @Override
     protected int getContentResourseId() {
@@ -41,31 +43,82 @@ public class AddressListActivity extends BaseActivity {
     @Override
     protected void init() {
         initToolbar();
+        initView();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         initAddress();
+    }
+
+
+    private void initView() {
+        if (mAdapter == null) {
+            mAdapter = new AddressListAdapter(mAddressDataList, AddressListActivity.this);
+            mRecyclerview.setAdapter(mAdapter);
+            mRecyclerview.setLayoutManager(new LinearLayoutManager(AddressListActivity.this));
+            mRecyclerview.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration
+                    .HORIZONTAL));
+
+            mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+                @Override
+                public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                    Address address = mAddressDataList.get(position);
+                    switch (view.getId()) {
+                        case R.id.txt_edit:
+                            updateAddress(address);
+                            break;
+                        case R.id.txt_del:
+                            delAddress(address);
+                            break;
+                        case R.id.cb_is_defualt:
+                            chooseDefult(address);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            });
+        }
     }
 
     /**
      * 初始化地址信息
+     * 商业项目这里是请求接口
      */
     private void initAddress() {
 
         Long userId = EnjoyshopApplication.getInstance().getUser().getId();
-        LogUtil.e("地址列表", "失败" + userId, true);                  //失败 -1
-        String url = HttpContants.ADDRESS_LIST + "?user_id=" + userId;
+        mAddressDataList = AddressDo.queryAddress(userId);
+        if (mAddressDataList != null && mAddressDataList.size() > 0) {
+            for (int i = 0; i < mAddressDataList.size(); i++) {
 
-        OkHttpUtils.get().url(url).build().execute(new StringCallback() {
-
-            @Override
-            public void onError(Call call, Exception e, int id) {
-                LogUtil.e("地址列表", "失败" + e, true);
+                mAdapter.setNewData(mAddressDataList);
             }
+        }
+    }
 
-            @Override
-            public void onResponse(String response, int id) {
-                LogUtil.e("地址列表", "成功", true);
-            }
-        });
 
+    private void updateAddress(Address address) {
+        jumpAddressAdd(address);
+    }
+
+    private void delAddress(Address address) {
+        Long addressId = address.getAddressId();
+        AddressDo.deleteAddress(addressId);
+        initAddress();
+        mAdapter.notifyDataSetChanged();
+    }
+
+    private void chooseDefult(Address address) {
+        Long addressId = address.getAddressId();
+        address.setAddressId(addressId);
+        address.setIsDefaultAddress(!address.getIsDefaultAddress());
+        AddressDo.updateAddress(address);
+        initAddress();
+        mAdapter.notifyDataSetChanged();
     }
 
     /**
@@ -83,11 +136,21 @@ public class AddressListActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 //跳转到添加地址界面
-                Intent intent = new Intent(AddressListActivity.this, AddressAddActivity.class);
-                startActivityForResult(intent, Contants.Addresslist2Addressadd);
+                jumpAddressAdd(null);
             }
         });
     }
 
-
+    private void jumpAddressAdd(Address address) {
+        Intent intent = new Intent(AddressListActivity.this, AddressAddActivity.class);
+        //这里不能使用序列化
+        if (address != null) {
+            intent.putExtra("addressId", address.getAddressId());
+            intent.putExtra("name", address.getName());
+            intent.putExtra("phone", address.getPhone());
+            intent.putExtra("BigAddress", address.getBigAddress());
+            intent.putExtra("SmallAddress", address.getSmallAddress());
+        }
+        startActivity(intent);
+    }
 }

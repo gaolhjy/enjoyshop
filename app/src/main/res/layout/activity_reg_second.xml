@@ -16,8 +16,8 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         app:isShowLeftIcon="true"
-        app:rightButtonText="完 成"
-        app:title="用户注册(2/2)"
+        app:rightButtonText="完成"
+        app:title="注册(2/2)"
         />
 
     <TextView
@@ -62,7 +62,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:enabled="false"
                 android:text="点击发送验证码"
                 />
         </LinearLayout>

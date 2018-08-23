@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'org.greenrobot.greendao'
 
 android {
 
@@ -49,6 +49,11 @@ android {
         }
     }
 
+    greendao {
+        schemaVersion 1  //版本
+        daoPackage 'com.enjoyshop.data.dao' // 一般为app包名+生成文件的文件夹名
+        targetGenDir 'src/main/java' //生成文件路径
+    }
 }
 
 repositories {
@@ -60,17 +65,17 @@ repositories {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    implementation 'com.android.support:appcompat-v7:27.1.0'
-    implementation 'com.android.support:recyclerview-v7:27.1.0'
-    implementation 'com.android.support:cardview-v7:27.1.0'
-    implementation 'com.android.support:design:27.1.0'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
 
     implementation 'com.zhy:okhttputils:2.6.2'
     implementation 'com.zhy:base-rvadapter:3.0.3'
 
 
     //轮播图.
-    implementation 'com.youth.banner:banner:1.4.10'
+    implementation 'com.youth.banner:banner:1.4.9'
 
     implementation 'com.github.bumptech.glide:glide:4.6.1'
     implementation 'com.google.code.gson:gson:2.8.5'
@@ -80,6 +85,10 @@ dependencies {
     //黄油刀
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    //数据库
+    implementation 'org.greenrobot:greendao:3.2.2'
+    implementation 'org.greenrobot:greendao-generator:3.2.2'
 
     //批量处理权限的库
     implementation 'com.mylhyl:acp:1.1.7'
@@ -94,6 +103,9 @@ dependencies {
     //跑马灯view
     implementation 'com.sunfusheng:marqueeview:1.3.3'
 
+    //recyclerviewhelper
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.41'
+
     implementation files('libs/MobCommons-2017.0801.1522.jar')
     implementation files('libs/MobTools-2017.0801.1522.jar')
     implementation files('libs/ShareSDK-Core-3.0.1.jar')
@@ -107,5 +119,4 @@ dependencies {
     implementation files('libs/ShareSDK-Wechat-Moments-3.0.1.jar')
     implementation files('libs/BaiduLBS_Android.jar')
     implementation files('libs/tbs_sdk_thirdapp_v3.2.0.1104_43200_sharewithdownload_withfilereader_withoutGame_obfs_20170609_115346.jar')
-
 }
