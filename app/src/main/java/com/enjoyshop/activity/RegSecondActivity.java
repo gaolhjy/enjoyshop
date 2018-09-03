@@ -7,8 +7,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.enjoyshop.R;
+import com.enjoyshop.data.DataManager;
 import com.enjoyshop.data.dao.User;
-import com.enjoyshop.data.daodo.UserDo;
 import com.enjoyshop.utils.CountTimerView;
 import com.enjoyshop.utils.ToastUtils;
 import com.enjoyshop.widget.ClearEditText;
@@ -107,7 +107,7 @@ public class RegSecondActivity extends BaseActivity {
         User user = new User();
         user.setPhone(phone);
         user.setPwd(pwd);
-        UserDo.insertUser(user);
+        DataManager.insertUser(user);
 
         ToastUtils.showSafeToast(RegSecondActivity.this, "注册成功");
         startActivity(new Intent(RegSecondActivity.this, LoginActivity.class));

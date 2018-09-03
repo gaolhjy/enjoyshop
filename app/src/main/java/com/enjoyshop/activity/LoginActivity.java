@@ -7,8 +7,8 @@ import android.widget.TextView;
 
 import com.enjoyshop.EnjoyshopApplication;
 import com.enjoyshop.R;
+import com.enjoyshop.data.DataManager;
 import com.enjoyshop.data.dao.User;
-import com.enjoyshop.data.daodo.UserDo;
 import com.enjoyshop.utils.StringUtils;
 import com.enjoyshop.utils.ToastUtils;
 import com.enjoyshop.widget.ClearEditText;
@@ -148,7 +148,7 @@ public class LoginActivity extends BaseActivity {
 
     private void loginlogic(String phone, String pwd) {
 
-        List<User> mUserDataList = UserDo.queryUser(phone);
+        List<User> mUserDataList = DataManager.queryUser(phone);
         if (mUserDataList != null && mUserDataList.size() > 0) {
 
             String netPwd = mUserDataList.get(0).getPwd();

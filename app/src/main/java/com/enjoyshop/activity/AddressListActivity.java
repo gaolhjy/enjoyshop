@@ -10,8 +10,8 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.enjoyshop.EnjoyshopApplication;
 import com.enjoyshop.R;
 import com.enjoyshop.adapter.AddressListAdapter;
+import com.enjoyshop.data.DataManager;
 import com.enjoyshop.data.dao.Address;
-import com.enjoyshop.data.daodo.AddressDo;
 import com.enjoyshop.utils.PreferencesUtils;
 import com.enjoyshop.widget.EnjoyshopToolBar;
 
@@ -97,7 +97,7 @@ public class AddressListActivity extends BaseActivity {
     private void initAddress() {
 
         Long userId = EnjoyshopApplication.getInstance().getUser().getId();
-        mAddressDataList = AddressDo.queryAddress(userId);
+        mAddressDataList = DataManager.queryAddress(userId);
         if (mAddressDataList != null && mAddressDataList.size() > 0) {
             for (int i = 0; i < mAddressDataList.size(); i++) {
                 mAdapter.setNewData(mAddressDataList);
@@ -115,7 +115,7 @@ public class AddressListActivity extends BaseActivity {
 
     private void delAddress(Address address) {
         Long addressId = address.getAddressId();
-        AddressDo.deleteAddress(addressId);
+        DataManager.deleteAddress(addressId);
         initAddress();
         mAdapter.notifyDataSetChanged();
     }
@@ -146,7 +146,7 @@ public class AddressListActivity extends BaseActivity {
         Long addressId = address.getAddressId();
         address.setAddressId(addressId);
         address.setIsDefaultAddress(!address.getIsDefaultAddress());
-        AddressDo.updateAddress(address);
+        DataManager.updateAddress(address);
 
     }
 

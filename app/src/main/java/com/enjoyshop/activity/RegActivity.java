@@ -6,8 +6,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.enjoyshop.R;
+import com.enjoyshop.data.DataManager;
 import com.enjoyshop.data.dao.User;
-import com.enjoyshop.data.daodo.UserDo;
 import com.enjoyshop.utils.StringUtils;
 import com.enjoyshop.utils.ToastUtils;
 import com.enjoyshop.widget.ClearEditText;
@@ -108,7 +108,7 @@ public class RegActivity extends BaseActivity {
      */
     private void queryUserData() {
 
-        List<User> mUserDataList = UserDo.queryUser(phone);
+        List<User> mUserDataList = DataManager.queryUser(phone);
         if (mUserDataList != null && mUserDataList.size() > 0) {
             ToastUtils.showSafeToast(RegActivity.this, "手机号已被注册");
         } else {

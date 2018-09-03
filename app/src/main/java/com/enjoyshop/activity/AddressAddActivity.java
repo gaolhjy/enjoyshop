@@ -11,8 +11,8 @@ import com.bigkoo.pickerview.OptionsPickerView;
 import com.enjoyshop.EnjoyshopApplication;
 import com.enjoyshop.R;
 import com.enjoyshop.bean.PickerCityAddressBean;
+import com.enjoyshop.data.DataManager;
 import com.enjoyshop.data.dao.Address;
-import com.enjoyshop.data.daodo.AddressDo;
 import com.enjoyshop.utils.GetJsonDataUtil;
 import com.enjoyshop.utils.KeyBoardUtils;
 import com.enjoyshop.utils.ToastUtils;
@@ -192,7 +192,7 @@ public class AddressAddActivity extends BaseActivity {
 
         Long userId = EnjoyshopApplication.getApplication().getUser().getId();
 
-        List<Address> mAddressDataList = AddressDo.queryAddress(userId);
+        List<Address> mAddressDataList = DataManager.queryAddress(userId);
         if (mAddressDataList != null && mAddressDataList.size() == 0) {
             isOnlyAddress = true;
         } else {
@@ -213,12 +213,12 @@ public class AddressAddActivity extends BaseActivity {
         addBean.setSmallAddress(smallAddress);
         addBean.setAddress(address);
         if (addressDoType == 0) {
-            AddressDo.insertAddress(addBean);
+            DataManager.insertAddress(addBean);
             ToastUtils.showSafeToast(AddressAddActivity.this, "地址添加成功");
         } else if (addressDoType == 1) {
             Long addressId = (Long) getIntent().getSerializableExtra("addressId");
             addBean.setAddressId(addressId);
-            AddressDo.updateAddress(addBean);
+            DataManager.updateAddress(addBean);
             ToastUtils.showSafeToast(AddressAddActivity.this, "地址修改成功");
         }
 
