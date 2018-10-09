@@ -148,18 +148,21 @@ public class ShopCartFragment extends BaseFragment  {
         }
     }
 
-
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        if (!hidden){
+            refData();
+        }
+    }
 
     /**
      * 刷新数据
      * <p>
      * fragment是隐藏与显示.生命周期很多没走.
-     * 需要切换到购物车fragment后,进行刷新
-     * <p>
      * 先将数据全部清除,再重新添加(有可能和以前一样,有可能有新数据)
      * 清除的目的,就是为了防止添加了新数据而界面上没展示
      */
-    public void refData() {
+    private void refData() {
 
         List<ShoppingCart> carts = mCartShopProvider.getAll();
         if (carts != null && carts.size() > 0) {
@@ -169,7 +172,6 @@ public class ShopCartFragment extends BaseFragment  {
             mAdapter.showTotalPrice();
         } else {
             initEmptyView();
-            return;
         }
 
 

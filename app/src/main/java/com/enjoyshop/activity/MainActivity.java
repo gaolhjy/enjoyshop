@@ -1,6 +1,5 @@
 package com.enjoyshop.activity;
 
-import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +16,6 @@ import com.enjoyshop.fragment.HomeFragment;
 import com.enjoyshop.fragment.HotFragment;
 import com.enjoyshop.fragment.MineFragment;
 import com.enjoyshop.fragment.ShopCartFragment;
-import com.enjoyshop.utils.LogUtil;
 import com.enjoyshop.utils.ToastUtils;
 import com.enjoyshop.widget.FragmentTabHost;
 
@@ -84,39 +82,12 @@ public class MainActivity extends BaseActivity {
         }
 
 
-        /**
-         * 因为涉及到fragment的生命周期.所以每次切换到购物车时,需要重新刷新数据
-         */
-        mTabhost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
-            @Override
-            public void onTabChanged(String tabId) {
-                LogUtil.e("生命周期", "1111111111", true);
-                if (getString(R.string.cart).equals(tabId)) {
-                    refData();
-                }
-            }
-        });
-
         mTabhost.getTabWidget().setShowDividers(LinearLayout.SHOW_DIVIDER_NONE);
         mTabhost.setCurrentTab(0);           //默认选中第0个
 
     }
 
-    private void refData() {
 
-        if (shopCartFragment == null) {
-            Fragment fragment = getSupportFragmentManager().findFragmentByTag(getString(R.string
-                    .cart));
-
-            if (fragment != null) {
-                shopCartFragment = (ShopCartFragment) fragment;
-                shopCartFragment.refData();
-            }
-        } else {
-            shopCartFragment.refData();
-        }
-
-    }
 
     private View buildIndicator(Tab tab) {
 
