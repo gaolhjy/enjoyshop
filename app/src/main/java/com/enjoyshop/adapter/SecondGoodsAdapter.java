@@ -1,14 +1,13 @@
 package com.enjoyshop.adapter;
 
-import android.content.Context;
 import android.widget.ImageView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.enjoyshop.EnjoyshopApplication;
 import com.enjoyshop.R;
 import com.enjoyshop.bean.HotGoods;
 import com.enjoyshop.utils.GlideUtils;
-import com.zhy.adapter.recyclerview.CommonAdapter;
-import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.List;
 
@@ -18,19 +17,17 @@ import java.util.List;
  * Dscribe: 分类 二级菜单 适配器
  */
 
-public class SecondGoodsAdapter extends CommonAdapter<HotGoods.ListBean> {
+public class SecondGoodsAdapter extends BaseQuickAdapter<HotGoods.ListBean, BaseViewHolder> {
 
-    public SecondGoodsAdapter(Context context, List<HotGoods.ListBean> datas) {
-        super(context, R.layout.template_category_wares, datas);
-
+    public SecondGoodsAdapter(List<HotGoods.ListBean> datas) {
+        super(R.layout.template_category_wares, datas);
     }
 
     @Override
-    protected void convert(ViewHolder holder, HotGoods.ListBean bean, int position) {
-
-        holder.setText(R.id.text_title, bean.getName());
-        holder.setText(R.id.text_price, "￥" + bean.getPrice());
-        GlideUtils.load(EnjoyshopApplication.sContext, bean.getImgUrl(), (ImageView) holder.getView(R
-                .id.iv_view));
+    protected void convert(BaseViewHolder holder, HotGoods.ListBean bean) {
+        holder.setText(R.id.text_title, bean.getName())
+                .setText(R.id.text_price, "￥" + bean.getPrice());
+        GlideUtils.load(EnjoyshopApplication.sContext, bean.getImgUrl(), (ImageView) holder
+                .getView(R.id.iv_view));
     }
 }

@@ -1,14 +1,13 @@
 package com.enjoyshop.adapter;
 
-import android.content.Context;
 import android.widget.ImageView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.enjoyshop.EnjoyshopApplication;
 import com.enjoyshop.R;
 import com.enjoyshop.bean.ShoppingCart;
 import com.enjoyshop.utils.GlideUtils;
-import com.zhy.adapter.recyclerview.CommonAdapter;
-import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.List;
 
@@ -23,22 +22,21 @@ import java.util.List;
  */
 
 
-public class GoodsOrderAdapter extends CommonAdapter<ShoppingCart> {
+public class GoodsOrderAdapter extends BaseQuickAdapter<ShoppingCart, BaseViewHolder> {
 
     private List<ShoppingCart> mDatas;
 
-    public GoodsOrderAdapter(Context context, List<ShoppingCart> datas) {
-        super(context, R.layout.template_order_goods, datas);
+    public GoodsOrderAdapter(List<ShoppingCart> datas) {
+        super(R.layout.template_order_goods, datas);
         this.mDatas = datas;
     }
 
     @Override
-    protected void convert(ViewHolder holder, ShoppingCart shoppingCart, int position) {
-
-        GlideUtils.load(EnjoyshopApplication.sContext, shoppingCart.getImgUrl(), (ImageView) holder
+    protected void convert(BaseViewHolder holder, ShoppingCart item) {
+        GlideUtils.load(EnjoyshopApplication.sContext, item.getImgUrl(), (ImageView) holder
                 .getView(R.id.iv_view));
-
     }
+
 
     public float getTotalPrice() {
 

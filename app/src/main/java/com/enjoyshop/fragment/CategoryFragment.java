@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.cjj.MaterialRefreshLayout;
 import com.enjoyshop.EnjoyshopApplication;
 import com.enjoyshop.R;
@@ -28,7 +29,6 @@ import com.enjoyshop.utils.ToastUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.sunfusheng.marqueeview.MarqueeView;
-import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -182,26 +182,20 @@ public class CategoryFragment extends BaseFragment {
 
     private void showCategoryData() {
 
-        mCategoryAdapter = new CategoryAdapter(getContext(), categoryFirst);
+        mCategoryAdapter = new CategoryAdapter(categoryFirst);
 
-        mCategoryAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
+        mCategoryAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-                Category category = categoryFirst.get(position);
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Category category = (Category) adapter.getData().get(position);
                 int id = category.getId();
                 String name = category.getName();
                 isclick = true;
                 defaultClick();
                 requestWares(id);
-
-            }
-
-            @Override
-            public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int
-                    position) {
-                return false;
             }
         });
+
 
         mRecyclerView.setAdapter(mCategoryAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -209,13 +203,11 @@ public class CategoryFragment extends BaseFragment {
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),
                 DividerItemDecoration.VERTICAL));
 
-
     }
 
 
     private void defaultClick() {
 
-        LogUtil.e("判断是否点击过", isclick + "", true);
         //默认选中第0个
         if (!isclick) {
             Category category = categoryFirst.get(0);
@@ -264,15 +256,14 @@ public class CategoryFragment extends BaseFragment {
         switch (state) {
             case STATE_NORMAL:
 
-                mSecondGoodsAdapter = new SecondGoodsAdapter(getContext(), datas);
-                mSecondGoodsAdapter.setOnItemClickListener(new MultiItemTypeAdapter
+                mSecondGoodsAdapter = new SecondGoodsAdapter(datas);
+                mSecondGoodsAdapter.setOnItemClickListener(new BaseQuickAdapter
                         .OnItemClickListener() {
 
                     @Override
-                    public void onItemClick(View view, RecyclerView.ViewHolder holder, int
-                            position) {
-
-                        HotGoods.ListBean listBean = datas.get(position);
+                    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                        HotGoods.ListBean listBean = (HotGoods.ListBean) adapter.getData().get
+                                (position);
 
                         Intent intent = new Intent(getContext(), GoodsDetailsActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -281,12 +272,6 @@ public class CategoryFragment extends BaseFragment {
                         bundle.putSerializable("itemClickGoods", (Serializable) listBean);
                         intent.putExtras(bundle);
                         startActivity(intent);
-                    }
-
-                    @Override
-                    public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int
-                            position) {
-                        return false;
                     }
                 });
 

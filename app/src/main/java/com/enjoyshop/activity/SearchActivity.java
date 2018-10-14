@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.enjoyshop.R;
 import com.enjoyshop.adapter.HistorySearchAdapter;
 import com.enjoyshop.adapter.HotSearchAdapter;
@@ -15,7 +16,6 @@ import com.enjoyshop.utils.ToastUtils;
 import com.enjoyshop.widget.ClearEditText;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -99,21 +99,15 @@ public class SearchActivity extends BaseActivity {
      * 初始化热门搜索相关的适配器及其信息
      */
     private void setHotSearchData() {
-        mHotSearchAdapter = new HotSearchAdapter(this, hotSearchData);
+        mHotSearchAdapter = new HotSearchAdapter(hotSearchData);
         mHotSearchView.setAdapter(mHotSearchAdapter);
         mHotSearchView.setLayoutManager(new GridLayoutManager(this, 3));
 
-        mHotSearchAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
+        mHotSearchAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-                String content = hotSearchData.get(position);
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                String content = (String) adapter.getData().get(position);
                 doData(content);
-            }
-
-            @Override
-            public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int
-                    position) {
-                return false;
             }
         });
     }
@@ -123,22 +117,15 @@ public class SearchActivity extends BaseActivity {
      */
     private void setHistorySearchData() {
 
-        mHistorySearchAdapter = new HistorySearchAdapter(this, historySearchData);
+        mHistorySearchAdapter = new HistorySearchAdapter(historySearchData);
         mHistorySearchView.setAdapter(mHistorySearchAdapter);
         mHistorySearchView.setLayoutManager(new GridLayoutManager(this, 3));
 
-        mHistorySearchAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
-
+        mHistorySearchAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-                String content = historySearchData.get(position);
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                String content = (String) adapter.getData().get(position);
                 doData(content);
-            }
-
-            @Override
-            public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int
-                    position) {
-                return false;
             }
         });
     }

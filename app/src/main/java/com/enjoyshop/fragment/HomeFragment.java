@@ -4,21 +4,23 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.enjoyshop.EnjoyshopApplication;
 import com.enjoyshop.R;
 import com.enjoyshop.activity.GoodsListActivity;
 import com.enjoyshop.activity.SearchActivity;
-import com.enjoyshop.adapter.DividerItemDecortion;
 import com.enjoyshop.adapter.HomeCatgoryAdapter;
 import com.enjoyshop.bean.BannerBean;
-import com.enjoyshop.bean.Campaign;
 import com.enjoyshop.bean.HomeCampaignBean;
 import com.enjoyshop.contants.Contants;
 import com.enjoyshop.contants.HttpContants;
+import com.enjoyshop.helper.DividerItemDecortion;
 import com.enjoyshop.widget.EnjoyshopToolBar;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -52,19 +54,23 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     @BindView(R.id.toolbar)
     EnjoyshopToolBar mToolBar;
     @BindView(R.id.recyclerview)
-    RecyclerView mRecyclerView;
-    @BindView(R.id.banner)
-    Banner       mBanner;
+    RecyclerView     mRecyclerView;
 
+    private Banner           mBanner;
     private HomeCatgoryAdapter mAdatper;
     private List<String>           images = new ArrayList<>();
     private List<String>           titles = new ArrayList<>();
     private List<HomeCampaignBean> datas  = new ArrayList<>();
     private Gson                   gson   = new Gson();
-
+    View viewHeader;
 
     @Override
     protected void init() {
+
+        viewHeader = LayoutInflater.from(getActivity()).inflate(R.layout
+                .header_fragment_home, (ViewGroup) mRecyclerView.getParent(), false);
+        mBanner = viewHeader.findViewById(R.id.banner);
+
         initView();
         requestBannerData();     //请求轮播图数据
         requestCampaignData();     //请求商品详情数据
@@ -110,24 +116,65 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     /**
      * 首页商品数据
      */
+
+    private Long defaultId = 0L;
+
     private void setRecyclerViewData() {
 
-        mAdatper = new HomeCatgoryAdapter(getContext(), datas);
+        for (int i = 0; i < datas.size(); i++) {
+            if (i % 2 == 0) {
+                //左边样式的item
+                datas.get(i).setItemType(HomeCampaignBean.ITEM_TYPE_LEFT);
+            } else {
+                //右边样式的item
+                datas.get(i).setItemType(HomeCampaignBean.ITEM_TYPE_RIGHT);
+            }
+        }
 
-        mAdatper.setOnCampaignClickListener(new HomeCatgoryAdapter.OnCampaignClickListener() {
+        mAdatper = new HomeCatgoryAdapter(datas);
+        mRecyclerView.setAdapter(mAdatper);
+        mRecyclerView.addItemDecoration(new DividerItemDecortion());
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mAdatper.addHeaderView(viewHeader);
+
+        mAdatper.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
-            public void onClick(View view, Campaign campaign) {
-
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                HomeCampaignBean campaign = (HomeCampaignBean) adapter.getData().get(position);
                 Intent intent = new Intent(getContext(), GoodsListActivity.class);
                 intent.putExtra(Contants.COMPAINGAIN_ID, campaign.getId());
                 startActivity(intent);
             }
         });
 
+        mAdatper.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
 
-        mRecyclerView.setAdapter(mAdatper);
-        mRecyclerView.addItemDecoration(new DividerItemDecortion());
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+                HomeCampaignBean bean = (HomeCampaignBean) adapter.getData().get(position);
+                Long oneId = bean.getCpOne().getId();
+                Long twoId = bean.getCpTwo().getId();
+                Long threeId = bean.getCpThree().getId();
+
+
+                switch (view.getId()){
+                    case R.id.imgview_big:
+                        defaultId=oneId;
+                        break;
+                    case R.id.imgview_small_top:
+                        defaultId=twoId;
+                        break;
+                    case R.id.imgview_small_bottom:
+                        defaultId=threeId;
+                        break;
+                }
+
+                Intent intent = new Intent(getContext(), GoodsListActivity.class);
+                intent.putExtra(Contants.COMPAINGAIN_ID, defaultId);
+                startActivity(intent);
+
+            }
+        });
 
     }
 

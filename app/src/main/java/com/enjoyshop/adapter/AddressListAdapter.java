@@ -1,6 +1,5 @@
 package com.enjoyshop.adapter;
 
-import android.content.Context;
 import android.widget.CheckBox;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -18,7 +17,7 @@ import java.util.List;
 
 public class AddressListAdapter extends BaseQuickAdapter<Address, BaseViewHolder> {
 
-    public AddressListAdapter(List<Address> datas, Context context) {
+    public AddressListAdapter(List<Address> datas) {
         super(R.layout.template_address, datas);
     }
 

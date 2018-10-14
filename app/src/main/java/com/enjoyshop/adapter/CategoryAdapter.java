@@ -1,11 +1,9 @@
 package com.enjoyshop.adapter;
 
-import android.content.Context;
-
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.enjoyshop.R;
 import com.enjoyshop.bean.Category;
-import com.zhy.adapter.recyclerview.CommonAdapter;
-import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.List;
 
@@ -14,20 +12,20 @@ import java.util.List;
  *     author : 高磊华
  *     e-mail : 984992087@qq.com
  *     time   : 2017/08/08
- *     desc   : 分类一级菜单.第一次以这个形式使用鸿洋封装的baseAdapter
+ *     desc   : 分类一级菜单.
  *     version: 1.0
  * </pre>
  */
 
 
-public class CategoryAdapter extends CommonAdapter<Category> {
+public class CategoryAdapter extends BaseQuickAdapter<Category, BaseViewHolder> {
 
-    public CategoryAdapter(Context context, List<Category> datas) {
-       super(context, R.layout.template_single_text, datas);
+    public CategoryAdapter(List<Category> datas) {
+        super(R.layout.template_single_text, datas);
     }
 
     @Override
-    protected void convert(ViewHolder holder, Category category, int position) {
-        holder.setText(R.id.textView,category.getName());
+    protected void convert(BaseViewHolder holder, Category item) {
+        holder.setText(R.id.textView, item.getName());
     }
 }

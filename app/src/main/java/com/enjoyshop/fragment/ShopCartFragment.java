@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -37,31 +38,32 @@ import butterknife.OnClick;
  * </pre>
  */
 
-public class ShopCartFragment extends BaseFragment  {
+public class ShopCartFragment extends BaseFragment {
 
     public static final  int    ACTION_EDIT     = 1;
     public static final  int    ACTION_CAMPLATE = 2;
     private static final String TAG             = "CartFragment";
 
     @BindView(R.id.recycler_view)
-    RecyclerView   mRecyclerView;
+    RecyclerView     mRecyclerView;
     @BindView(R.id.checkbox_all)
-    CheckBox       mCheckBox;
+    CheckBox         mCheckBox;
     @BindView(R.id.txt_total)
-    TextView       mTextTotal;
+    TextView         mTextTotal;
     @BindView(R.id.btn_order)
-    Button         mBtnOrder;
+    Button           mBtnOrder;
     @BindView(R.id.btn_del)
-    Button         mBtnDel;
+    Button           mBtnDel;
     @BindView(R.id.toolbar)
-    EnjoyshopToolBar   mToolbar;
+    EnjoyshopToolBar mToolbar;
     @BindView(R.id.rv_bottom)
-    RelativeLayout mRvBottom;
+    RelativeLayout   mRvBottom;
     @BindView(R.id.ll_empty)
-    LinearLayout   mLlEmpty;
+    LinearLayout     mLlEmpty;
 
     private ShopCartAdapter  mAdapter;
     private CartShopProvider mCartShopProvider;
+    private List<ShoppingCart> carts;
 
     @Override
     protected int getContentResourseId() {
@@ -89,9 +91,11 @@ public class ShopCartFragment extends BaseFragment  {
     /**
      * 获取数据
      */
+
+
     private void showData() {
 
-        List<ShoppingCart> carts = mCartShopProvider.getAll();
+        carts = mCartShopProvider.getAll();
 
         if (carts == null) {
             initEmptyView();           //如果数据为空,显示空的试图
@@ -101,7 +105,7 @@ public class ShopCartFragment extends BaseFragment  {
         /**
          * 购物车数据不为空
          */
-        mAdapter = new ShopCartAdapter(getContext(), carts, mCheckBox, mTextTotal);
+        mAdapter = new ShopCartAdapter(this,carts);
         mRecyclerView.setAdapter(mAdapter);
         //recyclerView本身存在一个bug,在删 添加数据同时进行时,会报错:
         // java.lang.IndexOutOfBoundsException: Inconsistency detected. Invalid view holder
@@ -112,8 +116,59 @@ public class ShopCartFragment extends BaseFragment  {
                 LinearLayoutManager.VERTICAL, false));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),
                 DividerItemDecoration.VERTICAL));
+        mAdapter.setNewData(carts);
+
+//        mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+//            @Override
+//            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+//                ShoppingCart cart = (ShoppingCart) adapter.getData().get(position);
+//                CheckBox checkBox = view.findViewById(R.id.checkbox);
+//
+//                switch (view.getId()) {
+//                    case R.id.checkbox:
+//                        checkBox.setChecked(cart.isChecked());
+//                        checkListen();
+//                        showTotalPrice();
+//                        mAdapter.notifyItemChanged(position);
+//                        break;
+//                }
+//            }
+//        });
+
+        checkListen();
 
     }
+
+
+    /**
+     * 思路:
+     * 1.先拿到所有数据的长度,然后对所有数据进行遍历
+     * 2.判断里面的 isCheck  是不是被选中
+     * 3.把所有选中的进行计数  并相加 sum1
+     * 4. 如果步骤3中sum1 与总的总数相等,说明全部选中了  反正没有全选中
+     */
+    public void checkListen() {
+
+        int count = 0;
+        int checkNum = 0;
+        if (carts != null) {
+            count = carts.size();
+
+            for (ShoppingCart cart : carts) {
+                if (!cart.isChecked()) {
+                    mCheckBox.setChecked(false);
+                    break;
+                } else {
+                    checkNum = checkNum + 1;
+                }
+            }
+
+            if (count == checkNum) {
+                mCheckBox.setChecked(true);
+            }
+        }
+    }
+
 
     private void initEmptyView() {
         mRvBottom.setVisibility(View.GONE);
@@ -121,7 +176,7 @@ public class ShopCartFragment extends BaseFragment  {
     }
 
 
-    @OnClick({R.id.btn_del, R.id.btn_order, R.id.tv_goshop})
+    @OnClick({R.id.btn_del, R.id.btn_order, R.id.tv_goshop, R.id.checkbox_all})
     public void viewClick(View view) {
         switch (view.getId()) {
             case R.id.btn_del:
@@ -145,12 +200,16 @@ public class ShopCartFragment extends BaseFragment  {
                 EventBus.getDefault().post(new MessageEvent(0));
 
                 break;
+            case R.id.checkbox_all:
+                mAdapter.setCheckBox(mCheckBox.isChecked());
+                showTotalPrice();
+                break;
         }
     }
 
     @Override
     public void onHiddenChanged(boolean hidden) {
-        if (!hidden){
+        if (!hidden) {
             refData();
         }
     }
@@ -169,35 +228,40 @@ public class ShopCartFragment extends BaseFragment  {
             mLlEmpty.setVisibility(View.GONE);
             mRvBottom.setVisibility(View.VISIBLE);
             showData();
-            mAdapter.showTotalPrice();
+            showTotalPrice();
         } else {
             initEmptyView();
         }
 
+    }
 
-        /**
-         * 不能按照下面的逻辑写.
-         * 因为第二次进入购物车界面时,fragment生命周期没有走 init方法.
-         * 如果一开始购物车为空,按照showData()的逻辑,adapter是没有初始化的,即mAdapter为空
-         * 即使后面再添加商品到购物车中,因为没有执行 init() 方法,而init()方法内的 show() 方法自然也不会执行.此时mAdpter依旧为空
-         * 一直都在执行else中的逻辑
-         * 所以需要根据carts的值来判断
-         */
+    public void showTotalPrice() {
+        float total = getTotalPrice();
+        mTextTotal.setText(Html.fromHtml("合计 ￥<span style='color:#eb4f38'>" + total + "</span>"),
+                TextView.BufferType.SPANNABLE);
+    }
 
-        //        //有数据
-        //        if (mAdapter != null && mAdapter.getDatas() != null) {
-        //            mAdapter.getDatas().clear();
-        //            List<ShoppingCart> carts = mCartShopProvider.getAll();
-        //            mAdapter.addData(carts);
-        //            mAdapter.showTotalPrice();
-        //        }
-        //        //没有数据
-        //        else {
-        //            initEmptyView();
-        //            return;
-        //        }
+    /**
+     * 计算总和
+     */
 
+    public boolean isNull() {
+        return (carts != null && carts.size() > 0);
+    }
 
+    private float getTotalPrice() {
+
+        float sum = 0;
+        if (!isNull())
+            return sum;
+
+        for (ShoppingCart cart : carts) {
+            if (cart.isChecked()) {   //是否勾上去了
+                sum += cart.getCount() * cart.getPrice();
+            }
+        }
+
+        return sum;
     }
 
 }

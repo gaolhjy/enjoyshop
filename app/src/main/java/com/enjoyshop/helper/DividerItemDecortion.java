@@ -1,4 +1,4 @@
-package com.enjoyshop.adapter;
+package com.enjoyshop.helper;
 
 import android.graphics.Canvas;
 import android.graphics.Rect;

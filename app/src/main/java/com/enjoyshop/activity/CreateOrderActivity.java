@@ -112,7 +112,7 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
     public void showData() {
 
         cartProvider = new CartShopProvider(this);
-        mAdapter = new GoodsOrderAdapter(this, cartProvider.getAll());
+        mAdapter = new GoodsOrderAdapter(cartProvider.getAll());
 
         FullyLinearLayoutManager layoutManager = new FullyLinearLayoutManager(this);
         //recyclerView外面嵌套ScrollView.数据显示不全
@@ -167,7 +167,7 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
 
     private void postNewOrder() {
 
-        final List<ShoppingCart> carts = mAdapter.getDatas();
+        final List<ShoppingCart> carts = mAdapter.getData();
 
         List<WareItem> items = new ArrayList<>(carts.size());
         for (ShoppingCart c : carts) {

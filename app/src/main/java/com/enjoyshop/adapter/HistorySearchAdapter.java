@@ -1,10 +1,8 @@
 package com.enjoyshop.adapter;
 
-import android.content.Context;
-
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.enjoyshop.R;
-import com.zhy.adapter.recyclerview.CommonAdapter;
-import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.List;
 
@@ -17,14 +15,14 @@ import java.util.List;
  * </pre>
  */
 
-public class HistorySearchAdapter extends CommonAdapter<String> {
+public class HistorySearchAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
 
-    public HistorySearchAdapter(Context context, List<String> datas) {
-        super(context, R.layout.item_search, datas);
+    public HistorySearchAdapter(List<String> datas) {
+        super(R.layout.item_search, datas);
     }
 
     @Override
-    protected void convert(ViewHolder holder, String s, int position) {
-        holder.setText(R.id.tv_content, s);
+    protected void convert(BaseViewHolder holder, String item) {
+        holder.setText(R.id.tv_content, item);
     }
 }

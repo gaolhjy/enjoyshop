@@ -68,12 +68,12 @@ public class ToastUtils {
         }
 
         View view = mToast.getView();
-        view.setPadding(28, 12, 28, 12);
+        view.setPadding(28, 20, 28, 20);
         TextView tv = view.findViewById(android.R.id.message);
-        tv.setTextSize(16);
+        tv.setTextSize(14);
         tv.setTextColor(Color.WHITE);
         mToast.setText(text);
-        mToast.setGravity(Gravity.CENTER, 0, 0);
+        mToast.setGravity(Gravity.CENTER, 0, 40);
         mToast.setView(view);
         mToast.show();
     }

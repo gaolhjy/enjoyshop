@@ -1,20 +1,35 @@
 package com.enjoyshop.bean;
 
+import com.chad.library.adapter.base.entity.MultiItemEntity;
+
 /**
  * Created by 高磊华
  * Time  2017/8/7
  * Describe: 首页 商品数据
  */
 
-public class HomeCampaignBean {
+public class HomeCampaignBean implements MultiItemEntity {
 
+    /**
+     * item为大图在左边的
+     */
+    public static final int ITEM_TYPE_LEFT  = 0;
+
+    /**
+     * item为大图在右边的
+     */
+    public static final int ITEM_TYPE_RIGHT = 1;
 
     private Campaign cpOne;
-    private Campaign   cpTwo;
+    private Campaign cpTwo;
     private Campaign cpThree;
-    private int         id;
-    private String      title;
+    private int      id;
+    private String   title;
+    private int      itemType;
 
+    public HomeCampaignBean(int itemType) {
+        this.itemType = itemType;
+    }
 
     public Campaign getCpOne() {
         return cpOne;
@@ -56,4 +71,12 @@ public class HomeCampaignBean {
         this.title = title;
     }
 
+    @Override
+    public int getItemType() {
+        return itemType;
+    }
+
+    public void setItemType(int itemType) {
+        this.itemType = itemType;
+    }
 }

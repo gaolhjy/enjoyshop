@@ -138,8 +138,7 @@ public class CartShopProvider {
 
         List<ShoppingCart> carts = getDataFormLoad();
         if (carts != null && carts.size() > 0) {
-            for (ShoppingCart cart :
-                    carts) {
+            for (ShoppingCart cart : carts) {
                 datas.put(cart.getId(), cart);
             }
         }

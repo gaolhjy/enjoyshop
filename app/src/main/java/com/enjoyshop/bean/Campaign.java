@@ -15,7 +15,6 @@ import java.io.Serializable;
 
 public class Campaign implements Serializable {
 
-
     private Long id;
     private String title;
     private String imgUrl;

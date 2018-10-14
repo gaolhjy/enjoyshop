@@ -62,7 +62,7 @@ public class AddressListActivity extends BaseActivity {
 
     private void initView() {
         if (mAdapter == null) {
-            mAdapter = new AddressListAdapter(mAddressDataList, AddressListActivity.this);
+            mAdapter = new AddressListAdapter(mAddressDataList);
             mRecyclerview.setAdapter(mAdapter);
             mRecyclerview.setLayoutManager(new LinearLayoutManager(AddressListActivity.this));
             mRecyclerview.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration
