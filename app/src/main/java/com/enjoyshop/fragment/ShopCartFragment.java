@@ -23,6 +23,7 @@ import com.enjoyshop.widget.WrapContentLinearLayoutManager;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -38,7 +39,7 @@ import butterknife.OnClick;
  * </pre>
  */
 
-public class ShopCartFragment extends BaseFragment {
+public class ShopCartFragment extends BaseFragment implements ShopCartAdapter.CheckItemListener {
 
     public static final  int    ACTION_EDIT     = 1;
     public static final  int    ACTION_CAMPLATE = 2;
@@ -61,9 +62,13 @@ public class ShopCartFragment extends BaseFragment {
     @BindView(R.id.ll_empty)
     LinearLayout     mLlEmpty;
 
-    private ShopCartAdapter  mAdapter;
-    private CartShopProvider mCartShopProvider;
-    private List<ShoppingCart> carts;
+    private ShopCartAdapter    mAdapter;
+    private CartShopProvider   mCartShopProvider;
+    private boolean            isSelectAll;
+    //列表数据
+    private List<ShoppingCart> dataArray;
+    //选中后的数据
+    private List<ShoppingCart> checkedList;
 
     @Override
     protected int getContentResourseId() {
@@ -73,8 +78,10 @@ public class ShopCartFragment extends BaseFragment {
     @Override
     protected void init() {
         mCartShopProvider = new CartShopProvider(getContext());
+        checkedList = new ArrayList<>();
         changeToolbar();
         showData();
+        showTotalPrice();
     }
 
 
@@ -95,9 +102,9 @@ public class ShopCartFragment extends BaseFragment {
 
     private void showData() {
 
-        carts = mCartShopProvider.getAll();
+        dataArray = mCartShopProvider.getAll();
 
-        if (carts == null) {
+        if (dataArray == null) {
             initEmptyView();           //如果数据为空,显示空的试图
             return;
         }
@@ -105,69 +112,16 @@ public class ShopCartFragment extends BaseFragment {
         /**
          * 购物车数据不为空
          */
-        mAdapter = new ShopCartAdapter(this,carts);
+        mAdapter = new ShopCartAdapter(getContext(), dataArray, this);
         mRecyclerView.setAdapter(mAdapter);
-        //recyclerView本身存在一个bug,在删 添加数据同时进行时,会报错:
-        // java.lang.IndexOutOfBoundsException: Inconsistency detected. Invalid view holder
-        // adapter positionViewHolder{42319ed8 position=1 id=-1, oldPos=0, pLpos:0 scrap
-        // tmpDetached no parent}
-        //需要 重写LinearLayoutManager
         mRecyclerView.setLayoutManager(new WrapContentLinearLayoutManager(getContext(),
                 LinearLayoutManager.VERTICAL, false));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),
                 DividerItemDecoration.VERTICAL));
-        mAdapter.setNewData(carts);
-
-//        mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
-//            @Override
-//            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-//                ShoppingCart cart = (ShoppingCart) adapter.getData().get(position);
-//                CheckBox checkBox = view.findViewById(R.id.checkbox);
-//
-//                switch (view.getId()) {
-//                    case R.id.checkbox:
-//                        checkBox.setChecked(cart.isChecked());
-//                        checkListen();
-//                        showTotalPrice();
-//                        mAdapter.notifyItemChanged(position);
-//                        break;
-//                }
-//            }
-//        });
-
-        checkListen();
 
     }
 
 
-    /**
-     * 思路:
-     * 1.先拿到所有数据的长度,然后对所有数据进行遍历
-     * 2.判断里面的 isCheck  是不是被选中
-     * 3.把所有选中的进行计数  并相加 sum1
-     * 4. 如果步骤3中sum1 与总的总数相等,说明全部选中了  反正没有全选中
-     */
-    public void checkListen() {
-
-        int count = 0;
-        int checkNum = 0;
-        if (carts != null) {
-            count = carts.size();
-
-            for (ShoppingCart cart : carts) {
-                if (!cart.isChecked()) {
-                    mCheckBox.setChecked(false);
-                    break;
-                } else {
-                    checkNum = checkNum + 1;
-                }
-            }
-
-            if (count == checkNum) {
-                mCheckBox.setChecked(true);
-            }
-        }
-    }
 
 
     private void initEmptyView() {
@@ -201,9 +155,43 @@ public class ShopCartFragment extends BaseFragment {
 
                 break;
             case R.id.checkbox_all:
-                mAdapter.setCheckBox(mCheckBox.isChecked());
+                isSelectAll = !isSelectAll;
+                checkedList.clear();
+                if (isSelectAll) {//全选处理
+                    mCheckBox.setChecked(true);
+                    checkedList.addAll(dataArray);
+                }else {
+                    mCheckBox.setChecked(false);
+                }
+                for (ShoppingCart checkBean : dataArray) {
+                    checkBean.setIsChecked(isSelectAll);
+                }
+                mAdapter.notifyDataSetChanged();
                 showTotalPrice();
                 break;
+        }
+    }
+
+
+    @Override
+    public void itemChecked(ShoppingCart checkBean, boolean isChecked) {
+        //处理Item点击选中回调事件
+        if (isChecked) {
+            //选中处理
+            if (!checkedList.contains(checkBean)) {
+                checkedList.add(checkBean);
+            }
+        } else {
+            //未选中处理
+            if (checkedList.contains(checkBean)) {
+                checkedList.remove(checkBean);
+            }
+        }
+        //判断列表数据是否全部选中
+        if (checkedList.size() == dataArray.size()) {
+            mCheckBox.setChecked(true);
+        } else {
+            mCheckBox.setChecked(false);
         }
     }
 
@@ -246,7 +234,7 @@ public class ShopCartFragment extends BaseFragment {
      */
 
     public boolean isNull() {
-        return (carts != null && carts.size() > 0);
+        return (dataArray != null && dataArray.size() > 0);
     }
 
     private float getTotalPrice() {
@@ -255,7 +243,7 @@ public class ShopCartFragment extends BaseFragment {
         if (!isNull())
             return sum;
 
-        for (ShoppingCart cart : carts) {
+        for (ShoppingCart cart : dataArray) {
             if (cart.isChecked()) {   //是否勾上去了
                 sum += cart.getCount() * cart.getPrice();
             }

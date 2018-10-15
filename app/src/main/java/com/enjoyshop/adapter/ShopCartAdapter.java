@@ -1,16 +1,19 @@
 package com.enjoyshop.adapter;
 
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
 import com.enjoyshop.EnjoyshopApplication;
 import com.enjoyshop.R;
 import com.enjoyshop.bean.ShoppingCart;
 import com.enjoyshop.fragment.ShopCartFragment;
-import com.enjoyshop.utils.CartShopProvider;
 import com.enjoyshop.utils.GlideUtils;
 import com.enjoyshop.widget.NumberAddSubView;
 
@@ -22,96 +25,98 @@ import java.util.List;
  * Describe: 购物车的适配器
  */
 
-public class ShopCartAdapter extends BaseQuickAdapter<ShoppingCart, BaseViewHolder> {
+public class ShopCartAdapter extends RecyclerView.Adapter<ShopCartAdapter.ViewHolder> {
 
-    private List<ShoppingCart> mCarts;
-    private CartShopProvider   mCartShopProvider;
-    private ShopCartFragment   mShopCartFragment;
+    private Context            mContext;
+    private List<ShoppingCart> mDatas;
+    private CheckItemListener  mCheckListener;
 
-    public ShopCartAdapter(ShopCartFragment fragment, List<ShoppingCart> cart) {
-
-        super(R.layout.template_cart);
-        this.mShopCartFragment = fragment;
-        this.mCarts = cart;
-
-        mCartShopProvider = new CartShopProvider(mShopCartFragment.getContext());
-
-        mShopCartFragment.showTotalPrice();
+    public ShopCartAdapter(Context mContext, List<ShoppingCart> mDatas, CheckItemListener
+            mCheckListener) {
+        this.mContext = mContext;
+        this.mDatas = mDatas;
+        this.mCheckListener = mCheckListener;
     }
-
-
-    /**
-     * 全选或者全不选
-     *
-     * @param checked
-     */
-    public void setCheckBox(boolean checked) {
-        checkAll_None(checked);
-    }
-
-    private void checkAll_None(boolean isChecked) {
-
-        if (!mShopCartFragment.isNull()) {
-            return;
-        }
-
-        int i = 0;
-        for (ShoppingCart cart : mCarts) {
-            cart.setIsChecked(isChecked);
-            notifyItemChanged(i);
-            i++;
-        }
-
-    }
-
 
     @Override
-    protected void convert(BaseViewHolder holder, final ShoppingCart cart) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(mContext).inflate(R.layout.template_cart, parent, false);
+        ViewHolder viewHolder = new ViewHolder(view);
+        return viewHolder;
+    }
 
-        holder.setText(R.id.text_title, cart.getName())
-                .setText(R.id.text_price, "￥" + cart.getPrice())
-                .setChecked(R.id.checkbox, cart.isChecked());
+    @Override
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
+        final ShoppingCart cart = mDatas.get(position);
 
-        GlideUtils.load(EnjoyshopApplication.sContext, cart.getImgUrl(), (ImageView) holder
-                .getView(R.id.iv_view));
 
-        NumberAddSubView numberAddSubView = (NumberAddSubView) holder.getView(R.id.num_control);
-        numberAddSubView.setValue(cart.getCount());
+        holder.mTvTitle.setText(cart.getName());
+        holder.mTvPrice.setText("￥" + cart.getPrice());
+        holder.mCheckBox.setChecked(cart.isChecked());
+        holder.mNumberAddSubView.setValue(cart.getCount());
+        GlideUtils.load(EnjoyshopApplication.sContext, cart.getImgUrl(), holder.mIvLogo);
 
-        numberAddSubView.setOnButtonClickListener(new NumberAddSubView.OnButtonClickListener() {
+
+        //点击实现选择功能，当然可以把点击事件放在item_cb对应的CheckBox上，只是焦点范围较小
+        holder.mLlContent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cart.setIsChecked(!cart.isChecked());
+                holder.mCheckBox.setChecked(cart.isChecked());
+                if (null != mCheckListener) {
+                    mCheckListener.itemChecked(cart, holder.mCheckBox.isChecked());
+                }
+                notifyDataSetChanged();
+                ((ShopCartFragment)mCheckListener).showTotalPrice();
+            }
+        });
+
+
+        holder.mNumberAddSubView.setOnButtonClickListener(new NumberAddSubView.OnButtonClickListener() {
             @Override
             public void onButtonAddClick(View view, int value) {
                 cart.setCount(value);
-                mCartShopProvider.updata(cart);
-                mShopCartFragment.showTotalPrice();
+//                mCartShopProvider.updata(cart);
+                ((ShopCartFragment)mCheckListener).showTotalPrice();
             }
 
             @Override
             public void onButtonSubClick(View view, int value) {
                 cart.setCount(value);
-                mCartShopProvider.updata(cart);
-                mShopCartFragment.showTotalPrice();
-            }
-        });
-
-
-        final CheckBox checkBox = holder.getView(R.id.checkbox);
-        checkBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean isChecked = cart.isChecked();
-                if (isChecked) {
-                    checkBox.setEnabled(false);
-                } else {
-                    checkBox.setEnabled(true);
-                }
-
-                mShopCartFragment.checkListen();
-                mShopCartFragment.showTotalPrice();
-                notifyDataSetChanged();
+//                mCartShopProvider.updata(cart);
+                ((ShopCartFragment)mCheckListener).showTotalPrice();
             }
         });
 
     }
 
+    @Override
+    public int getItemCount() {
+        return mDatas.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+
+        private LinearLayout     mLlContent;
+        private TextView         mTvTitle;
+        private TextView         mTvPrice;
+        private CheckBox         mCheckBox;
+        private ImageView        mIvLogo;
+        private NumberAddSubView mNumberAddSubView;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            mLlContent = itemView.findViewById(R.id.ll_item);
+            mCheckBox = itemView.findViewById(R.id.checkbox);
+            mIvLogo = itemView.findViewById(R.id.iv_view);
+            mTvTitle = itemView.findViewById(R.id.text_title);
+            mTvPrice = itemView.findViewById(R.id.text_price);
+            mNumberAddSubView = itemView.findViewById(R.id.num_control);
+        }
+    }
+
+    public interface CheckItemListener {
+
+        void itemChecked(ShoppingCart checkBean, boolean isChecked);
+    }
 }
