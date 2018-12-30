@@ -3,14 +3,14 @@
 buildscript {
     repositories {
         google()
-        jcenter()
+        jcenter { url "http://jcenter.bintray.com/" }
         mavenCentral()
         maven { url "https://jitpack.io" }
     }
 
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.4'
+        classpath 'com.android.tools.build:gradle:3.2.1'
         classpath 'com.novoda:bintray-release:0.8.0'
         classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2'
 
@@ -23,7 +23,10 @@ allprojects {
     repositories {
         google()
         jcenter()
+        mavenCentral()
         maven { url "https://jitpack.io" }
+        maven { url "https://maven.google.com" }
+        maven { url "http://repo1.maven.org/maven2" }
     }
 }
 
