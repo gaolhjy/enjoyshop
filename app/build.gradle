@@ -17,7 +17,7 @@ android {
         applicationId "com.enjoyshop"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 25
+        versionCode 26
         versionName "2.1.0"
     }
 
