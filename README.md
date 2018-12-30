@@ -1,7 +1,7 @@
 项目简介:
 ====
 
-![Image text](https://img.shields.io/badge/%E7%8A%B6%E6%80%81-%E7%BB%B4%E6%8A%A4%E4%B8%AD-green.svg)   ![Image text](https://img.shields.io/badge/%E7%89%88%E6%9C%AC-2.1.0-brightgreen.svg)   ![Image text](https://img.shields.io/badge/%E6%9C%80%E6%96%B0%E6%8F%90%E4%BA%A4-2018%2F12%2F30-brightgreen.svg)
+![Image text](https://img.shields.io/badge/%E7%8A%B6%E6%80%81-%E7%BB%B4%E6%8A%A4%E4%B8%AD-green.svg)   ![Image text](https://img.shields.io/badge/%E7%89%88%E6%9C%AC-2.1.0-brightgreen.svg)   ![Image text](https://img.shields.io/badge/%E6%9C%80%E8%BF%91%E6%8F%90%E4%BA%A4%E6%97%B6%E9%97%B4-2018%2F12%2F30-brightgreen.svg)
 ![Image text](https://img.shields.io/badge/%E7%BC%96%E8%AF%91%E6%83%85%E5%86%B5-%E6%AD%A3%E5%B8%B8%E7%BC%96%E8%AF%91-green.svg)  ![Image text](https://img.shields.io/badge/as%E7%89%88%E6%9C%AC-3.2.1-brightgreen.svg)
 
 
