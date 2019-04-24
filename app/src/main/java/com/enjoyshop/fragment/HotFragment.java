@@ -16,7 +16,6 @@ import com.enjoyshop.activity.SearchActivity;
 import com.enjoyshop.adapter.HotGoodsAdapter;
 import com.enjoyshop.bean.HotGoods;
 import com.enjoyshop.contants.HttpContants;
-import com.enjoyshop.utils.LogUtil;
 import com.enjoyshop.utils.ToastUtils;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -27,9 +26,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import okhttp3.Call;
 
-import static com.zhy.http.okhttp.log.LoggerInterceptor.TAG;
 
 
 /**
@@ -128,14 +125,15 @@ public class HotFragment extends BaseFragment {
         OkHttpUtils.get().url(url).addParams("type", "1")
                 .build().execute(new StringCallback() {
 
+
             @Override
-            public void onError(Call call, Exception e, int id) {
-                LogUtil.e(TAG, "response....." + e, false);
+            public void onError(okhttp3.Call call, Exception e, int id) {
+
             }
 
             @Override
             public void onResponse(String response, int id) {
-                LogUtil.e(TAG, "response....." + response, false);
+
                 HotGoods hotGoods = mGson.fromJson(response, HotGoods.class);
                 totalPage = hotGoods.getTotalPage();
                 currPage = hotGoods.getCurrentPage();

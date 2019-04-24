@@ -15,7 +15,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.enjoyshop"
-        minSdkVersion 16
+        minSdkVersion 18
         targetSdkVersion 27
         versionCode 27
         versionName "2.1.0"
@@ -71,7 +71,10 @@ dependencies {
     implementation 'com.android.support:design:27.1.1'
 
 
-    implementation 'com.zhy:okhttputils:2.6.2'
+//    implementation 'com.zhy:okhttputils:2.6.2'
+    implementation project(':okhttputils')
+
+
 
     //轮播图.
     implementation 'com.youth.banner:banner:1.4.10'

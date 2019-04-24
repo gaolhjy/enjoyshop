@@ -32,7 +32,6 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import okhttp3.Call;
 import okhttp3.Response;
 
 
@@ -206,10 +205,12 @@ public class CreateOrderActivity extends BaseActivity implements View.OnClickLis
                     }
 
                     @Override
-                    public void onError(Call call, Exception e, int id) {
+                    public void onError(okhttp3.Call call, Exception e, int id) {
                         mBtnCreateOrder.setEnabled(true);
                         LogUtil.e("支付", e.toString(), true);
                     }
+
+
 
                     @Override
                     public void onResponse(CreateOrderRespMsg response, int id) {

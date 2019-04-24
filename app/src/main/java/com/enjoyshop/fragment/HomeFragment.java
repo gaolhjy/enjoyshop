@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.telecom.Call;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +38,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import butterknife.BindView;
-import okhttp3.Call;
+
 
 
 /**
@@ -188,8 +189,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 .addParams("type", "1")
                 .build().execute(new StringCallback() {
 
+
+
             @Override
-            public void onError(Call call, Exception e, int id) {
+            public void onError(okhttp3.Call call, Exception e, int id) {
 
             }
 
@@ -221,8 +224,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 .addParams("type", "1")
                 .build().execute(new StringCallback() {
 
+
             @Override
-            public void onError(Call call, Exception e, int id) {
+            public void onError(okhttp3.Call call, Exception e, int id) {
 
             }
 
