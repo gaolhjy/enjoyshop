@@ -111,21 +111,6 @@
 
 
 
-项目谈论群:
-====
-
-说明:之所以没有使用微信群还是QQ群,主要基于两个原因:
-(1)QQ群可以屏蔽,这样大家根据情况进行选择,以便更高效率工作、学习.
-(2)QQ群上传资料后,便于保存与查找,也可以临时性和群里其他人私聊.
-
-QQ群号:156250233 (只有1个要求,先对项目star后,即可添加 )
-
-[![Wercker](https://img.shields.io/badge/QQ%E7%BE%A4-%E7%82%B9%E5%87%BB%E6%B7%BB%E5%8A%A0-green.svg)](<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=142fcd233ceb676fa8d0b0c97f21f23473f9af60b75675cc54aa4d96967b9c40"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="轻松购商场学习群" title="轻松购商场学习群"></a>)
-
-
-![Image text](https://github.com/gaolhjy/enjoyshop/blob/master/screenshots/QQ%E7%BE%A4%E4%BA%8C%E7%BB%B4%E7%A0%81.png)
-
-
 帮助文档(请务必要看这里):
 ====
 **(一)基础性问题:**
@@ -234,6 +219,23 @@ A3: (1)如果star: 首先你需要有一个github账号.登录后,在项目网�
    ②对我有好处: 鼓励我更有动力维护这个项目.此时star类似于点赞.
 
    ③对其他人有好处:一般star越多的项目,说明这个项目被认可的程度越高.如果我这个项目star很多,就会有更多的人参与这个项目的谈论 维护中.其实这点,对你也有好处,你也可以一起成长,以及持续学习到更高质量的代码.毕竟:众人抬货火焰高.
+
+
+
+
+项目谈论群:
+====
+
+说明:之所以没有使用微信群还是QQ群,主要基于两个原因:
+(1)QQ群可以屏蔽,这样大家根据情况进行选择,以便更高效率工作、学习.
+(2)QQ群上传资料后,便于保存与查找,也可以临时性和群里其他人私聊.
+
+QQ群号:156250233 (只有1个要求,先对项目star后,即可添加 )
+
+[![Wercker](https://img.shields.io/badge/QQ%E7%BE%A4-%E7%82%B9%E5%87%BB%E6%B7%BB%E5%8A%A0-green.svg)](<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=142fcd233ceb676fa8d0b0c97f21f23473f9af60b75675cc54aa4d96967b9c40"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="轻松购商场学习群" title="轻松购商场学习群"></a>)
+
+
+![Image text](https://github.com/gaolhjy/enjoyshop/blob/master/screenshots/QQ%E7%BE%A4%E4%BA%8C%E7%BB%B4%E7%A0%81.png)
 
 
 
