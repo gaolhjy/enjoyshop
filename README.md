@@ -230,10 +230,21 @@ A3: (1)如果star: 首先你需要有一个github账号.登录后,在项目网�
 (1)QQ群可以屏蔽,这样大家根据情况进行选择,以便更高效率工作、学习.
 (2)QQ群上传资料后,便于保存与查找,也可以临时性和群里其他人私聊.
 
-QQ群号:156250233 (只有1个要求,先对项目star后,即可添加 )
+一共有2个QQ群,
+一个是免费的,主要用于大家对轻松购项目(Android端)进行交流;
+一个是付费的,群主及嘉宾会针对大家Android、前端、后台、职业规划等方面进行交流、指导.同时不定期分享学习资料、优秀帖子.
 
-[![Wercker](https://img.shields.io/badge/QQ%E7%BE%A4-%E7%82%B9%E5%87%BB%E6%B7%BB%E5%8A%A0-green.svg)](<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=142fcd233ceb676fa8d0b0c97f21f23473f9af60b75675cc54aa4d96967b9c40"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="轻松购商场学习群" title="轻松购商场学习群"></a>)
+QQ群号: 120798193 (免费交流群. 只有1个要求,先对项目star后,即可添加)
 
+注: 如果购买了4套优秀学习视频资料,将免费拉到付费群.
+
+![Image text](https://github.com/gaolhjy/enjoyshop/blob/master/screenshots/QQ%E7%BE%A4%E4%BA%8C%E7%BB%B4%E7%A0%81.png)
+
+
+
+QQ群号:156250233 (付费群)
+
+注: 如果购买了4套优秀学习视频资料,将退还入群时的费用.
 
 ![Image text](https://github.com/gaolhjy/enjoyshop/blob/master/screenshots/QQ%E7%BE%A4%E4%BA%8C%E7%BB%B4%E7%A0%81.png)
 
