@@ -233,19 +233,25 @@ A3: (1)如果star: 首先你需要有一个github账号.登录后,在项目网�
 一共有2个QQ群,
 一个是免费的,主要用于大家对轻松购项目(Android端)进行交流;
 一个是付费的,群主及嘉宾会针对大家Android、前端、后台、职业规划等方面进行交流、指导.同时不定期分享学习资料、优秀帖子.
+我也有自己的工作和娱乐时间，只有大家理解和支持我，我才能专心的为大家解决问题。不过不用担心，如果大家介意知识付费的话,可以加入免费交流群.
+
+
+QQ群号:156250233 (付费群)
+
+注: 如果购买了4套优秀学习视频资料,将退还入群或抵扣购买学习资料的费用.
+
+![Image text](https://github.com/gaolhjy/enjoyshop/blob/master/screenshots/QQ%E7%BE%A4(%E4%BB%98%E8%B4%B9).png)
+
+
 
 QQ群号: 120798193 (免费交流群. 只有1个要求,先对项目star后,即可添加)
 
 注: 如果购买了4套优秀学习视频资料,将免费拉到付费群.
 
-![Image text](https://github.com/gaolhjy/enjoyshop/blob/master/screenshots/QQ%E7%BE%A4%E4%BA%8C%E7%BB%B4%E7%A0%81.png)
+![Image text](https://github.com/gaolhjy/enjoyshop/blob/master/screenshots/QQ%E7%BE%A4(%E5%85%8D%E8%B4%B9).png)
 
 
-QQ群号:156250233 (付费群)
 
-注: 如果购买了4套优秀学习视频资料,将退还入群时的费用.
-
-![Image text](https://github.com/gaolhjy/enjoyshop/blob/master/screenshots/QQ%E7%BE%A4%E4%BA%8C%E7%BB%B4%E7%A0%81.png)
 
 
 
