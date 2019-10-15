@@ -240,7 +240,7 @@ QQ:984992087 (付费群.添加QQ后进行付费,再拉入QQ群. 20元每人)
 
 注: 如果购买了4套优秀学习视频资料,将退还入群或抵扣购买学习资料的费用.
 
-![Image text](https://github.com/gaolhjy/enjoyshop/blob/master/screenshots/QQ%E7%BE%A4(%E4%BB%98%E8%B4%B9).png)
+![Image text](https://github.com/gaolhjy/enjoyshop/blob/master/screenshots/%E4%BB%98%E8%B4%B9_%E5%85%88%E6%B7%BB%E5%8A%A0QQ%E5%86%8D%E6%8B%89%E5%85%A5%E7%BE%A4.png)
 
 
 
