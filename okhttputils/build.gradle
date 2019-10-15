@@ -42,8 +42,8 @@ makeJar.dependsOn(clearJar, build)
 
 
 dependencies {
-    api  fileTree(dir: 'libs', include: ['*.jar'])
-    api  'com.squareup.okhttp3:okhttp:3.10.0'
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api 'com.squareup.okhttp3:okhttp:3.3.1'
 }
 
 //添加

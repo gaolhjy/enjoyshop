@@ -119,9 +119,3 @@ dependencies {
     implementation files('libs/BaiduLBS_Android.jar')
     implementation files('libs/tbs_sdk_thirdapp_v3.2.0.1104_43200_sharewithdownload_withfilereader_withoutGame_obfs_20170609_115346.jar')
 }
-
-buildscript {
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.2'
-    }
-}
