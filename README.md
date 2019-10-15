@@ -267,7 +267,7 @@ QQ群号: 120798193 (免费交流群. 只有1个要求,先对项目star后,即�
 LICENSE
 =======
 
-    Copyright 2017 gaolhjy.
+    Copyright 2017-2019 gaolhjy.
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
