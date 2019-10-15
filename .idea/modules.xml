@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/enjoyshop.iml" filepath="$PROJECT_DIR$/.idea/enjoyshop.iml" />
       <module fileurl="file://$PROJECT_DIR$/enjoyshop.iml" filepath="$PROJECT_DIR$/enjoyshop.iml" />
       <module fileurl="file://$PROJECT_DIR$/okhttputils/okhttputils.iml" filepath="$PROJECT_DIR$/okhttputils/okhttputils.iml" />
     </modules>

@@ -13,7 +13,7 @@ import com.enjoyshop.R;
 
 /**
  * <pre>
- *     author : 高磊华
+ *     author : 高勤
  *     e-mail : 984992087@qq.com
  *     time   : 2017/08/07
  *     desc   :对glide进行封装的工具类

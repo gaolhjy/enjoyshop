@@ -20,7 +20,7 @@ import butterknife.OnClick;
 import dmax.dialog.SpotsDialog;
 
 /**
- * Created by 高磊华
+ * Created by 高勤
  * Time  2017/8/12
  * Describe: 接收验证码的注册界面,即注册界面二
  */

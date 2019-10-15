@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by 高磊华
+ * Created by 高勤
  * Time  2017/8/8
  * Describe:  热卖商品.也是 一级菜单  二级菜单的数据模型
  *            同时,也是首页跳转到商品列表 的数据模型

@@ -7,7 +7,7 @@ import android.view.View;
 
 /**
  * <pre>
- *     author : 高磊华
+ *     author : 高勤
  *     e-mail : 984992087@qq.com
  *     time   : 2017/08/06
  *     desc   :recyclerview  分割效果

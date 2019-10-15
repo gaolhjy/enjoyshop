@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
- * Created by 高磊华
+ * Created by 高勤
  * Time  2017/8/9
  * Describe: fragment的基类
  */

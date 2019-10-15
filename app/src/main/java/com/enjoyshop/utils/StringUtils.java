@@ -6,7 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * author : 高磊华
+ * author : 高勤
  * e-mail : 984992087@qq.com
  * time   : 2017\9\22 0022
  * desc   : 字符串操作工具包

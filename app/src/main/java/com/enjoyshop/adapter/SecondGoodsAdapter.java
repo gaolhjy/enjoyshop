@@ -12,7 +12,7 @@ import com.enjoyshop.utils.GlideUtils;
 import java.util.List;
 
 /**
- * Created by 高磊华
+ * Created by 高勤
  * Time  2017/8/9
  * Dscribe: 分类 二级菜单 适配器
  */

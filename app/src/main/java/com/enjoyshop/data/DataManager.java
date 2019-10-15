@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * <pre>
- *     author : 高磊华
+ *     author : 高勤
  *     e-mail : 984992087@qq.com
  *     time   : 2018/09/03
  *     desc   : 数据库管理类

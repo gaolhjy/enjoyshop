@@ -4,7 +4,7 @@ import android.util.Log;
 
 /**
  * <pre>
- *     author : 高磊华
+ *     author : 高勤
  *     e-mail : 984992087@qq.com
  *     time   : 2017/08/07
  *     desc   : 日志的工具类

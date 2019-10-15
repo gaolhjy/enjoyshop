@@ -20,7 +20,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * Created by 高磊华
+ * Created by 高勤
  * Time  2017/8/9
  * Describe: 登录界面
  */

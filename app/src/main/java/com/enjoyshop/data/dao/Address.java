@@ -7,7 +7,7 @@ import org.greenrobot.greendao.annotation.Generated;
 /**
  * <p>
  *
- * @author :高磊华
+ * @author :高勤
  * @date : 2018/08/23
  * desc    : 用户地址
  * </pre>

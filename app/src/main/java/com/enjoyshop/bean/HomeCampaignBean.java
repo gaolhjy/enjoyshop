@@ -3,7 +3,7 @@ package com.enjoyshop.bean;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 
 /**
- * Created by 高磊华
+ * Created by 高勤
  * Time  2017/8/7
  * Describe: 首页 商品数据
  */

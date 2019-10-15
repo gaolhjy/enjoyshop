@@ -17,7 +17,7 @@ import com.readystatesoftware.systembartint.SystemBarTintManager;
 import butterknife.ButterKnife;
 
 /**
- * Created by 高磊华
+ * Created by 高勤
  * Time  2017/8/9
  * Describe:activity的基类
  */

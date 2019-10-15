@@ -9,7 +9,7 @@ import com.google.gson.Gson;
 
 
 /**
- * Created by 高磊华
+ * Created by 高勤
  * Time  2017/8/11
  * Describe: 用户的个人信息需要保存在本地
  */

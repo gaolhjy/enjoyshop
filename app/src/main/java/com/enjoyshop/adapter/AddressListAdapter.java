@@ -10,7 +10,7 @@ import com.enjoyshop.data.dao.Address;
 import java.util.List;
 
 /**
- * Created by 高磊华
+ * Created by 高勤
  * Time  2017/8/11
  * Describe: 收货地址 适配器
  */

@@ -19,7 +19,7 @@ import com.enjoyshop.utils.ToastUtils;
 import java.util.List;
 
 /**
- * Created by 高磊华
+ * Created by 高勤
  * Time  2017/8/8
  * Describe: 热卖商品的适配器
  */

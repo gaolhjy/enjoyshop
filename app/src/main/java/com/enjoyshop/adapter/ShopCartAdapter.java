@@ -20,7 +20,7 @@ import com.enjoyshop.widget.NumberAddSubView;
 import java.util.List;
 
 /**
- * Created by 高磊华
+ * Created by 高勤
  * Time  2017/8/9
  * Describe: 购物车的适配器
  */

@@ -2,7 +2,7 @@ package com.enjoyshop.bean;
 
 /**
  * <pre>
- *     author : 高磊华
+ *     author : 高勤
  *     e-mail : 984992087@qq.com
  *     time   : 2017/08/02
  *     desc   :底部导航栏 图片 文字  framgment 的封装

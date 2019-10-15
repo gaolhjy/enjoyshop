@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by 高磊华
+ * Created by 高勤
  * Time  2017/8/9
  * Describe: 购物车 数据的存储
  * 这里使用的是内存数据 本地数据  的方法

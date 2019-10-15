@@ -15,7 +15,7 @@ import com.enjoyshop.R;
 
 
 /**
- * Created by 高磊华
+ * Created by 高勤
  * Time  2017/8/9
  * Describe: 自定义editTxet
  * 没有内容时,右边的删除按钮不会出现

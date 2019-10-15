@@ -4,7 +4,7 @@ package com.enjoyshop.bean;
 import java.io.Serializable;
 
 /**
- * Created by 高磊华
+ * Created by 高勤
  * Time  2017/8/8
  * Describe:  用户信息
  */

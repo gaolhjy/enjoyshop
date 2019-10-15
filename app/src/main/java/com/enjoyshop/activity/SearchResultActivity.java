@@ -9,7 +9,7 @@ import butterknife.BindView;
 
 /**
  * <pre>
- *   author : 高磊华
+ *   author : 高勤
  *   e-mail : 984992087@qq.com
  *   time   : 2017/08/30
  *   desc   : 搜索结果

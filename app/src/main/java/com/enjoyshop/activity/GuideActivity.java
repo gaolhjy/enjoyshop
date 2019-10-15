@@ -17,7 +17,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * Created by:高磊华
+ * Created by:高勤
  * Email: 984992087@qq.com
  * Time:  2017/8/22
  * Describe: 引导页.

@@ -7,7 +7,7 @@ import com.enjoyshop.R;
 
 
 /**
- * Created by 高磊华
+ * Created by 高勤
  * Time  2017/8/12
  * Describe: 定时器
  */

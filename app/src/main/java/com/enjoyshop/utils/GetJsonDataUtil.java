@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * Created by 高磊华
+ * Created by 高勤
  * Time  2017/8/21
  * Describe:读取Json文件的工具类
  */

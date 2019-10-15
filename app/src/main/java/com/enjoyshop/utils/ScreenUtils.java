@@ -12,7 +12,7 @@ import com.enjoyshop.EnjoyshopApplication;
 
 /**
  * <pre>
- *     author : 高磊华
+ *     author : 高勤
  *     e-mail : 984992087@qq.com
  *     time   : 2017/08/18
  *     desc   : 和屏幕有关的工具类

@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * <pre>
- *     author : 高磊华
+ *     author : 高勤
  *     e-mail : 984992087@qq.com
  *     time   : 2018/02/10
  *     desc   : 检查第三方软件是否有安装

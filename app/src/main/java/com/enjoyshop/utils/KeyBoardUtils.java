@@ -6,7 +6,7 @@ import android.widget.EditText;
 
 /**
  * <pre>
- *     author : 高磊华
+ *     author : 高勤
  *     e-mail : 984992087@qq.com
  *     time   : 2018/08/23
  *     desc   : 关闭软键盘

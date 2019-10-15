@@ -1,7 +1,7 @@
 package com.enjoyshop.bean;
 
 /**
- * Created by 高磊华
+ * Created by 高勤
  * Time  2017/8/22
  * Describe: eventbus 的数据模型
  */

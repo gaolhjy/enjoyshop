@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.enjoyshop.EnjoyshopApplication;
 
 /**
- * Created by 高磊华
+ * Created by 高勤
  * Time  2018/2/10
  * Describe: Toast的工具类
  */

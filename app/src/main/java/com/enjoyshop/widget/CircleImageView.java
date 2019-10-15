@@ -47,7 +47,7 @@ import android.widget.ImageView;
 import com.enjoyshop.R;
 
 /**
- * Created by 高磊华
+ * Created by 高勤
  * Time  2018/8/6
  * Describe: 自定义圆角图像
  */

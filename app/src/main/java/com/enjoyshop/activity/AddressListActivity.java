@@ -20,7 +20,7 @@ import java.util.List;
 import butterknife.BindView;
 
 /**
- * Created by 高磊华
+ * Created by 高勤
  * Time  2017/8/10
  * Describe: 收货地址
  */

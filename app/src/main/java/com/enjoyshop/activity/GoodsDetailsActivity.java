@@ -26,7 +26,7 @@ import butterknife.BindView;
 import okhttp3.Call;
 
 /**
- * Created by 高磊华
+ * Created by 高勤
  * Time  2017/8/9
  * Describe: 商品详情
  */
