@@ -232,7 +232,7 @@ A3: (1)如果star: 首先你需要有一个github账号.登录后,在项目网�
 
 直接用QQ扫以下二维码,即可申请加入:
 
-![Image text](https://github.com/gaolhjy/enjoyshop/blob/master/screenshots/QQ%E7%BE%A4(%E5%85%8D%E8%B4%B9).png)
+![Image text](https://github.com/gaolhjy/enjoyshop/blob/master/screenshots/%E9%A1%B9%E7%9B%AE%E4%BA%A4%E6%B5%81QQ%E7%BE%A4.jpg)
 
 
 
