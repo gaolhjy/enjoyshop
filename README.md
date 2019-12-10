@@ -230,23 +230,7 @@ A3: (1)如果star: 首先你需要有一个github账号.登录后,在项目网�
 (1)QQ群可以屏蔽,这样大家根据情况进行选择,以便更高效率工作、学习.
 (2)QQ群上传资料后,便于保存与查找,也可以临时性和群里其他人私聊.
 
-一共有2个QQ群,
-一个是免费的,主要用于大家对轻松购项目(Android端)进行交流;
-一个是付费的,群主及嘉宾会针对大家Android、前端、后台、职业规划等方面进行交流、指导.同时不定期分享学习资料、优秀帖子.
-我也有自己的工作和娱乐时间，只有大家理解和支持我，我才能专心的为大家解决问题。不过不用担心，如果大家介意知识付费的话,可以加入免费交流群.
-
-
-QQ:984992087 (付费群.添加QQ后进行付费,再拉入QQ群. 20元每人)
-
-注: 如果购买了4套优秀学习视频资料,将退还入群或抵扣购买学习资料的费用.
-
-![Image text](https://github.com/gaolhjy/enjoyshop/blob/master/screenshots/%E4%BB%98%E8%B4%B9_%E5%85%88%E6%B7%BB%E5%8A%A0QQ%E5%86%8D%E6%8B%89%E5%85%A5%E7%BE%A4.png)
-
-
-
-QQ群号: 120798193 (免费交流群. 只有1个要求,先对项目star后,即可添加)
-
-注: 如果购买了4套优秀学习视频资料,将免费拉到付费群.
+直接用QQ扫以下二维码,即可申请加入:
 
 ![Image text](https://github.com/gaolhjy/enjoyshop/blob/master/screenshots/QQ%E7%BE%A4(%E5%85%8D%E8%B4%B9).png)
 
@@ -267,7 +251,7 @@ QQ群号: 120798193 (免费交流群. 只有1个要求,先对项目star后,即�
 LICENSE
 =======
 
-    Copyright 2017-2019 gaolhjy.
+    Copyright 2017 gaolhjy.
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
